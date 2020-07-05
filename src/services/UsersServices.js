@@ -9,7 +9,7 @@ export const signUpUser = (data = {}) => {
 };
 
 export const loginUser = (data = {}) => {
-  let url = LOCAL_DOMAIN + USERS_ENDPOINTS.USER_LOGIN;
+  let url = DOMAIN + USERS_ENDPOINTS.USER_LOGIN;
 
   return axios.post(url, data);
 };
