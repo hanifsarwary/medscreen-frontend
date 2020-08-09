@@ -1,122 +1,253 @@
-import React, {Component} from 'react';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid'
-import Paper from '@material-ui/core/Paper';
+import React, { Component } from 'react';
 import logo from 'assets/images/logo.png';
-import { GoLocation, GoMail } from "react-icons/go";
-import { AiOutlinePhone } from "react-icons/ai";
-import { IconContext } from "react-icons";
 
 class Footer extends Component {
-    render() {
-        return (
-            <footer className="public-footer" style={{backgroundColor:'rgb(2,2,2)'}}>
-                <Container>
-                    <Grid direction="row" container spacing={4} className="containerFooter">
-                        <Grid item sm="4" className="footerCol">
-                            <Grid direction="column" container spacing={2}>
-                                <Grid item className="titleRow">
-                                    <div style={{display:'flex', flexDirection : 'row', justifyContent : 'left', alignItem:'center'}}>
-                                        <div style={{height: '20px', width: '4px', marginRight: '3vh', backgroundColor: 'orange'}}/>About Med Screen Lab
-                                    </div>
-                                </Grid>
-                                <Grid item className="logoRow">
-                                    <img src={logo} />
-                                    <br />
-                                    <p className="logoRowP">
-                                        Med Screen Laboratories is a state of the art high complexity
-                                        toxicology laboratory dedicated to the monitoring and
-                                        detection of addiction and substance misuse.
-                                    </p>
-                                </Grid>
-                            </Grid>
-                        </Grid>
-                        <Grid item sm="4" className="footerCol">
-                            <Grid direction="column" container spacing={2}>
-                                <Grid item className="titleRow">
-                                    <div style={{display:'flex', flexDirection : 'row', justifyContent : 'left', alignItem:'center'}}>
-                                        <div style={{height: '20px', width: '4px', marginRight: '3vh', backgroundColor: 'orange'}}/>Recent Posts
-                                    </div>
-                                </Grid>
-                                <Grid item sm="12" className="recentRow">
-                                    <font className="recentRowTitle">
-                                        Welcome to MedScreen Media/News!
-                                    </font>
-                                    <font className="recentRowSubTitle">
-                                        NOVEMBER 26, 2020/ 82 COMMENTS
-                                    </font>
-                                </Grid>
-                                <Grid item sm="12" className="recentRow">
-                                    <hr style={{ borderBottom: "1px solid white" ,width:"100%" }}/>
-                                </Grid>
-                                <Grid item sm="12" className="recentRow">
-                                    <font className="recentRowTitle">Comming Soon</font>
-                                    <font className="recentRowSubTitle">
-                                        DECEMBER 12, 2020/ 45 COMMENTS
-                                    </font>
-                                </Grid>
-                            </Grid>
-                        </Grid>
-                        <Grid item sm="4" className="footerCol">
-                            <Grid direction="column" container spacing={2}>
-                                <Grid item className="titleRow">
-                                    <div style={{display:'flex', flexDirection : 'row', justifyContent : 'left', alignItem:'center'}}>
-                                        <div style={{height: '20px', width: '4px', marginRight: '3vh', backgroundColor: 'orange'}}/>Contact
-                                    </div>
-                                </Grid>
-                                <Grid item sm="12" className="contactRowMain recentRow">
-                                    <div className="contactSubRow">
-                                        <div className="contactBox">
-                                            <IconContext.Provider value={{ color: "orange" }}>
-                                                <GoLocation />
-                                            </IconContext.Provider>
-                                        </div>
-                                        <div className="recentRow">
-                                            <font className="contactRowTitle">Location</font>
-                                            <font className="contactRowSubTitle">
-                                                <a href="https://www.google.com/maps/place/Med+Screen+Labs/@40.863395,-74.163967,15z/data=!4m5!3m4!1s0x0:0x95d8df79222c101c!8m2!3d40.863395!4d-74.163967">992 Clifton Ave, Clifton, NJ 07663</a>
-                                            </font>
-                                        </div>
-                                    </div>
-                                </Grid>
-                                <Grid item sm="12" className="contactRowMain recentRow">
-                                    <div className="contactSubRow">
-                                        <div className="contactBox">
-                                            <IconContext.Provider value={{ color: "orange" }}>
-                                                <AiOutlinePhone />
-                                            </IconContext.Provider>
-                                        </div>
-                                        <div className="recentRow">
-                                            <font className="contactRowTitle">Phone</font>
-                                            <font className="contactRowSubTitle"><a href="tel:9733203237">Ph: (973) 320-3237</a></font>
-                                        </div>
-                                    </div>
-                                </Grid>
-                                <Grid item sm="12" className="contactRowMain recentRow">
-                                    <div className="contactSubRow">
-                                        <div className="contactBox">
-                                            <IconContext.Provider value={{ color: "orange" }}>
-                                                <GoMail />
-                                            </IconContext.Provider>
-                                        </div>
-                                        <div className="recentRow">
-                                            <font className="contactRowTitle">Email</font>
-                                            <font className="contactRowSubTitle"><a href="mailto:info@medscreenlabs.com">E: info@medscreenlabs.com</a></font>
-                                        </div>
-                                    </div>
-                                </Grid>
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                </Container>
-                <div style={{backgroundColor:'#222', color:'white', fontSize:'14px', paddingBottom: '1rem', paddingTop:'1rem'}}>
-                    <Container style={{textAlign:'center'}}>
-                        All rights reserved. <b>Med Screen Labs</b> &copy; {new Date().getFullYear()} - Designed by <b><a>KODERS</a></b>
-                    </Container>
+  render() {
+    return (
+      <footer class="footer inverse-wrapper">
+        <div class="container inner2">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="widget">
+                {' '}
+                <img src={logo} alt="" />
+                <div class="divide20"></div>
+                <p>
+                  Med Screen Laboratories is a state of the art high complexity toxicology laboratory dedicated to the
+                  monitoring and detection of addiction and substance misuse.{' '}
+                </p>
+                <ul class="social naked">
+                  <li>
+                    {' '}
+                    <a href="#">
+                      <i class="icon-s-rss"></i>
+                    </a>{' '}
+                  </li>
+                  <li>
+                    {' '}
+                    <a href="#">
+                      <i class="icon-s-twitter"></i>
+                    </a>{' '}
+                  </li>
+                  <li>
+                    {' '}
+                    <a href="#">
+                      <i class="icon-s-facebook"></i>
+                    </a>{' '}
+                  </li>
+                  <li>
+                    {' '}
+                    <a href="#">
+                      <i class="icon-s-pinterest"></i>
+                    </a>{' '}
+                  </li>
+                  <li>
+                    {' '}
+                    <a href="#">
+                      <i class="icon-s-linkedin"></i>
+                    </a>{' '}
+                  </li>
+                  <li>
+                    {' '}
+                    <a href="#">
+                      <i class="icon-s-forrst"></i>
+                    </a>{' '}
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* <div class='col-sm-4'>
+							<div class='widget'>
+								<h4 class='widget-title'>Recent Posts</h4>
+								<ul class='post-list'>
+									<li>
+										<figure class='overlay'>
+											{' '}
+											<a href='blog-post.html'>
+												<div class='overlay icon'>
+													<div class='info'></div>
+												</div>
+												<img src='style/images/art/a1.jpg' alt='' />
+											</a>{' '}
+										</figure>
+										<div class='post-content'>
+											<p>
+												{' '}
+												<a href='blog-post.html'>Magna mollis ultricies</a>{' '}
+											</p>
+											<div class='meta'>
+												<span class='date'>3th Oct 2012</span>{' '}
+											</div>
+										</div>
+									</li>
+									<li>
+										<figure class='overlay'>
+											{' '}
+											<a href='blog-post.html'>
+												<div class='overlay icon'>
+													<div class='info'></div>
+												</div>
+												<img src='style/images/art/a2.jpg' alt='' />
+											</a>{' '}
+										</figure>
+										<div class='post-content'>
+											<p>
+												{' '}
+												<a href='blog-post.html'>Ornare nullam risus</a>{' '}
+											</p>
+											<div class='meta'>
+												<span class='date'>28th Sep 2012</span>{' '}
+											</div>
+										</div>
+									</li>
+									<li>
+										<figure class='overlay'>
+											{' '}
+											<a href='blog-post.html'>
+												<div class='overlay icon'>
+													<div class='info'></div>
+												</div>
+												<img src='style/images/art/a3.jpg' alt='' />
+											</a>{' '}
+										</figure>
+										<div class='post-content'>
+											<p>
+												{' '}
+												<a href='blog-post.html'>Euismod nullam</a>{' '}
+											</p>
+											<div class='meta'>
+												<span class='date'>15th Aug 2012</span>{' '}
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div> */}
+
+            <div class="col-sm-4">
+              <div class="widget">
+                <h4 class="widget-title">Get in Touch</h4>
+                <address>
+                  <strong>Med Screen Labs</strong>
+                  <br />
+                  992 Clifton Ave, Clifton, <br />
+                  NJ 07013
+                  <br />
+                  <abbr title="Phone">Phone:</abbr> (973) 320-3237 <br />
+                  <abbr title="Email">Email:</abbr> <a href="mailto:#">info@medscreenlabs.com</a>
+                </address>
+              </div>
+              <div class="widget">
+                <h4 class="widget-title">Subscribe</h4>
+                <div class="newsletter-wrapper">
+                  <div id="mc_embed_signup2" class="newsletter-form">
+                    <form
+                      action="http://elemisfreebies.us3.list-manage1.com/subscribe/post?u=ddc180777a163e0f9f66ee014&amp;id=056957de28"
+                      method="post"
+                      id="mc-embedded-subscribe-form2"
+                      name="mc-embedded-subscribe-form"
+                      class="validate"
+                      target="_blank"
+                      novalidate=""
+                    >
+                      <input
+                        type="email"
+                        value=""
+                        name="EMAIL"
+                        class="email"
+                        id="mce-EMAIL2"
+                        placeholder="Enter email"
+                        required=""
+                      />
+                      <div style={{ position: 'absolute', left: '-5000px' }}>
+                        <input type="text" name="b_ddc180777a163e0f9f66ee014_056957de28" value="" />
+                      </div>
+                      <div class="clear">
+                        <input type="submit" value="Join" name="subscribe" id="mc-embedded-subscribe2" class="btn" />
+                      </div>
+                    </form>
+                  </div>
                 </div>
-            </footer>
-        );
-    }
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="widget">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3017.3863425794916!2d-74.16616104902904!3d40.863394979214235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2ff9e63e1ad41%3A0x95d8df79222c101c!2sMed%20Screen%20Labs!5e0!3m2!1sen!2str!4v1596446875708!5m2!1sen!2str"
+                  width="100%"
+                  height="200"
+                  frameborder="0"
+                  style={{border:0}}
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+            {/* <div class='col-sm-3'>
+							<div class='widget'>
+								<h4 class='widget-title'>Recent Tags</h4>
+								<ul class='tag-list'>
+									<li>
+										{' '}
+										<a href='#' class='btn'>
+											Blog
+										</a>{' '}
+									</li>
+									<li>
+										{' '}
+										<a href='#' class='btn'>
+											Photography
+										</a>{' '}
+									</li>
+									<li>
+										{' '}
+										<a href='#' class='btn'>
+											Illustation
+										</a>{' '}
+									</li>
+									<li>
+										{' '}
+										<a href='#' class='btn'>
+											Fun
+										</a>{' '}
+									</li>
+								</ul>
+							</div>
+							<div class='widget'>
+								<h4 class='widget-title'>Top Categories</h4>
+								<ul class='circled'>
+									<li>
+										{' '}
+										<a href='#'>Lifestyle (21)</a>{' '}
+									</li>
+									<li>
+										{' '}
+										<a href='#'>Photography (19)</a>{' '}
+									</li>
+									<li>
+										{' '}
+										<a href='#'>Journal (16)</a>{' '}
+									</li>
+									<li>
+										{' '}
+										<a href='#'>Works (7)</a>{' '}
+									</li>
+								</ul>
+							</div>
+						</div> */}
+          </div>
+        </div>
+
+        <div class="sub-footer">
+          <div class="container inner3">
+            <p class="text-center">
+              © 2016 Ryla. All rights reserved. Theme by <a href="http://elemisfreebies.com">elemis</a>.
+            </p>
+          </div>
+        </div>
+      </footer>
+    );
+  }
 }
 
 export default Footer;

@@ -1,0 +1,203 @@
+::selection {
+	background: #fbebc5; /* Safari */
+}
+::-moz-selection {
+	background: #fbebc5; /* Firefox */
+}
+.lg-outer .lg-item:after,
+.animsition-loading,
+.tp-loader.spinner {
+	border-left: 6px solid #f2be3e;
+}
+a {
+	color: #f2be3e;
+}
+a.line:hover {
+	border-bottom: 1px solid #f2be3e;
+}
+a:hover,
+a:focus {
+	color: #f2be3e;
+}
+.nocolor:hover {
+	color: #f2be3e;
+}
+.post-title a:hover {
+	color: #f2be3e;
+}
+.more {
+	color: #f2be3e;
+}
+.meta a:hover,
+.more:hover {
+	color: #f2be3e;
+}
+.meta.price,
+.meta.price a {
+	color: #f2be3e;
+}
+footer.inverse-wrapper a:hover {
+	color: #f2be3e !important;
+}
+ul.circled li:before {
+	color: #f2be3e;
+}
+.contact-info li a:hover {
+	color: #f2be3e;
+}
+.contact-info i {
+	color: #f2be3e;
+}
+.btn {
+	background: #f2be3e;
+}
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn.active {
+	background: #e4b33a;
+}
+.btn-white:hover,
+.btn-white:focus,
+.btn-white:active,
+.btn-white.active {
+	background: #fff !important;
+	color: #f2be3e !important;
+}
+.navbar.centered.color .navbar-collapse {
+	background: #f2be3e;
+}
+.navbar .info a:hover,
+.navbar .top-bar a:hover {
+	color: #f2be3e;
+}
+.isotope-filter ul li a:hover,
+.isotope-filter ul li a.is-checked {
+	color: #f2be3e;
+}
+.blog-posts .post .date-wrapper .date {
+	background: #f2be3e;
+}
+.blog-posts .post .format-wrapper {
+	background-color: #f2be3e;
+}
+.timeline .date-title .date {
+	background: #f2be3e;
+}
+footer a:hover {
+	color: #f2be3e;
+}
+.sidebar .meta a:hover,
+footer .meta a:hover {
+	color: #f2be3e !important;
+}
+.sidebox a:hover {
+	color: #f2be3e;
+}
+.widget .post-list li a:hover {
+	color: #f2be3e;
+}
+#comments .info h4 a:hover {
+	color: #f2be3e;
+}
+.tparrows:hover:before {
+	color: #f2be3e;
+}
+.owl-nav .owl-prev:hover:before,
+.owl-nav .owl-next:hover:before {
+	color: #f2be3e;
+}
+.number-carousel .item:hover .number {
+	color: #f2be3e;
+}
+.progress-list li em {
+	color: #f2be3e;
+}
+.progress.plain .bar {
+	background: #f2be3e !important;
+}
+.bar-container {
+	border: 1px solid #f2be3e;
+}
+.tooltip-inner {
+	background-color: #f2be3e;
+}
+.tooltip.top .tooltip-arrow,
+.tooltip.top-left .tooltip-arrow,
+.tooltip.top-right .tooltip-arrow {
+	border-top-color: #f2be3e;
+}
+.tooltip.right .tooltip-arrow {
+	border-right-color: #f2be3e;
+}
+.tooltip.left .tooltip-arrow {
+	border-left-color: #f2be3e;
+}
+.tooltip.bottom .tooltip-arrow,
+.tooltip.bottom-left .tooltip-arrow,
+.tooltip.bottom-right .tooltip-arrow {
+	border-bottom-color: #f2be3e;
+}
+.nav-tabs > li > a:hover {
+	color: #f2be3e;
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+	color: #f2be3e;
+}
+.nav-tabs > li.active > a:after {
+	border-bottom: 1px solid #f2be3e;
+}
+.panel-group .panel-heading .panel-title:hover,
+.panel-group .panel-active .panel-heading .panel-title {
+	border: 1px solid #f2be3e;
+	color: #f2be3e;
+}
+.panel.pricing.active::after {
+	border: 3px solid #f2be3e !important;
+}
+.panel.pricing .price {
+	color: #f2be3e;
+}
+.vanilla-form input[type='radio']:focus + span,
+.vanilla-form input[type='checkbox']:focus + span,
+.vanilla-form input[type='radio']:active + span,
+.vanilla-form input[type='checkbox']:active + span {
+	border-color: #f2be3e;
+}
+.vanilla-form input[type='radio'] + span::after {
+	background-color: #f2be3e;
+	border-color: #f2be3e;
+}
+.vanilla-form input[type='radio']:checked + span,
+.vanilla-form input[type='checkbox']:checked + span {
+	border: 1px solid #f2be3e;
+}
+.vanilla-form input[type='checkbox'] + span::after {
+	border: 0 solid #f2be3e;
+}
+.lg-outer .lg-thumb-item.active,
+.lg-outer .lg-thumb-item.active:hover {
+	border-color: #f2be3e;
+}
+.lg-toolbar .lg-icon:hover,
+.lg-outer .lg-toogle-thumb:hover,
+.lg-actions .lg-next:hover,
+.lg-actions .lg-prev:hover {
+	color: #f2be3e;
+}
+@media (min-width: 992px) {
+	.navbar .dropdown-menu li {
+		background: #f2be3e;
+	}
+	.navbar .nav > li.current > a,
+	.navbar .nav > li > a:hover {
+		color: #f2be3e !important;
+	}
+}
+@media (max-width: 991px) {
+	.navbar .navbar-collapse {
+		background: #f2be3e;
+	}
+}

@@ -1,104 +1,220 @@
-import React, {Component, Fragment} from 'react';
-import {connect} from 'react-redux';
-import {withRouter} from 'react-router-dom';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link, withRouter } from 'react-router-dom';
 
-import {AppBar, Button, CssBaseline, Fab, Toolbar, Typography, useScrollTrigger, Zoom} from '@material-ui/core';
-import {makeStyles} from '@material-ui/core/styles';
-import {withStyles} from '@material-ui/core/styles';
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
-
-import {logoutUserAction} from 'pages/login/containers';
-import IconButton from '@material-ui/core/IconButton';
-import logo from 'assets/images/logo.png';
-
-import {LabServicesDropDown} from 'components/header/components/dropdown/LabServicesDropDown';
-import {ProviderServicesDropDown} from 'components/header/components/dropdown/ProviderServicesDropDown';
-
-const scrollToTopButtonStyles = makeStyles((theme) => ({
-    root: {
-        position: 'fixed',
-        bottom: theme.spacing(2),
-        right: theme.spacing(2),
-        zIndex: 1000,
-    },
-}));
-
-const ScrollTopButton = (props) => {
-    const {children} = props;
-    const classes = scrollToTopButtonStyles();
-    const trigger = useScrollTrigger({
-        disableHysteresis: true,
-        threshold: 100,
-    });
-
-    const handleClick = (event) => {
-        const anchor = (event.target.ownerDocument || document).querySelector('#back-to-top-anchor');
-        if (anchor) {
-            anchor.scrollIntoView({behavior: 'smooth', block: 'center'});
-        }
-    };
-
-    return (
-        <Zoom in={trigger}>
-            <div onClick={handleClick} role="presentation" className={classes.root}>
-                {children}
-            </div>
-        </Zoom>
-    );
-};
-
-const headerStyles = (theme) => ({
-    root: {
-        flexGrow: 1,
-    },
-    title: {
-        flexGrow: 1,
-        color: '#FFFFFF',
-        fontWeight: 'bold',
-    },
-});
+import logo from 'assets/images/icons/animatedLogo.gif';
+import { logoutUserAction } from 'pages/login/containers';
 
 class Header extends Component {
-    handleLogout = () => {
-        this.props.logoutUserAction(this.props.history);
-    };
+	handleLogout = () => {
+		this.props.logoutUserAction(this.props.history);
+	};
 
-    render() {
-        const {classes} = this.props;
+	render() {
+		const { access_token } = this.props;
+		console.log(access_token);
+		return (
+			<div class='content-wrapper'>
+				<div class='navbar navbar-default default header2' role='navigation'>
+					<div class='top-bar'>
+						<div class='container'>
+							<ul class='info'>
+								<li>
+									<i class='icon-mail'></i>{' '}
+									<a href='mailto:hello@email.com' class='email-link'>
+										info@medscreenlabs.com
+									</a>
+								</li>
+								<li>
+									<i class='icon-phone-1'></i>+00 (973) 320-3237
+								</li>
+							</ul>
+							<div class='social-wrapper'>
+								<ul class='social'>
+									<li>
+										<a href='#'>
+											<i class='icon-s-pinterest'></i>
+										</a>
+									</li>
+									<li>
+										<a href='#'>
+											<i class='icon-s-facebook'></i>
+										</a>
+									</li>
+									<li>
+										<a href='#'>
+											<i class='icon-s-twitter'></i>
+										</a>
+									</li>
+									<li>
+										<a href='#'>
+											<i class='icon-s-flickr'></i>
+										</a>
+									</li>
+									<li>
+										<a href='#'>
+											<i class='icon-s-dribbble'></i>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class='container boxed'>
+						<div class='navbar-header'>
+							<div class='navbar-brand'>
+								<a href='index.html'>
+									<img alt='logo' src={logo} width={70} height={50} />
+								</a>
+							</div>
+							<div class='nav-bars-wrapper'>
+								<div class='nav-bars-inner'>
+									<div class='nav-bars' data-toggle='collapse' data-target='.navbar-collapse'>
+										<span></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class='navbar-collapse collapse'>
+							<ul class='nav navbar-nav'>
+								<li>
+									<Link to='/'>Home</Link>
+								</li>
+								<li>
+									<Link to='/about'>About MSL</Link>
+								</li>
+								<li>
+									<Link to='#!'>
+										Lab Services <span class='caret'></span>
+									</Link>
+									<ul class='dropdown-menu'>
+										<li>
+											<Link to='#drug-testing'>Drug Testing</Link>
+										</li>
+										<li>
+											<Link to='/'>Clinical Blood (Not available)</Link>
+										</li>
+										<li>
+											<Link to='/'>COVID-19 Testing (Not available)</Link>
+										</li>
+										<li>
+											<Link to='/'>Tele-screen Remote Testing (Not available)</Link>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<Link to='/'>Media</Link>
+								</li>
+								<li>
+									<Link to='/'>
+                    Resources <span class='caret'></span>
+                  </Link>
+                  <ul class='dropdown-menu'>
+										<li>
+											<Link to='/'>Urine toxicology requisiition form</Link>
+										</li>
+										<li>
+											<Link to='/'>Oral fluid toxicology requisiition form</Link>
+										</li>
+										<li>
+											<Link to='/'>Clinical blood requisition form (Not available)</Link>
+										</li>
+										<li>
+											<Link to='/'>Toxicology report</Link>
+										</li>
+										<li>
+											<Link to='/'>Urine toxicology cutoff</Link>
+										</li>
+										<li>
+											<Link to='/'>Oral fluid cutoff</Link>
+										</li>
+										<li>
+											<Link to='/'>MSL brochure</Link>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<Link to='/'>Contact Us</Link>
+								</li>
+								{/* <li>
+									<a href='#!'>
+										Portfolio <span class='caret'></span>
+									</a>
+									<ul class='dropdown-menu'>
+										<li>
+											<a href='portfolio.html'>
+												Detailed Portfolio <span class='caret'></span>
+											</a>
+											<ul class='dropdown-menu'>
+												<li>
+													<a href='portfolio.html'>3 Columns</a>
+												</li>
+												<li>
+													<a href='portfolio2.html'>4 Columns</a>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<a href='portfolio2.html'>
+												Lightbox Portfolio <span class='caret'></span>
+											</a>
+											<ul class='dropdown-menu'>
+												<li>
+													<a href='portfolio3.html'>3 Columns</a>
+												</li>
+												<li>
+													<a href='portfolio4.html'>4 Columns</a>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<a href='portfolio-post.html'>Post with Carousel</a>
+										</li>
+										<li>
+											<a href='portfolio-post2.html'>Post with Slider</a>
+										</li>
+										<li>
+											<a href='portfolio-post3.html'>Post post with Half Slider</a>
+										</li>
+										<li>
+											<a href='portfolio-post4.html'>Post with Images</a>
+										</li>
+										<li>
+											<a href='portfolio-post5.html'>Post with Video</a>
+										</li>
+										<li>
+											<a href='portfolio-post6.html'>Post with Half Video</a>
+										</li>
+										<li>
+											<a href='portfolio-post7.html'>Post with Video Slider</a>
+										</li>
+									</ul>
+								</li> */}
 
-        return (
-            <Fragment className={classes.root}>
-                <CssBaseline/>
-                <AppBar id="back-to-top-anchor" color="transparent">
-                    <Toolbar>
-
-                        <IconButton edge="start" color="inherit" aria-label="menu" href="/">
-                            <img alt="logo" src={logo} width={70} height={50}/>
-                        </IconButton>
-                        <Typography variant="h6" className={classes.title}/>
-                        <Button href="/about-us">About Us</Button>
-                        <LabServicesDropDown/>
-                        <ProviderServicesDropDown/>
-                        <Button href="/contact-us">Contact Us</Button>
-                        <Button href="https://medscreenlabs.labnexus.net/">Portal Login</Button>
-
-                        {/*show logout btn if user logged in */}
-                        <Button variant="contained" color="primary" onClick={this.handleLogout}>
-                            Logout
-                        </Button>
-                    </Toolbar>
-                </AppBar>
-
-                <ScrollTopButton {...this.props}>
-                    <Fab color="secondary" size="small" aria-label="scroll back to top">
-                        <KeyboardArrowUpIcon/>
-                    </Fab>
-                </ScrollTopButton>
-            </Fragment>
-        );
-    }
+								<li>
+									<a href='http://medscreenlabs.labnexus.net/'>Portal Login</a>
+								</li>
+								<li>
+									{!access_token ? (
+										<Link to='/login'>Log in</Link>
+									) : (
+										<Link onClick={this.handleLogout}>Log out</Link>
+									)}
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		);
+	}
 }
 
-const mapDispatchToProps = {logoutUserAction};
+const mapStateToProps = state => {
+	const { access_token } = state.USER_AUTH;
+	return { access_token };
+};
 
-export default withStyles(headerStyles)(withRouter(connect(null, mapDispatchToProps)(Header)));
+const mapDispatchToProps = { logoutUserAction };
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));
