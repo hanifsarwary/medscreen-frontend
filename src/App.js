@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Routes from 'components/routes';
 import { Loader } from 'components/loaders';
