@@ -1,5 +1,5 @@
 {
-  "name": "amb-project-frontend",
+  "name": "medscreenlabs-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,6 +11,7 @@
     "axios": "^0.19.2",
     "cors": "^2.8.5",
     "env-cmd": "^10.1.0",
+    "gh-pages": "^3.1.0",
     "prop-types": "^15.7.2",
     "pure-react-carousel": "^1.27.1",
     "react": "^16.13.1",
@@ -30,6 +31,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build",
     "lint": "eslint .",
     "format": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|md|vue)\""
   },
@@ -48,6 +51,7 @@
       "git add"
     ]
   },
+  "homepage": "https://seunzone.github.io/TD-React-Challenge-Test-1",
   "browserslist": {
     "production": [
       ">0.2%",
