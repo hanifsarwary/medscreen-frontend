@@ -51,7 +51,6 @@
       "git add"
     ]
   },
-  "homepage": "https://seunzone.github.io/TD-React-Challenge-Test-1",
   "browserslist": {
     "production": [
       ">0.2%",

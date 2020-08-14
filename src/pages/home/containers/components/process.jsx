@@ -21,7 +21,7 @@ class Process extends Component {
           <div class="carousel-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.3s">
             <CarouselProvider
               isPlaying
-              infinite
+              //   infinite
               lockOnWindowScroll
               interval={3500}
               totalSlides={7}
@@ -34,15 +34,10 @@ class Process extends Component {
                 <Slide index={0}>
                   <div class="item post">
                     <figure class="col-md-4">
-                      <span class="process-number" style={{backgroundColor:'#28C3EC'}}>1</span>
-                      <a href="#/">
-                        <div class="overlay">
-                          <div class="info">
-                            <span>View more</span>
-                          </div>
-                        </div>
-                        <img src={sample_collection} alt="" class="test-img" />
-                      </a>
+                      <figcaption class="process-number" style={{ backgroundColor: '#28C3EC' }}>
+                        1
+                      </figcaption>
+                      <img src={sample_collection} alt="" class="test-img" />
                     </figure>
                     <div class="post-content col-md-8">
                       <h3 class="post-title">
@@ -71,15 +66,10 @@ class Process extends Component {
                 <Slide index={1}>
                   <div class="item post">
                     <figure class="col-md-4">
-                      <span class="process-number" style={{backgroundColor:'#EF3F66'}}>2</span>
-                      <a href="#/">
-                        <div class="overlay">
-                          <div class="info">
-                            <span>View more</span>
-                          </div>
-                        </div>
-                        <img src={sample_pickup} alt="" class="test-img" />
-                      </a>
+                      <figcaption class="process-number" style={{ backgroundColor: '#EF3F66' }}>
+                        2
+                      </figcaption>
+                      <img src={sample_pickup} alt="" class="test-img" />
                     </figure>
                     <div class="post-content col-md-8">
                       <h3 class="post-title">
@@ -107,15 +97,10 @@ class Process extends Component {
                 <Slide index={2}>
                   <div class="item post">
                     <figure class="col-md-4">
-                      <span class="process-number" style={{backgroundColor:'#EF3F66'}}>3</span>
-                      <a href="#/">
-                        <div class="overlay">
-                          <div class="info">
-                            <span>View More</span>
-                          </div>
-                        </div>
-                        <img src={sample_inspection} alt="" class="test-img" />
-                      </a>
+                      <figcaption class="process-number" style={{ backgroundColor: '#EF3F66' }}>
+                        3
+                      </figcaption>
+                      <img src={sample_inspection} alt="" class="test-img" />
                     </figure>
                     <div class="post-content col-md-8">
                       <h3 class="post-title">
@@ -141,15 +126,10 @@ class Process extends Component {
                 <Slide index={3}>
                   <div class="item post">
                     <figure class="col-md-4">
-                      <span class="process-number" style={{backgroundColor:'#F1592B'}}>4</span>
-                      <a href="#/">
-                        <div class="overlay">
-                          <div class="info">
-                            <span>View more</span>
-                          </div>
-                        </div>
-                        <img src={testing_phase} alt="" class="test-img" />
-                      </a>
+                      <figcaption class="process-number" style={{ backgroundColor: '#F1592B' }}>
+                        4
+                      </figcaption>
+                      <img src={testing_phase} alt="" class="test-img" />
                     </figure>
                     <div class="post-content col-md-8">
                       <h3 class="post-title">
@@ -177,15 +157,10 @@ class Process extends Component {
                 <Slide index={4}>
                   <div class="item post">
                     <figure class="col-md-4">
-                      <span class="process-number" style={{backgroundColor:'#CAA2CB'}}>5</span>
-                      <a href="#/">
-                        <div class="overlay">
-                          <div class="info">
-                            <span>View More</span>
-                          </div>
-                        </div>
-                        <img src={sample_storage} alt="" class="test-img" />
-                      </a>
+                      <figcaption class="process-number" style={{ backgroundColor: '#CAA2CB' }}>
+                        5
+                      </figcaption>
+                      <img src={sample_storage} alt="" class="test-img" />
                     </figure>
                     <div class="post-content col-md-8">
                       <h3 class="post-title">
@@ -212,15 +187,10 @@ class Process extends Component {
                 <Slide index={5}>
                   <div class="item post">
                     <figure class="col-md-4">
-                      <span class="process-number" style={{backgroundColor:'#3D6DB5'}}>6</span>
-                      <a href="#/">
-                        <div class="overlay">
-                          <div class="info">
-                            <span>View More</span>
-                          </div>
-                        </div>
-                        <img src={results_review} alt="" class="test-img" />
-                      </a>
+                      <figcaption class="process-number" style={{ backgroundColor: '#3D6DB5' }}>
+                        6
+                      </figcaption>
+                      <img src={results_review} alt="" class="test-img" />
                     </figure>
                     <div class="post-content col-md-8">
                       <h3 class="post-title">
@@ -247,15 +217,10 @@ class Process extends Component {
                 <Slide index={6}>
                   <div class="item post">
                     <figure class="col-md-4">
-                      <span class="process-number" style={{backgroundColor:'#F176A1'}}>7</span>
-                      <a href="#/">
-                        <div class="overlay">
-                          <div class="info">
-                            <span>View more</span>
-                          </div>
-                        </div>
-                        <img src={billing} alt="" class="test-img" />
-                      </a>
+                      <figcaption class="process-number" style={{ backgroundColor: '#F176A1' }}>
+                        7
+                      </figcaption>
+                      <img src={billing} alt="" class="test-img" />
                     </figure>
                     <div class="post-content col-md-8">
                       <h3 class="post-title">
