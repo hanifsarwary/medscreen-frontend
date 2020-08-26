@@ -15,3 +15,8 @@ export const Copyright = () => (
 		</Typography>
 	</Box>
 );
+
+export const CurrentDateString = () => {
+	var date = new Date();
+	return date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate();
+}

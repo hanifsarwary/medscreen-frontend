@@ -19,7 +19,9 @@ export const loginUserAction = (data = {}, history) => {
 					})
 				);
 				dispatch({ type: loaderConstants.LOAD_END });
-				history.push('/home');
+				let next_url = history.location.pathname.split('=')[1];
+				if (next_url) history.push(next_url);
+				else history.push('/');
 			})
 			.catch(error => {
 				dispatch({ type: loaderConstants.LOAD_END });
@@ -37,5 +39,13 @@ export const logoutUserAction = history => {
 			type: authConstants.LOGOUT,
 		});
 		history.push('/');
+	};
+};
+
+export const refreshLoginFromLocalStorageAction = () => {
+	return dispatch => {
+		dispatch({
+			type: authConstants.REFRESH_LOGIN_STATE,
+		});
 	};
 };

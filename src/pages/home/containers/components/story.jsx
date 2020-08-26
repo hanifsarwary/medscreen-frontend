@@ -3,7 +3,6 @@ import { OurStory } from 'pages/home/constants';
 
 export default function Story(props) {
   const lines = OurStory.split('\n');
-  console.log(lines);
   var delay = 0.0;
   return (
     <div class="inverse-wrapper" id="drug-testing">

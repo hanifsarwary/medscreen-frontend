@@ -1,142 +1,164 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 
 import logo from 'assets/images/icons/animatedLogo.gif';
 import { logoutUserAction } from 'pages/login/containers';
+import Resources from 'components/resources';
 
 class Header extends Component {
-	handleLogout = () => {
-		this.props.logoutUserAction(this.props.history);
-	};
+  constructor(props) {
+    super(props);
+    this.state = { visible: false };
+  }
 
-	render() {
-		const { access_token } = this.props;
-		console.log(access_token);
-		return (
-			<div class='content-wrapper'>
-				<div class='navbar navbar-default default header2' role='navigation'>
-					<div class='top-bar'>
-						<div class='container'>
-							<ul class='info'>
-								<li>
-									<i class='icon-mail'></i>{' '}
-									<a href='mailto:hello@email.com' class='email-link'>
-										info@medscreenlabs.com
-									</a>
-								</li>
-								<li>
-									<i class='icon-phone-1'></i>+00 (973) 320-3237
-								</li>
-							</ul>
-							<div class='social-wrapper'>
-								<ul class='social'>
-									<li>
-										<a href='#'>
-											<i class='icon-s-pinterest'></i>
-										</a>
-									</li>
-									<li>
-										<a href='#'>
-											<i class='icon-s-facebook'></i>
-										</a>
-									</li>
-									<li>
-										<a href='#'>
-											<i class='icon-s-twitter'></i>
-										</a>
-									</li>
-									<li>
-										<a href='#'>
-											<i class='icon-s-flickr'></i>
-										</a>
-									</li>
-									<li>
-										<a href='#'>
-											<i class='icon-s-dribbble'></i>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class='container boxed'>
-						<div class='navbar-header'>
-							<div class='navbar-brand'>
-								<a href='index.html'>
-									<img alt='logo' src={logo} width={70} height={50} />
-								</a>
-							</div>
-							<div class='nav-bars-wrapper'>
-								<div class='nav-bars-inner'>
-									<div class='nav-bars' data-toggle='collapse' data-target='.navbar-collapse'>
-										<span></span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class='navbar-collapse collapse'>
-							<ul class='nav navbar-nav'>
-								<li>
-									<Link to='/'>Home</Link>
-								</li>
-								<li>
-									<Link to='/about'>About MSL</Link>
-								</li>
-								<li>
-									<Link to='#!'>
-										Lab Services <span class='caret'></span>
-									</Link>
-									<ul class='dropdown-menu'>
-										<li>
-											<Link to='#drug-testing'>Drug Testing</Link>
-										</li>
-										<li>
-											<Link to='/'>Clinical Blood (Not available)</Link>
-										</li>
-										<li>
-											<Link to='/'>COVID-19 Testing (Not available)</Link>
-										</li>
-										<li>
-											<Link to='/'>Tele-screen Remote Testing (Not available)</Link>
-										</li>
-									</ul>
-								</li>
-								<li>
-									<Link to='/'>Media</Link>
-								</li>
-								<li>
-									<Link to='/'>
-                    Resources <span class='caret'></span>
-                  </Link>
-                  <ul class='dropdown-menu'>
-										<li>
-											<Link to='/'>Urine toxicology requisiition form</Link>
-										</li>
-										<li>
-											<Link to='/'>Oral fluid toxicology requisiition form</Link>
-										</li>
-										<li>
-											<Link to='/'>Clinical blood requisition form (Not available)</Link>
-										</li>
-										<li>
-											<Link to='/'>Toxicology report</Link>
-										</li>
-										<li>
-											<Link to='/'>Urine toxicology cutoff</Link>
-										</li>
-										<li>
-											<Link to='/'>Oral fluid cutoff</Link>
-										</li>
-										<li>
-											<Link to='/'>MSL brochure</Link>
-										</li>
-									</ul>
-								</li>
-								<li>
-									<Link to='/'>Contact Us</Link>
-								</li>
-								{/* <li>
+  handleOpenDialog = (index) => {
+    this.setState({
+		index,
+		visible: true
+    });
+  }
+
+  handleCloseDialog = () => {
+    this.setState({
+      visible: false,
+      index: null,
+    });
+  }
+
+  handleLogout = () => {
+    this.props.logoutUserAction(this.props.history);
+  };
+
+  render() {
+	const { access_token } = this.props;
+	const { index, visible } = this.state;
+    return (
+      <Fragment>
+        <Resources handleClose={this.handleCloseDialog} index={index} visible={visible} />
+        <div class="content-wrapper">
+          <div class="navbar navbar-default default header2" role="navigation">
+            <div class="top-bar">
+              <div class="container">
+                <ul class="info">
+                  <li>
+                    <i class="icon-mail"></i>{' '}
+                    <a href="mailto:hello@email.com" class="email-link">
+                      info@medscreenlabs.com
+                    </a>
+                  </li>
+                  <li>
+                    <i class="icon-phone-1"></i>+00 (973) 320-3237
+                  </li>
+                </ul>
+                <div class="social-wrapper">
+                  <ul class="social">
+                    <li>
+                      <a href="#">
+                        <i class="icon-s-pinterest"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="icon-s-facebook"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="icon-s-twitter"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="icon-s-flickr"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="icon-s-dribbble"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="container boxed">
+              <div class="navbar-header">
+                <div class="navbar-brand">
+                  <a href="index.html">
+                    <img alt="logo" src={logo} width={70} height={50} />
+                  </a>
+                </div>
+                <div class="nav-bars-wrapper">
+                  <div class="nav-bars-inner">
+                    <div class="nav-bars" data-toggle="collapse" data-target=".navbar-collapse">
+                      <span></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                  <li>
+                    <Link to="/">Home</Link>
+                  </li>
+                  <li>
+                    <Link to="/about">About MSL</Link>
+                  </li>
+                  <li>
+                    <Link to="#!">
+                      Lab Services <span class="caret"></span>
+                    </Link>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <Link to="#drug-testing">Drug Testing</Link>
+                      </li>
+                      <li>
+                        <Link to="/">Clinical Blood (Not available)</Link>
+                      </li>
+                      <li>
+                        <Link to="/">COVID-19 Testing (Not available)</Link>
+                      </li>
+                      <li>
+                        <Link to="/">Tele-screen Remote Testing (Not available)</Link>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <Link to="/">Media</Link>
+                  </li>
+                  <li>
+                    <Link to="/">
+                      Resources <span class="caret"></span>
+                    </Link>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <Link onClick={() => this.handleOpenDialog(0)}>Urine toxicology requisiition form</Link>
+                      </li>
+                      <li>
+                        <Link onClick={() => this.handleOpenDialog(1)}>Oral fluid toxicology requisiition form</Link>
+                      </li>
+                      <li>
+                        <Link to="#">Clinical blood requisition form (Not available)</Link>
+                      </li>
+                      <li>
+                        <Link onClick={() => this.handleOpenDialog(2)}>Toxicology report</Link>
+                      </li>
+                      <li>
+                        <Link onClick={() => this.handleOpenDialog(2)}>Urine toxicology cutoff</Link>
+                      </li>
+                      <li>
+                        <Link onClick={() => this.handleOpenDialog(3)}>Oral fluid cutoff</Link>
+                      </li>
+                      <li>
+                        <Link onClick={() => this.handleOpenDialog(4)}>MSL brochure</Link>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <Link to="/">Contact Us</Link>
+                  </li>
+                  {/* <li>
 									<a href='#!'>
 										Portfolio <span class='caret'></span>
 									</a>
@@ -191,28 +213,25 @@ class Header extends Component {
 									</ul>
 								</li> */}
 
-								<li>
-									<a href='http://medscreenlabs.labnexus.net/'>Portal Login</a>
-								</li>
-								<li>
-									{!access_token ? (
-										<Link to='/login'>Log in</Link>
-									) : (
-										<Link onClick={this.handleLogout}>Log out</Link>
-									)}
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		);
-	}
+                  <li>
+                    <a href="http://medscreenlabs.labnexus.net/">Portal Login</a>
+                  </li>
+                  <li>
+                    {!access_token ? <Link to="/login">Log in</Link> : <Link onClick={this.handleLogout}>Log out</Link>}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Fragment>
+    );
+  }
 }
 
-const mapStateToProps = state => {
-	const { access_token } = state.USER_AUTH;
-	return { access_token };
+const mapStateToProps = (state) => {
+  const { access_token } = state.USER_AUTH;
+  return { access_token };
 };
 
 const mapDispatchToProps = { logoutUserAction };

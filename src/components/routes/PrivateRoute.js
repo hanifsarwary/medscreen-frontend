@@ -12,7 +12,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 					<Component {...props} />
 				</PrivateLayout>
 			) : (
-				<Redirect to={{ pathname: '/login', state: { from: props.location } }} />
+				<Redirect to={{ pathname: '/login' + '/?next=' + props.location.pathname, state: { from: props.location } }} />
 			)
 		}
 	/>

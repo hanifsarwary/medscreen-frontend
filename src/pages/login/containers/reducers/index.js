@@ -36,6 +36,17 @@ export const authReducer = (state = initialAuthState, action) => {
 				refresh_token: null,
 				user: null,
 			};
+		case authConstants.REFRESH_LOGIN_STATE:
+			let access_token = localStorage.getItem('access_token');
+			let refresh_token = localStorage.getItem('refresh_token');
+			let user = JSON.parse(localStorage.getItem('user', {}));
+			return {
+				...state,
+				error: null,
+				access_token: access_token,
+				refresh_token: refresh_token,
+				user: user,
+			};
 		default:
 			return state;
 	}

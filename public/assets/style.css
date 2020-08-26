@@ -60,12 +60,6 @@ Author:		elemis
   text-align: center;
   margin: auto;
 }
-figure.col-md-4 {
-  padding-top: 5px;
-}
-.rodal {
-  z-index: 10000 !important;
-}
 .carousel .slide {
   background: white !important;
 }
@@ -79,10 +73,8 @@ figure.col-md-4 {
   margin: auto;
 }
 .carousel-wrapper {
-  /* -webkit-mask-image: linear-gradient(to right, black 90%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to left, black 90%, transparent 100%);
-  mask-image: linear-gradient(to right, black 90%, transparent 100%);
-  mask-image: linear-gradient(to left, black 90%, transparent 100%); */
+  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
   overflow-y: scroll;
 }
 *,

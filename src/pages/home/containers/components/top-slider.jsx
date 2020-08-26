@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 // import {connect} from 'react-redux';
 // import {withRouter} from 'react-router-dom';
-import logo from 'assets/videos/logo-video.mp4';
+// import logo from 'assets/videos/logo-video.mp4';
+import logo from 'assets/images/icons/animatedLogo.gif';
 import slide from 'assets/images/1.jpg';
 
 
@@ -73,9 +75,9 @@ export default function TopSlider(props) {
               data-responsive_offset="on"
               style={{ zIndex: 9, whiteSpace: 'nowrap', fontSize: '25px', lineHeight: '25px' }}
             >
-              <a href="#" class="btn btn-white btn-large">
+              <Link to="/appointments" class="btn btn-white btn-large">
                 Book an Appointment
-              </a>
+              </Link>
             </div>
           </li>
         </ul>
