@@ -179,7 +179,7 @@ class AppointmentsPage extends Component {
                     {current_appointments.length > 0
                       ? current_appointments.map((value) => (
                           <li>
-                            {value.test.title} . 'at' . {value.time_slot.time_slot}
+                            {value.test.title} at {value.time_slot.time_slot}
                           </li>
                         ))
                       : 'No Current Appointments'}
@@ -189,9 +189,9 @@ class AppointmentsPage extends Component {
                   <ul>
                     {past_appointments.length > 0
                       ? past_appointments.map((value) => (
-                          <li>
-                            {value.test.title} at {value.time_slot}
-                          </li>
+                        <li>
+                          {value.test.title} at {value.time_slot.time_slot}
+                        </li>
                         ))
                       : 'No Appointments History'}
                   </ul>
