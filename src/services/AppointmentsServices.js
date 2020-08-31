@@ -3,7 +3,7 @@ import axios from 'axios';
 import { DOMAIN, LOCAL_DOMAIN, APPOINTMENTS_ENDPOINTS } from 'config';
 
 export const getTimeSlots = (date) => {
-	let url = LOCAL_DOMAIN + APPOINTMENTS_ENDPOINTS.GET_TIME_SLOTS + '?date=' + date;
+	let url = DOMAIN + APPOINTMENTS_ENDPOINTS.GET_TIME_SLOTS + '?date=' + date;
     let token = localStorage.getItem('access_token')
 
     const requestOptions = {
@@ -15,7 +15,7 @@ export const getTimeSlots = (date) => {
 };
 
 export const getTests = () => {
-	let url = LOCAL_DOMAIN + APPOINTMENTS_ENDPOINTS.GET_TESTS;
+	let url = DOMAIN + APPOINTMENTS_ENDPOINTS.GET_TESTS;
     let token = localStorage.getItem('access_token')
     const requestOptions = {
         method: 'GET',
@@ -28,7 +28,7 @@ export const getTests = () => {
 export const getCurrentAppointments = () => {
     let user = JSON.parse(localStorage.getItem('user'));
     let token = localStorage.getItem('access_token');
-	let url = LOCAL_DOMAIN + APPOINTMENTS_ENDPOINTS.APPOINTMENTS_LIST_CREATE + '?user=' + user.username + '&active=true';
+	let url = DOMAIN + APPOINTMENTS_ENDPOINTS.APPOINTMENTS_LIST_CREATE + '?user=' + user.username + '&active=true';
     const requestOptions = {
         method: 'GET',
         headers: {"Authorization" : `Bearer ${token}`},
@@ -40,7 +40,7 @@ export const getCurrentAppointments = () => {
 export const getPastAppointments = () => {
     let user = JSON.parse(localStorage.getItem('user'));
     let token = localStorage.getItem('access_token');
-	let url = LOCAL_DOMAIN + APPOINTMENTS_ENDPOINTS.APPOINTMENTS_LIST_CREATE + '?user=' + user.username;
+	let url = DOMAIN + APPOINTMENTS_ENDPOINTS.APPOINTMENTS_LIST_CREATE + '?user=' + user.username;
     const requestOptions = {
         method: 'GET',
         headers: {"Authorization" : `Bearer ${token}`},
@@ -50,7 +50,7 @@ export const getPastAppointments = () => {
 };
 
 export const createAppointment = (data = {}) => {
-	let url = LOCAL_DOMAIN + APPOINTMENTS_ENDPOINTS.APPOINTMENTS_LIST_CREATE;
+	let url = DOMAIN + APPOINTMENTS_ENDPOINTS.APPOINTMENTS_LIST_CREATE;
     let token = localStorage.getItem('access_token')
     let user = JSON.parse(localStorage.getItem('user'));
     data.status = 'pending'
