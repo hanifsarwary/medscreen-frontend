@@ -149,7 +149,7 @@ class Footer extends Component {
                       name="mc-embedded-subscribe-form"
                       class="validate"
                       target="_blank"
-                      novalidate=""
+                      noValidate
                     >
                       <input
                         type="email"
@@ -177,9 +177,9 @@ class Footer extends Component {
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3017.3863425794916!2d-74.16616104902904!3d40.863394979214235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2ff9e63e1ad41%3A0x95d8df79222c101c!2sMed%20Screen%20Labs!5e0!3m2!1sen!2str!4v1596446875708!5m2!1sen!2str"
                   width="100%"
                   height="200"
-                  frameborder="0"
+                  frameBorder={0}
                   style={{border:0}}
-                  allowfullscreen
+                  allowFullScreen
                 ></iframe>
               </div>
             </div>

@@ -10,8 +10,8 @@ function PDFRenderer(props) {
 }
 
 PDFRenderer.defaultProps = {
-  width: '700',
-  height: '600',
+  width: '650',
+  height: '650',
 };
 
 export default PDFRenderer;

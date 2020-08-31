@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 
 import logo from 'assets/images/icons/animatedLogo.gif';
 import { logoutUserAction } from 'pages/login/containers';
@@ -100,18 +101,18 @@ class Header extends Component {
               <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                   <li>
-                    <Link to="/">Home</Link>
+                    <Link to="/home">Home</Link>
                   </li>
                   <li>
                     <Link to="/about">About MSL</Link>
                   </li>
                   <li>
-                    <Link to="#!">
+                    <Link to="/services">
                       Lab Services <span class="caret"></span>
                     </Link>
                     <ul class="dropdown-menu">
                       <li>
-                        <Link to="#drug-testing">Drug Testing</Link>
+                        <HashLink smooth to='/services#drug-screening'>Drug Testing</HashLink>
                       </li>
                       <li>
                         <Link to="/">Clinical Blood (Not available)</Link>
@@ -128,7 +129,7 @@ class Header extends Component {
                     <Link to="/">Media</Link>
                   </li>
                   <li>
-                    <Link to="/">
+                    <Link to="#">
                       Resources <span class="caret"></span>
                     </Link>
                     <ul class="dropdown-menu">
@@ -139,19 +140,19 @@ class Header extends Component {
                         <Link onClick={() => this.handleOpenDialog(1)}>Oral fluid toxicology requisiition form</Link>
                       </li>
                       <li>
-                        <Link to="#">Clinical blood requisition form (Not available)</Link>
+                        <Link onClick={() => this.handleOpenDialog(2)}>Clinical blood requisition form</Link>
                       </li>
                       <li>
-                        <Link onClick={() => this.handleOpenDialog(2)}>Toxicology report</Link>
+                        <Link onClick={() => this.handleOpenDialog(3)}>Toxicology report</Link>
                       </li>
                       <li>
-                        <Link onClick={() => this.handleOpenDialog(2)}>Urine toxicology cutoff</Link>
+                        <Link onClick={() => this.handleOpenDialog(4)}>Urine toxicology cutoff</Link>
                       </li>
                       <li>
-                        <Link onClick={() => this.handleOpenDialog(3)}>Oral fluid cutoff</Link>
+                        <Link onClick={() => this.handleOpenDialog(5)}>Oral fluid cutoff</Link>
                       </li>
                       <li>
-                        <Link onClick={() => this.handleOpenDialog(4)}>MSL brochure</Link>
+                        <Link onClick={() => this.handleOpenDialog(6)}>MSL brochure</Link>
                       </li>
                     </ul>
                   </li>

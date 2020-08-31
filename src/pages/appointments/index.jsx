@@ -12,7 +12,7 @@ import {
 } from 'pages/appointments/containers/actions';
 import { loaderOpenAction } from 'components/loaders/components';
 
-import TopSlider from 'pages/home/containers/components/top-slider';
+import { Banner } from 'helpers';
 
 class AppointmentsPage extends Component {
   constructor(props) {
@@ -62,7 +62,7 @@ class AppointmentsPage extends Component {
     const { tests, time_slots, current_appointments, past_appointments } = this.props;
     return (
       <Fragment>
-        <TopSlider />
+        <Banner />
         <br />
         <div class="light-wrapper">
           <div class="container inner2">

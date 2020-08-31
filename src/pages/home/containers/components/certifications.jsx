@@ -7,18 +7,20 @@ import cert4 from 'assets/images/cert4.png';
 import cert5 from 'assets/images/cert5.png';
 import cert6 from 'assets/images/cert6.png';
 
+import TestimonialsCarousel from 'components/carousels/testimonialsCarousel';
+
 export default function Certifications(props) {
 	return (
-    <div class="dark-wrapper">
+    <div class="light-wrapper">
       <div class="container inner">
         <div class="section-title text-center">
           <h3>Certifications</h3>
           <p class="lead"></p>
         </div>
         <div class="carousel-wrapper">
-          <div class="row testimonials col3">
+          <TestimonialsCarousel class="row">
             <div class="item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.0s">
-              <div class="icon icon-m bm10">
+              <div class="icon icon-m bm10" >
                 {' '}
                 <img src={cert1} alt="" />{' '}
               </div>
@@ -53,7 +55,7 @@ export default function Certifications(props) {
                 <img src={cert6} alt="" />{' '}
               </div>
             </div>
-          </div>
+          </TestimonialsCarousel>
         </div>
       </div>
     </div>

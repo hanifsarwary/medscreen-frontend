@@ -54,10 +54,7 @@ Author:		elemis
 /*	00. RESET
 /*-----------------------------------------------------------------------------------*/
 .test-img {
-  max-width: 140px;
-  padding: 5px 10px;
   display: block;
-  text-align: center;
   margin: auto;
 }
 figure.col-md-4 {
@@ -65,6 +62,9 @@ figure.col-md-4 {
 }
 .rodal {
   z-index: 10000 !important;
+}
+.rodal-dialog {
+  padding: 2px !important;
 }
 .carousel .slide {
   background: white !important;
@@ -2026,6 +2026,7 @@ ul.tag-list li {
 .item figure {
   position: relative;
   margin-bottom: 20px;
+  text-align: center;
 }
 .item figure .badge {
   position: absolute;

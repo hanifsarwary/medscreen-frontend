@@ -222,7 +222,8 @@ $(document).ready(function() {
         }
     });
     $('.portfolio-carousel').owlCarousel({
-		loop: true,
+		loop: false,
+		rewind: true,
 		autoPlay: true,
         autoplayTimeout: 3000,
         margin: 15,

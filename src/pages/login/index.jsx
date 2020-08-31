@@ -16,13 +16,13 @@ import {
 } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
-import TopSlider from 'pages/home/containers/components/top-slider';
 import { loginUserAction } from 'pages/login/containers';
+import { Banner } from 'helpers';
 import { loaderOpenAction } from 'components/loaders/components';
 
 const styles = (theme) => ({
   paper: {
-    marginTop: theme.spacing(15),
+    marginTop: theme.spacing(3),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -71,7 +71,7 @@ class LoginPage extends Component {
     const { classes, error } = this.props;
     return (
       <Fragment>
-        <TopSlider />
+		  <Banner />
         <Container component="main" maxWidth="xs">
           <CssBaseline />
           {error && <h5>{error}</h5>}

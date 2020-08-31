@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Box, Typography } from '@material-ui/core';
+import banner from 'assets/images/banner.jpg';
 
 export const Copyright = () => (
 	<Box mt={8}>
@@ -20,3 +21,9 @@ export const CurrentDateString = () => {
 	var date = new Date();
 	return date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate();
 }
+
+export const Banner = () => (
+  <div>
+    <img style={{ width: '100%' }} src={banner} alt="" />
+  </div>
+);

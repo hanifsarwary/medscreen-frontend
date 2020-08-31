@@ -8,6 +8,8 @@ import sample_storage from 'assets/images/icons/icons-10.png';
 import results_review from 'assets/images/icons/icons-09.png';
 import billing from 'assets/images/icons/icons-12.png';
 
+import PortfolioCarousel from 'components/carousels/portfolioCarousel';
+
 class Process extends Component {
   render() {
     return (
@@ -18,7 +20,7 @@ class Process extends Component {
             <h3>How we do things</h3>
           </div>
           <div class="carousel-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.3s">
-            <div class="owl-posts portfolio-carousel">
+            <PortfolioCarousel navContainer='process-nav'>
               <div class="item post">
                 <figure class="col-md-4">
                   <span class="process-number" style={{ backgroundColor: '#28C3EC' }}>
@@ -87,7 +89,7 @@ class Process extends Component {
                 </figure>
                 <div class="post-content col-md-8">
                   <h3 class="post-title">
-                    <a href="#/">Sample Inspection and Accessoring</a>
+                    <a href="#/">Sample Inspection and Accessioning</a>
                   </h3>
                   <div class="meta">
                     <span class="category">
@@ -219,7 +221,7 @@ class Process extends Component {
                   </div>
                 </div>
               </div>
-            </div>
+            </PortfolioCarousel>
           </div>
         </div>
       </div>

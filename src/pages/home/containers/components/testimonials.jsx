@@ -1,4 +1,5 @@
 import React from 'react';
+import TestimonialsCarousel from 'components/carousels/testimonialsCarousel';
 
 
 export default function Testimonials(props) {
@@ -10,7 +11,7 @@ export default function Testimonials(props) {
           <h3>what our customers say</h3>
         </div>
         <div class="carousel-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.3s">
-          <div class="carousel testimonials col3">
+          <TestimonialsCarousel class="carousel">
             <div class="item">
               <div class="quote">
                 <blockquote>
@@ -91,7 +92,7 @@ export default function Testimonials(props) {
                 </div>
               </div>
             </div>
-          </div>
+          </TestimonialsCarousel>
         </div>
       </div>
     </div>
