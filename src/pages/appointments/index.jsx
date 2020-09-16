@@ -106,7 +106,7 @@ class AppointmentsPage extends Component {
                                       type="date"
                                       name="appointment_date"
                                       onChange={this.getTimeSlots}
-                                      min={CurrentDateString()}
+                                      min={new Date()}
                                     />
                                   </label>
                                 </div>
