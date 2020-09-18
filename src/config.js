@@ -1,5 +1,6 @@
 const DOMAIN = 'https://medscreenlabs-backend.herokuapp.com/';
-const LOCAL_DOMAIN = 'http://localhost:8000/';
+
+const LOCAL_DOMAIN = 'http://127.0.0.1:8000/';
 const USERS_ENDPOINTS = {
 	USERS_LIST_CREATE: 'api/v1/users/',
 	USER_LOGIN: 'api/token/',
