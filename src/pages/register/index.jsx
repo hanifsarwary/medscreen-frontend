@@ -73,8 +73,7 @@ class RegisterPage extends Component {
 
 	render() {
 		const { user, errors } = this.state;
-		const { classes, error } = this.props;
-
+    const { classes, error } = this.props;
 		return (
       <Fragment>
         <Banner />

@@ -1,7 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-
+import Drawer from 'react-drag-drawer';
+import { css } from "emotion";
 import { CurrentDateString } from 'helpers';
+import Select from "react-select";
+import PaymentPage from '../paymentMethod/PaymentPage';
 
 import {
   getTestsAction,
@@ -14,6 +17,32 @@ import { loaderOpenAction } from 'components/loaders/components';
 
 import { Banner } from 'helpers';
 
+const customStyles = {
+  control: base => ({
+    ...base,
+    height: 38,
+    borderRadius: '0',
+  }),
+  valueContainer: (provided) => ({
+    ...provided,
+    position: 'unset',
+    height: 38,
+  }),
+  indicatorSeparator: (provided) => ({
+    ...provided,
+    width: '0px',
+  }),
+  dropdownIndicator: (provided) => ({
+    ...provided,
+    paddingTop: 0,
+    paddingBottom: 0,
+  }),
+  multiValue: (provided) => ({
+    ...provided,
+    backgroundColor: 'white'
+  }),
+};
+
 class AppointmentsPage extends Component {
   constructor(props) {
     super(props);
@@ -22,6 +51,8 @@ class AppointmentsPage extends Component {
       appointment_date: '',
       time_slot: null,
       comments: '',
+      selected_options: [],
+      open: false
     };
   }
 
@@ -31,6 +62,10 @@ class AppointmentsPage extends Component {
     this.props.getPastAppointmentsAction();
     this.props.getCurrentAppointmentsAction();
   }
+
+  toggle = () => {
+    this.setState({ open: !this.state.open });
+  };
 
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -45,14 +80,24 @@ class AppointmentsPage extends Component {
     });
   };
 
+  handleTestOption = (options) => {
+    this.setState({
+      selected_options: options,
+      test: options.map(item => {
+        return item.value
+      })
+    })
+  };
+
   handleSubmit = () => {
     if (!window.confirm('Are you sure?')) return false;
-    const { test, appointment_date, time_slot, comments } = this.state;
+    const { test, appointment_date, time_slot, comments, selected_options } = this.state;
     const payload = {
-      test: parseInt(test),
+      panels: test,
       appointment_date,
       time_slot: parseInt(time_slot),
       comments,
+      total_price: selected_options.reduce((sum, item) => sum + item.price, 0)   
     };
     this.props.loaderOpenAction();
     this.props.createAppointmentAction(payload, this.props.history);
@@ -60,6 +105,7 @@ class AppointmentsPage extends Component {
 
   render() {
     const { tests, time_slots, current_appointments, past_appointments } = this.props;
+    const { selected_options, open } = this.state;
     return (
       <Fragment>
         <Banner />
@@ -89,6 +135,10 @@ class AppointmentsPage extends Component {
                   <div class="light-wrapper">
                     <div class="container inner2">
                       <div class="thin">
+                      {
+                          current_appointments.length > 0 ?
+                          'You cannot create new apointment'
+                          :
                         <div class="form-container">
                           <form
                             action="contact/vanilla-form.php"
@@ -114,20 +164,7 @@ class AppointmentsPage extends Component {
                               <div class="col-sm-6">
                                 <div class="form-field">
                                   Test:
-                                  <label class="custom-select">
-                                    <select name="test" required="required" onChange={this.handleChange}>
-                                      <option disabled selected value>
-                                        {' '}
-                                        -- select an option --{' '}
-                                      </option>
-                                      {tests.map((value) => (
-                                        <option key={value.id} value={value.id}>
-                                          {value.title}
-                                        </option>
-                                      ))}
-                                    </select>
-                                    <span></span>{' '}
-                                  </label>
+                                  <Select isMulti onChange={this.handleTestOption} options={tests} styles={customStyles}/>
                                 </div>
                               </div>
                               <div class="col-sm-12">
@@ -149,6 +186,33 @@ class AppointmentsPage extends Component {
                                   </label>
                                 </div>
                               </div>
+                              <div class="col-sm-12 checklist">
+                                Selected Tests:
+                                <table class="table">
+                                  <tbody>
+                                  { selected_options.map((item, i) => {
+                                      return (
+                                        <tr key={i}>
+                                          <td class="text-capitalize font-weight-bold">{item.label} <b class="pl-4">({item.parent_label})</b></td>
+                                          <td class="text-capitalize">{item.price}</td>
+                                        </tr>
+                                      )
+                                    })
+                                  }
+                                  </tbody>
+                                  <tfoot>
+                                    <tr>
+                                      <th>Total Bill</th>
+                                      <th>{
+                                          this.state.selected_options.reduce(
+                                            (sum, item) => sum + item.price,
+                                            0
+                                          )                                        
+                                        }</th>
+                                    </tr>
+                                  </tfoot>
+                                </table>
+                              </div> 
                               <div class="col-sm-12">
                                 <label>Comments:</label>
                                 <textarea
@@ -170,20 +234,62 @@ class AppointmentsPage extends Component {
                             </div>
                           </form>
                         </div>
+                      }
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="tab-pane fade" id="tab1-2">
-                  <ul>
                     {current_appointments.length > 0
                       ? current_appointments.map((value) => (
-                          <li>
-                            {value.test.title} at {value.time_slot.time_slot}
-                          </li>
+                        <div class="container">
+                          <div class="checklist">
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th>Date</th>
+                                  <th>Time Slot</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                              { current_appointments.map((item, i) => {
+                                  return (
+                                    <tr key={i}>
+                                      <td>{item.appointment_date}</td>
+                                      <td>{item.time_slot}</td>
+                                    </tr>
+                                  )
+                                })
+                              }
+                              </tbody>
+                              <tfoot>
+                                <tr>
+                                  <th>Total Bill</th>
+                                  <th>{value.total_price}</th>
+                                </tr>
+                              </tfoot>
+                            </table>
+                          </div>
+                          <input
+                              // onClick={()=> {this.paymentMethod()}}
+                              onClick={this.toggle}
+                              class="btn"
+                              readOnly
+                              value="Pay now"
+                              data-error="Fix errors"
+                              data-processing="Sending..."
+                              data-success="Thank you!"
+                          />
+                          <Drawer open={open}
+                                modalElementClass={modal}
+                                onRequestClose={this.toggle}>
+                            <div>
+                                <PaymentPage/>
+                            </div>
+                        </Drawer>
+                        </div>
                         ))
                       : 'No Current Appointments'}
-                  </ul>
                 </div>
                 <div class="tab-pane fade" id="tab1-3">
                   <ul>
@@ -220,3 +326,12 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppointmentsPage);
+
+const modal = css`
+  position: absolute;
+  top: 200px;
+  background-color: white;
+  padding: 15px 20px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+`;
