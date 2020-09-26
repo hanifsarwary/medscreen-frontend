@@ -15,7 +15,7 @@ export const getTimeSlots = (date) => {
 };
 
 export const getTests = () => {
-	let url = LOCAL_DOMAIN + APPOINTMENTS_ENDPOINTS.GET_TESTS;
+	let url = LOCAL_DOMAIN + APPOINTMENTS_ENDPOINTS.GET_CATEGORY;
     let token = localStorage.getItem('access_token')
     const requestOptions = {
         method: 'GET',
@@ -28,7 +28,7 @@ export const getTests = () => {
 export const getCurrentAppointments = () => {
     let user = JSON.parse(localStorage.getItem('user'));
     let token = localStorage.getItem('access_token');
-	let url = LOCAL_DOMAIN + APPOINTMENTS_ENDPOINTS.APPOINTMENTS_LIST_CREATE + '?user=' + user.username + '&active=true';
+	let url = LOCAL_DOMAIN + APPOINTMENTS_ENDPOINTS.APPOINTMENTS_LIST_GET + '?user=' + user.username + '&active=true';
     const requestOptions = {
         method: 'GET',
         headers: {"Authorization" : `Bearer ${token}`},
@@ -40,7 +40,7 @@ export const getCurrentAppointments = () => {
 export const getPastAppointments = () => {
     let user = JSON.parse(localStorage.getItem('user'));
     let token = localStorage.getItem('access_token');
-	let url = LOCAL_DOMAIN + APPOINTMENTS_ENDPOINTS.APPOINTMENTS_LIST_CREATE + '?user=' + user.username;
+	let url = LOCAL_DOMAIN + APPOINTMENTS_ENDPOINTS.APPOINTMENTS_LIST_GET + '?user=' + user.username;
     const requestOptions = {
         method: 'GET',
         headers: {"Authorization" : `Bearer ${token}`},

@@ -3873,7 +3873,7 @@ select {
     height: 65px !important;
   }
   .col-sm-12 + .col-sm-12 {
-    margin-top: 30px;
+    /* margin-top: 30px; */
   }
   .timeline:before {
     width: 30px;
@@ -4032,16 +4032,12 @@ select {
   }
 }
 /*-----------------------------------------------------------------------------------*/
-/*	28. Table
+/*	27. Table
 /*-----------------------------------------------------------------------------------*/
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 .checklist > .table {
-  margin-top: 5px;
   border: 1px solid #ccc;
+  margin-top: 10px;
+  /* width: 420px; */
 }
 .checklist > .table > thead > tr > th,
 .checklist > .table > tbody > tr > td,
@@ -4051,11 +4047,13 @@ select {
   font-size: 14px !important;
 }
 /*-----------------------------------------------------------------------------------*/
-/*	29. Current Appointment
+/*	27. Current Appointment
 /*-----------------------------------------------------------------------------------*/
 .current-appointments {
-  display: flex;
-  justify-content: space-around;
   border: 1px solid #ccc;
-  padding: 7px 13px; 
+  padding: 7px 13px;
+}
+.current-appointments > span {
+  text-align: center;
+  padding: 46px;
 }
