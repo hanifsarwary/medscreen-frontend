@@ -81,12 +81,19 @@ class AppointmentsPage extends Component {
   };
 
   handleTestOption = (options) => {
-    this.setState({
-      selected_options: options,
-      test: options.map(item => {
-        return item.value
+    if (options === null) {
+      this.setState({
+        selected_options: [],
+        test: []
       })
-    })
+    } else {
+      this.setState({
+        selected_options: options,
+        test: options.map(item => {
+          return item.value
+        })
+      })
+    }
   };
 
   handleSubmit = () => {
@@ -136,9 +143,9 @@ class AppointmentsPage extends Component {
                     <div class="container inner2">
                       <div class="thin">
                       {
-                          current_appointments.length > 0 ?
+                        current_appointments.length > 0 ?
                           'You cannot create new apointment'
-                          :
+                        :
                         <div class="form-container">
                           <form
                             action="contact/vanilla-form.php"
@@ -190,14 +197,25 @@ class AppointmentsPage extends Component {
                                 Selected Tests:
                                 <table class="table">
                                   <tbody>
-                                  { selected_options.map((item, i) => {
+                                  { selected_options ? selected_options.map((item, i) => {
                                       return (
                                         <tr key={i}>
-                                          <td class="text-capitalize font-weight-bold">{item.label} <b class="pl-4">({item.parent_label})</b></td>
+                                          <td class="text-capitalize font-weight-bold">{item.label} <b class="pl-4">({item.parent_label})</b>
+                                            <ul>
+                                              {
+                                                item.panel_test.map((test, i) => {
+                                                  return (
+                                                    <li class="set-ul-margin" key={i}>{test.title}</li>
+                                                  )
+                                                })
+                                              }
+                                            </ul>
+                                          </td>
                                           <td class="text-capitalize">{item.price}</td>
                                         </tr>
                                       )
                                     })
+                                    : ''
                                   }
                                   </tbody>
                                   <tfoot>
@@ -241,7 +259,7 @@ class AppointmentsPage extends Component {
                 </div>
                 <div class="tab-pane fade" id="tab1-2">
                     {current_appointments.length > 0
-                      ? current_appointments.map((value) => (
+                      ? 
                         <div class="container">
                           <div class="checklist">
                             <table class="table">
@@ -256,7 +274,7 @@ class AppointmentsPage extends Component {
                                   return (
                                     <tr key={i}>
                                       <td>{item.appointment_date}</td>
-                                      <td>{item.time_slot}</td>
+                                      <td>{item.time_slot.time_slot}</td>
                                     </tr>
                                   )
                                 })
@@ -265,7 +283,7 @@ class AppointmentsPage extends Component {
                               <tfoot>
                                 <tr>
                                   <th>Total Bill</th>
-                                  <th>{value.total_price}</th>
+                                  <th>{current_appointments.map((value) => value.total_price)}</th>
                                 </tr>
                               </tfoot>
                             </table>
@@ -288,7 +306,6 @@ class AppointmentsPage extends Component {
                             </div>
                         </Drawer>
                         </div>
-                        ))
                       : 'No Current Appointments'}
                 </div>
                 <div class="tab-pane fade" id="tab1-3">

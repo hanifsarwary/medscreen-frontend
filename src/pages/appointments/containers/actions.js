@@ -8,6 +8,7 @@ export const getTestsAction = () => {
     getTests()
       .then((response) => {
         let res = response.data.results;
+        console.log(res);
         let data = res.map(item =>
           item
             ? {
@@ -20,7 +21,8 @@ export const getTestsAction = () => {
                     value: sub_item.id,
                     price: sub_item.price,
                     parent_label: item.name,
-                    parent_id: item.id
+                    parent_id: item.id,
+                    panel_test: sub_item.tests
                   }
                   : sub_item
                 })
