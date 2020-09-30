@@ -1,6 +1,6 @@
 const DOMAIN = 'https://medscreenlabs-backend.herokuapp.com/';
 
-const LOCAL_DOMAIN = 'http://35.211.195.0:8000/';
+const LOCAL_DOMAIN = 'https://covid-plasmadonor.com/';
 const USERS_ENDPOINTS = {
 	USERS_LIST_CREATE: 'api/v1/users/',
 	USER_LOGIN: 'api/token/',
