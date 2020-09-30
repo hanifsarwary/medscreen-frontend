@@ -8,7 +8,6 @@ export const getTestsAction = () => {
     getTests()
       .then((response) => {
         let res = response.data.results;
-        console.log(res);
         let data = res.map(item =>
           item
             ? {
