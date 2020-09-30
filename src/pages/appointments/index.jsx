@@ -311,9 +311,9 @@ class AppointmentsPage extends Component {
                 <div class="tab-pane fade" id="tab1-3">
                   <ul>
                     {past_appointments.length > 0
-                      ? past_appointments.map((value) => (
-                        <li>
-                          {value.test.title} at {value.time_slot.time_slot}
+                      ? past_appointments.map((value, i) => (
+                        <li key={i}>
+                            {value.appointment_date} at {value.time_slot.time_slot}
                         </li>
                         ))
                       : 'No Appointments History'}
