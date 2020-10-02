@@ -138,7 +138,7 @@ class Footer extends Component {
                   <abbr title="Email">Email:</abbr> <a href="mailto:#">info@medscreenlabs.com</a>
                 </address>
               </div>
-              <div class="widget">
+              {/* <div class="widget">
                 <h4 class="widget-title">Subscribe</h4>
                 <div class="newsletter-wrapper">
                   <div id="mc_embed_signup2" class="newsletter-form">
@@ -169,7 +169,7 @@ class Footer extends Component {
                     </form>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div class="col-sm-4">
               <div class="widget">

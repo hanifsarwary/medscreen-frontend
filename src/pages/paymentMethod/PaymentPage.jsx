@@ -9,13 +9,21 @@ import {
 import 'react-square-payment-form/lib/default.css'
 import './PaymentPage.css';
 
+
+const APPLICATION_ID = 'sandbox-sq0idb-aLZmsFDNMH8mnlhisjzeFA';
+const LOCATION_ID = 'LG93JSK02XFSK';
+
 class PaymentPage extends React.Component {
 
     constructor(props) {
       super(props)
       this.state = {
         errorMessages: [],
+        applicationId: 'sandbox-sq0idb-aLZmsFDNMH8mnlhisjzeFA',
+        locationId: 'LG93JSK02XFSK',
+        amount: this.props.amount
       }
+      this.createVerificationDetails.bind(this)
     }
   
     cardNonceResponseReceived = (errors, nonce, cardData, buyerVerificationToken) => {
@@ -27,9 +35,14 @@ class PaymentPage extends React.Component {
         alert("nonce created: " + nonce + ", buyerVerificationToken: " + buyerVerificationToken)
     }
   
-    createVerificationDetails() {
+    getAmount() {
+      return this.props.amount
+    }
+  
+    createVerificationDetails = () => {
+      const {amount} = this.state;
       return {
-        amount: '100.00',
+        amount: String(amount),
         currencyCode: "USD",
         intent: "CHARGE",
         billingContact: {
@@ -49,10 +62,11 @@ class PaymentPage extends React.Component {
         <div>
           <SquarePaymentForm
             sandbox={true}
-            applicationId={'sandbox-sq0idb-klSZ1SdT7RRKkTy9VoQoig'}
-            locationId={'L3DTEMQP32HPN'}
+            applicationId={APPLICATION_ID}
+            locationId={LOCATION_ID}
             cardNonceResponseReceived={this.cardNonceResponseReceived}
-            createVerificationDetails={this.createVerificationDetails}>
+            createVerificationDetails={this.createVerificationDetails}
+            >
             <div className="sq-fieldset">
               <h4 className="sq-form-text-center">Enter Card Info Below </h4>
                 <CreditCardNumberInput/>
