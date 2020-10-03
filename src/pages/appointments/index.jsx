@@ -84,7 +84,8 @@ class AppointmentsPage extends Component {
     if (options === null) {
       this.setState({
         selected_options: [],
-        test: []
+        test: [],
+        appointment_date: '',
       })
     } else {
       this.setState({
@@ -112,13 +113,13 @@ class AppointmentsPage extends Component {
 
   render() {
     const { tests, time_slots, current_appointments, past_appointments } = this.props;
-    const { selected_options, open } = this.state;
+    const { selected_options, open, appointment_date } = this.state;
+    console.log(current_appointments);
     return (
       <Fragment>
-        <Banner />
-        <br />
+        {/* <Banner /> */}
         <div class="light-wrapper">
-          <div class="container inner2">
+          <div class="container inner2 inner-appointment">
             <div class="row">
               <ul id="tab1" class="nav nav-tabs">
                 <li class="active">
@@ -140,11 +141,13 @@ class AppointmentsPage extends Component {
               <div id="myTabContent" class="tab-content">
                 <div class="tab-pane fade in active" id="tab1-1">
                   <div class="light-wrapper">
-                    <div class="container inner2">
+                    <div class="container">
                       <div class="thin">
                       {
                         current_appointments.length > 0 ?
-                          'You cannot create new apointment'
+                          <div className="user-message fade-apply">
+                            You cannot create new apointment
+                          </div>
                         :
                         <div class="form-container">
                           <form
@@ -153,85 +156,94 @@ class AppointmentsPage extends Component {
                             class="vanilla vanilla-form"
                             onSubmit={this.handleSubmit}
                           >
-                            <div class="row">
-                              <div class="col-sm-6">
-                                <div class="form-field">
-                                  <label>
-                                    Date:
-                                    <input
-                                      id="date"
-                                      type="date"
-                                      name="appointment_date"
-                                      onChange={this.getTimeSlots}
-                                      min={new Date()}
-                                    />
-                                  </label>
-                                </div>
-                              </div>
-                              <div class="col-sm-6">
-                                <div class="form-field">
-                                  Test:
+                            <div class="row book-an-appoinment">
+                              <div class="col-sm-12">
+                                <div class="form-field forms-field">
+                                  <label> Test: </label>
                                   <Select isMulti onChange={this.handleTestOption} options={tests} styles={customStyles}/>
                                 </div>
                               </div>
-                              <div class="col-sm-12">
-                                <div class="form-field">
-                                  Time Slot:
-                                  <label class="custom-select">
-                                    <select name="time_slot" required="required" onChange={this.handleChange}>
-                                      <option disabled selected value>
-                                        {' '}
-                                        -- select a date to get an option --{' '}
-                                      </option>
-                                      {time_slots.map((value) => (
-                                        <option key={value.id} value={value.id}>
-                                          {value.time_slot}
-                                        </option>
-                                      ))}
-                                    </select>
-                                    <span></span>{' '}
-                                  </label>
+                              {
+                                selected_options.length > 0 ? 
+                                <div class="col-sm-12 checklist forms-field fade-apply">
+                                  <label> Selected Tests: </label>
+                                  <table class="table">
+                                    <tbody>
+                                    { selected_options.map((item, i) => {
+                                        return (
+                                          <tr key={i}>
+                                            <td class="text-capitalize font-weight-bold fade-apply">{item.label} <b class="pl-4">({item.parent_label})</b>
+                                              <ul>
+                                                {
+                                                  item.panel_test.map((test, i) => {
+                                                    return (
+                                                      <li class="set-ul-margin" key={i}>{test.title}</li>
+                                                    )
+                                                  })
+                                                }
+                                              </ul>
+                                            </td>
+                                            <td class="text-capitalize">{item.price}</td>
+                                          </tr>
+                                        )
+                                      })
+                                    }
+                                    </tbody>
+                                    <tfoot>
+                                      <tr>
+                                        <th>Total Bill</th>
+                                        <th>{
+                                            this.state.selected_options.reduce( (sum, item) => sum + item.price, 0 )                                        
+                                          }</th>
+                                      </tr>
+                                    </tfoot>
+                                  </table>
                                 </div>
-                              </div>
-                              <div class="col-sm-12 checklist">
-                                Selected Tests:
-                                <table class="table">
-                                  <tbody>
-                                  { selected_options ? selected_options.map((item, i) => {
-                                      return (
-                                        <tr key={i}>
-                                          <td class="text-capitalize font-weight-bold">{item.label} <b class="pl-4">({item.parent_label})</b>
-                                            <ul>
-                                              {
-                                                item.panel_test.map((test, i) => {
-                                                  return (
-                                                    <li class="set-ul-margin" key={i}>{test.title}</li>
-                                                  )
-                                                })
-                                              }
-                                            </ul>
-                                          </td>
-                                          <td class="text-capitalize">{item.price}</td>
-                                        </tr>
-                                      )
-                                    })
-                                    : ''
-                                  }
-                                  </tbody>
-                                  <tfoot>
-                                    <tr>
-                                      <th>Total Bill</th>
-                                      <th>{
-                                          this.state.selected_options.reduce(
-                                            (sum, item) => sum + item.price,
-                                            0
-                                          )                                        
-                                        }</th>
-                                    </tr>
-                                  </tfoot>
-                                </table>
-                              </div> 
-                              <div class="col-sm-12">
+                                : ''
+                              } {
+                                selected_options.length > 0 ? 
+                                <div class="col-sm-12">
+                                  <div class="forms-field fade-apply">
+                                    <label> Date: </label>
+                                    <input
+                                        id="date"
+                                        type="date"
+                                        name="appointment_date"
+                                        onChange={this.getTimeSlots}
+                                        min={new Date()}
+                                      />
+                                  </div>
+                                </div>
+                                : ''
+                              }
+                              {
+                                appointment_date && selected_options.length > 0 ?
+                                      <div class="col-sm-12">
+                                        { time_slots.length > 0 ?
+                                        <div class="form-field forms-field fade-apply">
+                                          <label class="custom-select"> Time Slot: </label>
+                                            <select name="time_slot" required="required" onChange={this.handleChange}>
+                                              <option disabled selected value>
+                                                {' '}
+                                                -- select a date to get an option --{' '}
+                                              </option>
+                                              {time_slots.map((value) => (
+                                                <option key={value.id} value={value.id}>
+                                                  {value.time_slot}
+                                                </option>
+                                              ))}
+                                            </select>
+                                            <span></span>{' '}
+                                        </div>
+                                        :
+                                          <div className="user-message fade-apply">
+                                            No Time Slot Avaiable
+                                          </div>
+                                        }
+                                      </div>
+                                  : ''
+                              }
+                              <div class="col-sm-12 form-field forms-field">
                                 <label>Comments:</label>
                                 <textarea
                                   name="comments"
@@ -241,7 +253,7 @@ class AppointmentsPage extends Component {
                                 ></textarea>
                                 <input
                                   type="submit"
-                                  class="btn"
+                                  class="btn pull-right"
                                   value="Book an appointment"
                                   data-error="Fix errors"
                                   data-processing="Sending..."
@@ -261,20 +273,28 @@ class AppointmentsPage extends Component {
                     {current_appointments.length > 0
                       ? 
                         <div class="container">
-                          <div class="checklist">
-                            <table class="table">
-                              <thead>
-                                <tr>
-                                  <th>Date</th>
-                                  <th>Time Slot</th>
-                                </tr>
-                              </thead>
+                          <div class="checklist set-margin-top">
+                          <table class="table">
                               <tbody>
-                              { current_appointments.map((item, i) => {
+                              <tr> 
+                                <td>Time Solt</td> 
+                                <td> <b>{current_appointments[0].time_slot.time_slot}</b></td>
+                              </tr>
+                              { current_appointments[0].panels.map((item, i) => {
                                   return (
                                     <tr key={i}>
-                                      <td>{item.appointment_date}</td>
-                                      <td>{item.time_slot.time_slot}</td>
+                                      <td class="text-capitalize font-weight-bold fade-apply"> <b class="pl-4">({item.panel_name})</b>
+                                        <ul>
+                                          {
+                                            item.tests.map((test, i) => {
+                                              return (
+                                                <li class="set-ul-margin" key={i}>{test.title}</li>
+                                              )
+                                            })
+                                          }
+                                        </ul>
+                                      </td>
+                                      <td class="text-capitalize">{item.price}</td>
                                     </tr>
                                   )
                                 })
@@ -283,7 +303,11 @@ class AppointmentsPage extends Component {
                               <tfoot>
                                 <tr>
                                   <th>Total Bill</th>
-                                  <th>{current_appointments.map((value) => value.total_price)}</th>
+                                  <th>
+                                    {
+                                      current_appointments[0].panels.reduce( (sum, item) => sum + item.price, 0 )                                        
+                                    }
+                                  </th>
                                 </tr>
                               </tfoot>
                             </table>
@@ -291,7 +315,7 @@ class AppointmentsPage extends Component {
                           <input
                               // onClick={()=> {this.paymentMethod()}}
                               onClick={this.toggle}
-                              class="btn"
+                              class="btn set-margin-top"
                               readOnly
                               value="Pay now"
                               data-error="Fix errors"
@@ -302,7 +326,7 @@ class AppointmentsPage extends Component {
                                 modalElementClass={modal}
                                 onRequestClose={this.toggle}>
                             <div>
-                                <PaymentPage/>
+                                <PaymentPage amount={current_appointments[0].panels.reduce( (sum, item) => sum + item.price, 0 )}/>
                             </div>
                         </Drawer>
                         </div>
@@ -348,7 +372,7 @@ const modal = css`
   position: absolute;
   top: 200px;
   background-color: white;
-  padding: 15px 20px;
+  padding: 20px 20px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 `;

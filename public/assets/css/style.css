@@ -342,6 +342,10 @@ h2.post-title {
   padding-top: 60px;
   padding-bottom: 60px;
 }
+.inner-appointment {
+  margin-top: 10%;
+  margin-bottom: 5%;
+}
 .inner3 {
   padding-top: 30px;
   padding-bottom: 30px;
@@ -4040,8 +4044,8 @@ select {
   justify-content: center;
 }
 .checklist > .table {
-  margin-top: 5px;
   border: 1px solid #ccc;
+  margin-bottom: 0px;
 }
 .checklist > .table > thead > tr > th,
 .checklist > .table > tbody > tr > td,
@@ -4049,6 +4053,7 @@ select {
   border-bottom: 1px solid #ccc;
   padding: 8px 13px;
   font-size: 14px !important;
+  height: 38px;
 }
 /*-----------------------------------------------------------------------------------*/
 /*	29. Current Appointment
@@ -4062,4 +4067,57 @@ select {
 
 .set-ul-margin {
   margin-left: 10px ;
+}
+.set-margin-top {
+  margin-top: 20px;
+}
+.book-an-appoinment {
+  margin-top: 0px;
+} 
+.forms-field > label {
+  padding-top: 10px;
+  padding-bottom: 5px
+}
+.user-message {
+  font-weight: bold;
+  padding-top: 15px;
+}
+
+.notification-alert-hidden {
+  transition: max-height 0.3s, padding 0.3s;
+  opacity: 0;
+}
+
+.notification-alert-visible {
+  opacity: 1;
+}
+
+.fade-apply {
+  animation: show-row 2s forwards;
+}
+
+.margin-left-25 {
+  margin-left: 25px;
+}
+
+.margin-left-45 {
+  padding-left: 45px;
+}
+
+.time-solt {
+  /* padding: 20px; */
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+
+@keyframes show-row {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
 }
