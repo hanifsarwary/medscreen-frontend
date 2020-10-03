@@ -49,10 +49,6 @@ class PaymentPage extends React.Component {
         status: "Paid",
         transaction_details: this.createVerificationDetails()
       }
-
-      console.log('-----------------');
-      console.log(payload);
-      console.log('-----------------');
       this.props.updateAppointmentPaymentStatus(payload, this.props.history)
     }
   

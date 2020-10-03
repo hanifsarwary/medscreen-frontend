@@ -15,7 +15,7 @@ import {
 } from 'pages/appointments/containers/actions';
 import { loaderOpenAction } from 'components/loaders/components';
 
-import { Banner } from 'helpers';
+// import { Banner } from 'helpers';
 
 const customStyles = {
   control: base => ({
@@ -127,7 +127,7 @@ class AppointmentsPage extends Component {
     console.log(current_appointments);
     return (
       <Fragment>
-        <Banner />
+        {/* <Banner /> */}
         <div class="light-wrapper">
           <div class="container inner2 inner-appointment">
             <div class="row">
