@@ -61,6 +61,16 @@ class AppointmentsPage extends Component {
     this.props.getTestsAction();
     this.props.getPastAppointmentsAction();
     this.props.getCurrentAppointmentsAction();
+
+    const that = this;
+    let sqPaymentScript = document.createElement('script');
+    sqPaymentScript.src = "https://js.squareup.com/v2/paymentform";
+    sqPaymentScript.type = "text/javascript"
+    sqPaymentScript.async = false;
+    sqPaymentScript.onload = ()=>{that.setState({
+      loaded: true
+    })};
+    document.getElementsByTagName("head")[0].appendChild(sqPaymentScript);
   }
 
   toggle = () => {
@@ -117,7 +127,7 @@ class AppointmentsPage extends Component {
     console.log(current_appointments);
     return (
       <Fragment>
-        {/* <Banner /> */}
+        <Banner />
         <div class="light-wrapper">
           <div class="container inner2 inner-appointment">
             <div class="row">

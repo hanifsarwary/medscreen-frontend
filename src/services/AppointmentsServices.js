@@ -64,3 +64,18 @@ export const createAppointment = (data = {}) => {
 
       return axios(requestOptions);
 };
+
+export const updatePaymentStatus = (data = {}) => {
+	let url = LOCAL_DOMAIN + APPOINTMENTS_ENDPOINTS.APPOINTMENTS_UPDATE_STATUS;
+    let token = localStorage.getItem('access_token')
+    let user = JSON.parse(localStorage.getItem('user'));
+    data.user = user.id
+    const requestOptions = {
+        method: 'PATCH',
+        headers: {"Authorization" : `Bearer ${token}`},
+        url,
+        data
+      };
+
+      return axios(requestOptions);
+};
