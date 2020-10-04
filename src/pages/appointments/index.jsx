@@ -15,7 +15,7 @@ import {
 } from 'pages/appointments/containers/actions';
 import { loaderOpenAction } from 'components/loaders/components';
 
-import { Banner } from 'helpers';
+// import { Banner } from 'helpers';
 
 const customStyles = {
   control: base => ({
@@ -61,6 +61,16 @@ class AppointmentsPage extends Component {
     this.props.getTestsAction();
     this.props.getPastAppointmentsAction();
     this.props.getCurrentAppointmentsAction();
+
+    const that = this;
+    let sqPaymentScript = document.createElement('script');
+    sqPaymentScript.src = "https://js.squareup.com/v2/paymentform";
+    sqPaymentScript.type = "text/javascript"
+    sqPaymentScript.async = false;
+    sqPaymentScript.onload = ()=>{that.setState({
+      loaded: true
+    })};
+    document.getElementsByTagName("head")[0].appendChild(sqPaymentScript);
   }
 
   toggle = () => {

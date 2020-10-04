@@ -12,6 +12,7 @@ const APPOINTMENTS_ENDPOINTS = {
 	GET_TIME_SLOTS: 'api/v1/time-slots/',
 	GET_TESTS: 'api/v1/tests/',
 	GET_CATEGORY: 'api/v1/categories/',
+	APPOINTMENTS_UPDATE_STATUS: 'api/v1/appointments/update/status/'
 };
 const MEDIA_ENDPOINTS = {
 	GET_MEDIA: 'api/v1/media/',
