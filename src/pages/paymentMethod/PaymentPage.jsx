@@ -35,18 +35,18 @@ class PaymentPage extends React.Component {
       if (errors) {
         this.setState({ 
           errorMessages: errors.map(error => error.message),
-          status: 'Failed',
+          status: 'failed',
           payment: false
         })
         return
       }
       this.setState({ 
         errorMessages: [],
-        status: 'Paid',
+        status: 'paid',
         payment: true
       });
       const payload = {
-        status: "Paid",
+        status: "paid",
         transaction_details: this.createVerificationDetails()
       }
       this.props.updateAppointmentPaymentStatus(payload, this.props.history)
@@ -106,7 +106,6 @@ class PaymentPage extends React.Component {
               )}
             </div>
           </div> :
-          <div>
             <div className="sucess-card row">
               <div className="col-sm-12 success-mark">
                 <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
@@ -114,12 +113,11 @@ class PaymentPage extends React.Component {
               <div className="col-sm-12">
                 <h3>Successful</h3>
               </div>
+              <div className="col-sm-12">
+                <button class="btn success-btn" onClick={() => this.props.history.push('/appointments')}>Done</button>
+              </div>
             </div>
-            {/* <div className="label-check">
-              <div className="check-icon"></div>
-            </div> */}
-          </div>
-        }
+          }
         </>
       )
     }
