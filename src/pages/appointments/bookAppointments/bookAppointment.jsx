@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import SelecCategory from './bookAppointments/selecCategory';
+import SelecCategory from './selecCategory';
 import {
     getTestsAction,
     getTimeSlotsAction,
@@ -19,8 +19,9 @@ class BookAppointment extends Component {
         time_slot: null,
         comments: '',
         selected_options: [],
+        selected_test: [],
         categories: [],
-        open: false
+        open: true
     }
 
     nextStep = () => {
@@ -43,28 +44,29 @@ class BookAppointment extends Component {
 
     handleChange = (event) => {
         const { name, value } = event.target;
-        this.setState({ [name]: value });
-        console.log(event.target);
+        this.setState({ [name]: value, open: false });
       };
 
       
     handleCheckBox = (e) => {
         const newSelection = e.target.value;
         let newSelectionArray;
+        let newSelectTest;
 
         if (this.state.categories.indexOf(newSelection) > -1) {
-          newSelectionArray = this.state.categories.filter(
-            s => s !== newSelection
-          );
-        } else {
-          newSelectionArray = [...this.state.categories, newSelection];
+            newSelectionArray = this.state.categories.filter( s => s !== newSelection );
+            newSelectTest = this.state.selected_test.filter(test =>  test.label !== newSelection )
+        } 
+        else {
+            newSelectionArray = [...this.state.categories, newSelection];
+            newSelectTest = [...this.state.selected_test, this.props.tests.filter(test =>  test.label === newSelection )[0]]
         }
-    
+        
         this.setState(prevState => ({
             ...prevState.categories,
-            categories: newSelectionArray 
+            categories: newSelectionArray,
+            selected_test: newSelectTest
         }));
-        console.log(newSelectionArray);
     }
 
     handleTestOption = (options) => {
@@ -100,8 +102,8 @@ class BookAppointment extends Component {
 
 
     render() {
-        const { tests, time_slots, current_appointments, past_appointments } = this.props;
-        const { step, selected_options, open, appointment_date, categories, time_slot } = this.state;
+        const { time_slots } = this.props;
+        const { step, open, appointment_date, categories, time_slot, selected_test } = this.state;
         switch(step) {
             case 1:
                 return (
@@ -137,7 +139,7 @@ class BookAppointment extends Component {
                         <>
                         {
                             categories.length > 0 ?
-                                <SelecCategory selected_options={this.state.selected_options}  tests={this.props.tests} handleTestOption={this.handleTestOption}/>
+                                <SelecCategory selected_options={this.state.selected_options}  tests={selected_test} handleTestOption={this.handleTestOption}/>
                                 :
                                 <div className="user-message fade-apply set-margin-bottom">
                                     Please Select Category
@@ -166,7 +168,7 @@ class BookAppointment extends Component {
                             </div>
                             : 
                             <div className="user-message fade-apply set-margin-bottom">
-                                Please Select atleast One Panel
+                                Please Select Panel
                             </div>
                         }
                         {
@@ -177,7 +179,7 @@ class BookAppointment extends Component {
                                         <div class="form-field forms-field fade-apply set-margin-bottom">
                                             <label class="custom-select"> Time Slot: </label>
                                             <select name="time_slot" required="required" onChange={this.handleChange}>
-                                                <option disabled value="DEFAULT">
+                                                <option disabled selected defaultValue="defualt">
                                                 {' '}
                                                 -- select a date to get an option --{' '}
                                                 </option>
@@ -198,7 +200,8 @@ class BookAppointment extends Component {
                                 : ''
                         }
                         <button className="btn btn-primary pull-left set-margin-top" onClick={this.prevStep}>Previous</button>
-                        <button className="btn btn-primary pull-right set-margin-top" onClick={this.handleSubmit}>Book an appointment</button>
+                        <button className="btn btn-primary pull-right set-margin-top" disabled={open === true ? true : false} 
+                         onClick={this.handleSubmit}>Book an appointment</button>
                     </div>
                 )
             

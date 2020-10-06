@@ -4270,3 +4270,20 @@ select {
 .select-category {
   padding-left: 45px;
 }
+.history-card {
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  margin: 15px;
+}
+.history-card-header {
+  border: 1px solid #ced4da;
+}
+.card-panel-btn {
+  width: 100%;
+  margin-top: 5px;
+  color: #000000 !important;
+  background-color: white !important;
+}
+.history-card-body {
+  margin: 20px;
+}

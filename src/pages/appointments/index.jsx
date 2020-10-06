@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import Drawer from 'react-drag-drawer';
 import { css } from "emotion";
 import { CurrentDateString } from 'helpers';
-import BookAppointment from './bookAppointment'
+import BookAppointment from './bookAppointments/bookAppointment';
+import AppointmentHistory from './appointmentHistory/appointmentHistory';
 import PaymentPage from '../paymentMethod/PaymentPage';
 
 import {
@@ -22,10 +23,6 @@ class AppointmentsPage extends Component {
     super(props);
     this.state = {
       test: null,
-      appointment_date: '',
-      time_slot: null,
-      comments: '',
-      selected_options: [],
       open: false
     };
   }
@@ -43,9 +40,8 @@ class AppointmentsPage extends Component {
   };
 
   render() {
-    const { tests, time_slots, current_appointments, past_appointments } = this.props;
-    const { selected_options, open, appointment_date } = this.state;
-    console.log(tests);
+    const { tests, current_appointments, past_appointments } = this.props;
+    const { open } = this.state;
     return (
       <Fragment>
         {/* <Banner /> */}
@@ -91,7 +87,7 @@ class AppointmentsPage extends Component {
                               <tbody>
                               <tr> 
                                 <td>Time Solt</td> 
-                                <td> <b>{current_appointments[0].time_slot.time_slot}</b></td>
+                                <td> <b>{current_appointments[0].time_slot ? current_appointments[0].time_slot.time_slot : ''}</b></td>
                               </tr>
                               { current_appointments[0].panels.map((item, i) => {
                                   return (
@@ -138,7 +134,7 @@ class AppointmentsPage extends Component {
                                 modalElementClass={modal}
                                 onRequestClose={this.toggle}>
                             <div>
-                                <PaymentPage amount={current_appointments[0].panels.reduce( (sum, item) => sum + item.price, 0 )}/>
+                                <PaymentPage appointment_id={current_appointments[0].id} amount={current_appointments[0].panels.reduce( (sum, item) => sum + item.price, 0 )}/>
                             </div>
                         </Drawer>
                         </div>
@@ -147,11 +143,13 @@ class AppointmentsPage extends Component {
                 <div class="tab-pane fade" id="tab1-3">
                   <ul>
                     {past_appointments.length > 0
-                      ? past_appointments.map((value, i) => (
-                        <li key={i}>
-                            {value.appointment_date} at {value.time_slot.time_slot}
-                        </li>
-                        ))
+                      ? 
+                      <AppointmentHistory past_appointments={past_appointments} />
+                      // past_appointments.map((value, i) => (
+                      //   <li key={i}>
+                      //       {value.appointment_date} at {value.time_slot ? value.time_slot.time_slot : ''}
+                      //   </li>
+                      // ))
                       : 'No Appointments History'}
                   </ul>
                 </div>
