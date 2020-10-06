@@ -1,7 +1,26 @@
 .sq-form-third {
-  margin-top: 20px;
+  margin-top: 15px;
 }
 .sq-form-text-center {
   text-align: center;
   padding: 15px;
+}
+.card-holder-name {
+  margin-top: 10px;
+  background-color: transparent;
+}
+.card-holder-name > input {
+  height: 58px;
+  font-size: 16px;
+  line-height: 24px;
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+}
+.card-holder-name> input:focus {
+  border-color: #4A90E2;
+  background-color: rgba(74,144,226,0.02);
+}
+.card-holder-name> .card-holder-name-error {
+  border: 1px solid #E02F2F !important;
+  background-color: rgba(244,47,47,0.02);
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { 
     SquarePaymentForm,
     CreditCardNumberInput,
@@ -12,8 +13,13 @@ import 'react-square-payment-form/lib/default.css'
 import './PaymentPage.css';
 
 import {
+  TextField
+} from '@material-ui/core';
+
+import {
   updateAppointmentPaymentStatus
 } from 'pages/appointments/containers/actions';
+import appointments from 'pages/appointments';
 
 const APPLICATION_ID = 'sandbox-sq0idb-aLZmsFDNMH8mnlhisjzeFA';
 const LOCATION_ID = 'LG93JSK02XFSK';
@@ -26,12 +32,15 @@ class PaymentPage extends React.Component {
         errorMessages: [],
         status: '',
         payment: false,
+        givenName: null,
         amount: this.props.amount
       }
       this.createVerificationDetails.bind(this)
     }
   
     cardNonceResponseReceived = (errors, nonce, cardData, buyerVerificationToken)  => {
+      let nameValidation = {type: "VALIDATION_ERROR", message: "Name is not valid", field: "givenName"}
+      nameValidation = this.state.givenName ? '' : errors.push(nameValidation);
       if (errors) {
         this.setState({ 
           errorMessages: errors.map(error => error.message),
@@ -47,7 +56,8 @@ class PaymentPage extends React.Component {
       });
       const payload = {
         status: "paid",
-        transaction_details: this.createVerificationDetails()
+        transaction_details: JSON.stringify(this.createVerificationDetails()),
+        appointment_id: this.props.appointment_id
       }
       this.props.updateAppointmentPaymentStatus(payload, this.props.history)
     }
@@ -55,16 +65,21 @@ class PaymentPage extends React.Component {
     getAmount() {
       return this.props.amount
     }
+
+    handleName = (event) => {
+      this.setState({
+        givenName: event.target.value
+      })
+    }
   
     createVerificationDetails = () => {
-      const {amount} = this.state;
+      const {givenName, amount} = this.state;
       return {
         amount: String(amount),
         currencyCode: "USD",
         intent: "CHARGE",
         billingContact: {
-          familyName: "Smith",
-          givenName: "John",
+          givenName: givenName,
         }
       }
     }
@@ -85,6 +100,10 @@ class PaymentPage extends React.Component {
               <div className="sq-fieldset">
                 <h4 className="sq-form-text-center">Enter Card Info Below </h4>
                   <CreditCardNumberInput/>
+                  <div className="card-holder-name">
+                    <label htmlFor="card-holder">Card Name</label>
+                    <input required type="text" name="givenName"  className={"sq-input " + (this.state.givenName ? "" : "card-holder-name-error")} placeholder="Enter name" onChange={this.handleName}/>
+                  </div>
                   <div className="sq-form-third">
                       <CreditCardExpirationDateInput />
                   </div>
@@ -114,7 +133,7 @@ class PaymentPage extends React.Component {
                 <h3>Successful</h3>
               </div>
               <div className="col-sm-12">
-                <button class="btn success-btn" onClick={() => this.props.history.push('/appointments')}>Done</button>
+                <button class="btn success-btn" onClick={() => window.location.reload(false)}>Done</button>
               </div>
             </div>
           }
@@ -127,4 +146,4 @@ class PaymentPage extends React.Component {
     updateAppointmentPaymentStatus,
   };
   
-  export default connect(null, mapDispatchToProps)(PaymentPage);
+  export default withRouter(connect(null, mapDispatchToProps)(PaymentPage));

@@ -66,10 +66,11 @@ export const createAppointment = (data = {}) => {
 };
 
 export const updatePaymentStatus = (data = {}) => {
-	let url = LOCAL_DOMAIN + APPOINTMENTS_ENDPOINTS.APPOINTMENTS_UPDATE_STATUS;
+	let url = LOCAL_DOMAIN + APPOINTMENTS_ENDPOINTS.APPOINTMENTS_UPDATE_STATUS + data.appointment_id + '/';
     let token = localStorage.getItem('access_token')
     let user = JSON.parse(localStorage.getItem('user'));
     data.user = user.id
+    delete data.appointment_id
     const requestOptions = {
         method: 'PATCH',
         headers: {"Authorization" : `Bearer ${token}`},
