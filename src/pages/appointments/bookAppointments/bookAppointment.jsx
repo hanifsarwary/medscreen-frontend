@@ -9,6 +9,7 @@ import {
     getPastAppointmentsAction,
   } from 'pages/appointments/containers/actions';
 import { loaderOpenAction } from 'components/loaders/components';
+import NestedCheckBox from './nestedCheckBox';
 
 class BookAppointment extends Component {
 
@@ -55,11 +56,33 @@ class BookAppointment extends Component {
 
         if (this.state.categories.indexOf(newSelection) > -1) {
             newSelectionArray = this.state.categories.filter( s => s !== newSelection );
-            newSelectTest = this.state.selected_test.filter(test =>  test.label !== newSelection )
+            newSelectTest = this.state.selected_test.filter(test =>  test.name !== newSelection )
         } 
         else {
             newSelectionArray = [...this.state.categories, newSelection];
-            newSelectTest = [...this.state.selected_test, this.props.tests.filter(test =>  test.label === newSelection )[0]]
+            newSelectTest = [...this.state.selected_test, this.props.tests.filter(test =>  test.name === newSelection )[0]]
+        }
+        
+        this.setState(prevState => ({
+            ...prevState.categories,
+            categories: newSelectionArray,
+            selected_test: newSelectTest
+        }));
+    }
+
+    handleSubCheckBox = (e) => {
+        const newSelection = e.target.value;
+        let newSelectionArray;
+        let newSelectTest;
+
+        if (this.state.categories.indexOf(newSelection) > -1) {
+            newSelectionArray = this.state.categories.filter( s => s !== newSelection );
+            newSelectTest = this.state.selected_test.filter(test =>  test.name !== newSelection )
+        } 
+        else {
+            newSelectionArray = [...this.state.categories, newSelection];
+            newSelectTest = [...this.state.selected_test, this.state.selected_test.map(test => 
+                test.children_categories !== null && test.children_categories.filter((match) =>  match.name === newSelection)[0])[0]]
         }
         
         this.setState(prevState => ({
@@ -87,7 +110,6 @@ class BookAppointment extends Component {
     };
 
     handleSubmit = () => {
-        if (!window.confirm('Are you sure?')) return false;
         const { test, appointment_date, time_slot, comments, selected_options } = this.state;
         const payload = {
           panels: test,
@@ -102,8 +124,9 @@ class BookAppointment extends Component {
 
 
     render() {
-        const { time_slots } = this.props;
+        const { time_slots, tests } = this.props;
         const { step, open, appointment_date, categories, time_slot, selected_test } = this.state;
+        console.log(selected_test);
         switch(step) {
             case 1:
                 return (
@@ -111,24 +134,11 @@ class BookAppointment extends Component {
                         <div class="forms-field fade-apply appointment-form-margin">
                             <label> Select Category</label>
                             <div class="select-category">
-                                {
-                                    this.props.tests.map((item, i) => {
-                                        return (
-                                            <label key={i} className="checkbox">
-                                            <input
-                                                id={item.label}
-                                                name={item.label}
-                                                value={item.label}
-                                                checked={categories.indexOf(item.label) > -1}
-                                                onChange={this.handleCheckBox}
-                                                type="checkbox"
-                                                key={i}
-                                            />
-                                            {item.label}
-                                            </label> 
-                                        )
-                                    })
-                                }
+                            {
+                                this.props.tests.length > 0 ?
+                                    <NestedCheckBox handleSubCheckBox={this.handleSubCheckBox} handleCheckBox={this.handleCheckBox} tests={this.props.tests} categories={categories} selected_test={selected_test}/>
+                                : ''
+                            }
                             </div>
                         </div>
                         <button className="btn btn-primary pull-right" onClick={this.nextStep}>Next</button>
@@ -139,7 +149,7 @@ class BookAppointment extends Component {
                         <>
                         {
                             categories.length > 0 ?
-                                <SelecCategory selected_options={this.state.selected_options}  tests={selected_test} handleTestOption={this.handleTestOption}/>
+                                <SelecCategory selected_options={this.state.selected_options}  tests={selectorObj(selected_test)} handleTestOption={this.handleTestOption}/>
                                 :
                                 <div className="user-message fade-apply set-margin-bottom">
                                     Please Select Category
@@ -225,3 +235,29 @@ const mapStateToProps = (state) => {
   };
   
   export default connect(mapStateToProps, mapDispatchToProps)(BookAppointment);
+
+
+    const selectorObj = (obj) => {
+    
+        return obj.map(item =>
+          item
+            ? {
+                label: item.name,
+                value: item.id,
+                options: item.panel.map(sub_item => {
+                  return sub_item
+                  ? {
+                    label: sub_item.panel_name,
+                    value: sub_item.id,
+                    price: sub_item.price,
+                    parent_label: item.name,
+                    parent_id: item.id,
+                    panel_test: sub_item.tests
+                  }
+                  : sub_item
+                })
+              }
+            : item
+        );
+      
+  }

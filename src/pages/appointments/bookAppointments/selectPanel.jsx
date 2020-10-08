@@ -30,9 +30,7 @@ export default class SelectPanel extends Component {
                 <tfoot>
                     <tr>
                     <th>Total Bill</th>
-                    <th>{
-                        this.props.selected_options.reduce( (sum, item) => sum + item.price, 0 )                                        
-                        }</th>
+                    <th>{ this.props.selected_options.reduce( (sum, item) => sum + item.price, 0 ) }</th>
                     </tr>
                 </tfoot>
                 </table>

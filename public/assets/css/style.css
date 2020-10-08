@@ -4287,3 +4287,7 @@ select {
 .history-card-body {
   margin: 20px;
 }
+.checkboxes {
+  border: none !important;
+  background: none !important;
+}

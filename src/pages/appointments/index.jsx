@@ -49,12 +49,12 @@ class AppointmentsPage extends Component {
           <div class="container inner2 inner-appointment">
             <div class="row">
               <ul id="tab1" class="nav nav-tabs">
-                <li class="active">
+                <li className={(current_appointments.length ? '' : 'active')}>
                   <a href="#tab1-1" data-toggle="tab">
                     Book An Appointment
                   </a>
                 </li>
-                <li>
+                <li className={(current_appointments.length > 0 ? 'active' : '')}>
                   <a href="#tab1-2" data-toggle="tab">
                     Current Appointments
                   </a>
@@ -66,7 +66,7 @@ class AppointmentsPage extends Component {
                 </li>
               </ul>
               <div id="myTabContent" class="tab-content">
-                <div class="tab-pane fade in active" id="tab1-1">
+                <div className={"tab-pane fade in " + (current_appointments.length ? '' : 'active')}  id="tab1-1">
                       {
                         current_appointments.length > 0 ?
                           <div className="user-message fade-apply">
@@ -74,11 +74,15 @@ class AppointmentsPage extends Component {
                           </div>
                         :
                         <div class="row book-an-appoinment">
+                          {
+                            tests.length > 0 ?
                               <BookAppointment tests={tests} />
+                            : ''
+                          }
                         </div>
                       }
                 </div>
-                <div class="tab-pane fade" id="tab1-2">
+                <div className={"tab-pane fade in " + (current_appointments.length > 0 ? 'active' : '')}  id="tab1-2">
                     {current_appointments.length > 0
                       ? 
                         <div class="container">

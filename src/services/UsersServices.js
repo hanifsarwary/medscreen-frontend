@@ -10,7 +10,6 @@ export const signUpUser = (data = {}) => {
 
 export const loginUser = (data = {}) => {
 	let url = LOCAL_DOMAIN + USERS_ENDPOINTS.USER_LOGIN;
-	console.log(url)
 	return axios.post(url, data);
 };
 
