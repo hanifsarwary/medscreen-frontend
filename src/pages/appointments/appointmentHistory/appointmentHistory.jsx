@@ -4,7 +4,6 @@ import { Button, Accordion, Card } from 'react-bootstrap';
 
 export default class AppointmentHistory extends Component {
     render() {
-        console.log(this.props.past_appointments);
         return (
             <Accordion>
             {
