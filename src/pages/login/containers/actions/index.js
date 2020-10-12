@@ -1,6 +1,6 @@
 import { authConstants } from 'pages/login/constants';
 import { loaderConstants } from 'components/loaders/constants';
-import { loginUser } from 'services';
+import { loginUser, getTests } from 'services';
 
 export const loginUserAction = (data = {}, history) => {
 	return dispatch => {
@@ -18,6 +18,9 @@ export const loginUserAction = (data = {}, history) => {
 						remember_me,
 					})
 				);
+				getTests().then(res => {
+					localStorage.setItem('services', JSON.stringify(res.data.results))
+				})
 				dispatch({ type: loaderConstants.LOAD_END });
 				let next_url = history.location.pathname.split('=')[1];
 				if (next_url) history.push(next_url);

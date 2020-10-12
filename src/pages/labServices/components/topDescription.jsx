@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function Description(props) {
-  const { id, title, subtitle, description } = props;
+  const { id, title, description } = props;
   const lines = description.split('\n');
   var delay = 0.0;
   return (
@@ -9,7 +9,7 @@ export default function Description(props) {
       <div class="container inner">
         <div class="section-title text-center">
           <h2>{title}</h2>
-          <h3>{subtitle}</h3>
+          {/* <h3>{subtitle}</h3> */}
           <br />
 
           <div class="row">
@@ -17,7 +17,7 @@ export default function Description(props) {
               {lines.map((value, index) => {
                 delay += 0.4;
                 return (
-                  <p class="wow fadeIn" data-wow-duration="3s" data-wow-delay={delay + 's'} style={{fontSize: '16px'}}>
+                  <p key={index} class="wow fadeIn" data-wow-duration="3s" data-wow-delay={delay + 's'} style={{fontSize: '16px'}}>
                     {value}
                   </p>
                 );

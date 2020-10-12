@@ -10,7 +10,10 @@ import Resources from 'components/resources';
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.state = { visible: false };
+    this.state = { 
+      visible: false,
+      services: JSON.parse(localStorage.getItem('services'))
+     };
   }
 
   handleOpenDialog = (index) => {
@@ -33,7 +36,7 @@ class Header extends Component {
 
   render() {
 	const { access_token } = this.props;
-	const { index, visible } = this.state;
+  const { index, visible } = this.state;
     return (
       <Fragment>
         <Resources handleClose={this.handleCloseDialog} index={index} visible={visible} />
@@ -85,11 +88,11 @@ class Header extends Component {
             </div>
             <div class="container boxed">
               <div class="navbar-header">
-                <div class="navbar-brand">
+                {/* <div class="navbar-brand">
                   <a href="index.html">
                     <img alt="logo" src={logo} width={70} height={50} />
                   </a>
-                </div>
+                </div> */}
                 <div class="nav-bars-wrapper">
                   <div class="nav-bars-inner">
                     <div class="nav-bars" data-toggle="collapse" data-target=".navbar-collapse">
@@ -101,17 +104,26 @@ class Header extends Component {
               <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                   <li>
+                    <Link to="/home">
+                      <img alt="logo" src={logo} width={70} height={50} />
+                    </Link>
+                  </li>
+                  <li>
                     <Link to="/home">Home</Link>
                   </li>
                   <li>
-                    <Link to="/about">About MSL</Link>
-                  </li>
-                  <li>
-                    <Link to="/services">
+                    <Link>
                       Lab Services <span class="caret"></span>
                     </Link>
                     <ul class="dropdown-menu">
-                      <li>
+                        {
+                          this.state.services.map((labService, i) => {
+                            return (
+                              <li key={i}> <Link to={"/services/" + labService.id}>{labService.name}</Link>  </li>
+                            )
+                          })
+                        }
+                      {/* <li>
                         <HashLink smooth to='/services#drug-screening'>Drug Testing</HashLink>
                       </li>
                       <li>
@@ -122,7 +134,7 @@ class Header extends Component {
                       </li>
                       <li>
                         <Link to="/">Tele-screen Remote Testing (Not available)</Link>
-                      </li>
+                      </li> */}
                     </ul>
                   </li>
                   <li>
@@ -159,60 +171,6 @@ class Header extends Component {
                   <li>
                     <Link to="/">Contact Us</Link>
                   </li>
-                  {/* <li>
-									<a href='#!'>
-										Portfolio <span class='caret'></span>
-									</a>
-									<ul class='dropdown-menu'>
-										<li>
-											<a href='portfolio.html'>
-												Detailed Portfolio <span class='caret'></span>
-											</a>
-											<ul class='dropdown-menu'>
-												<li>
-													<a href='portfolio.html'>3 Columns</a>
-												</li>
-												<li>
-													<a href='portfolio2.html'>4 Columns</a>
-												</li>
-											</ul>
-										</li>
-										<li>
-											<a href='portfolio2.html'>
-												Lightbox Portfolio <span class='caret'></span>
-											</a>
-											<ul class='dropdown-menu'>
-												<li>
-													<a href='portfolio3.html'>3 Columns</a>
-												</li>
-												<li>
-													<a href='portfolio4.html'>4 Columns</a>
-												</li>
-											</ul>
-										</li>
-										<li>
-											<a href='portfolio-post.html'>Post with Carousel</a>
-										</li>
-										<li>
-											<a href='portfolio-post2.html'>Post with Slider</a>
-										</li>
-										<li>
-											<a href='portfolio-post3.html'>Post post with Half Slider</a>
-										</li>
-										<li>
-											<a href='portfolio-post4.html'>Post with Images</a>
-										</li>
-										<li>
-											<a href='portfolio-post5.html'>Post with Video</a>
-										</li>
-										<li>
-											<a href='portfolio-post6.html'>Post with Half Video</a>
-										</li>
-										<li>
-											<a href='portfolio-post7.html'>Post with Video Slider</a>
-										</li>
-									</ul>
-								</li> */}
 
                   <li>
                     <a href="http://medscreenlabs.labnexus.net/">Portal Login</a>
