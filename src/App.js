@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { refreshLoginFromLocalStorageAction } from 'pages/login/containers';
 import Routes from 'components/routes';
 import { Loader } from 'components/loaders';
+import 'owl.carousel';
 
 class App extends Component {
   componentDidMount() {

@@ -47,7 +47,7 @@ class TopSlider extends Component {
                 class="tp-caption large"
                 data-x="50"
                 data-y="bottom"
-                data-voffset="350"
+                data-voffset="330"
                 data-width="['auto','auto','auto','auto']"
                 data-height="['auto','auto','auto','auto']"
                 data-transform_idle="o:1;"
@@ -59,9 +59,9 @@ class TopSlider extends Component {
                 data-splitin="none"
                 data-splitout="none"
                 data-responsive_offset="on"
-                style={{ zIndex: 9, whiteSpace: 'nowrap', fontSize: '50px', lineHeight: '50px' }}
+                style={{ zIndex: 9, whiteSpace: 'nowrap', fontSize: '50px', lineHeight: '50px', marginLeft: '-40px' }}
               >
-                Med Screen Laboratories
+                <img alt="logo" src={logo} width={70} height={50}/>
               </div>
               <div
                 class="tp-caption medium text-left"
@@ -82,7 +82,7 @@ class TopSlider extends Component {
                 data-responsive_offset="on"
                 style={{ zIndex: 9, whiteSpace: 'nowrap', fontSize: '25px', lineHeight: '25px' }}
               >
-                The Nation's Leading Toxicology Laboratory
+                The Nation's Leading Toxicology Laboratory 
               </div>
               <div
                 class="tp-caption medium text-left"

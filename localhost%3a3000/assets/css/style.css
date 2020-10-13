@@ -83,7 +83,7 @@ figure.col-md-4 {
   -webkit-mask-image: linear-gradient(to left, black 90%, transparent 100%);
   mask-image: linear-gradient(to right, black 90%, transparent 100%);
   mask-image: linear-gradient(to left, black 90%, transparent 100%); */
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 *,
 *:before,
@@ -259,8 +259,9 @@ h3 {
 }
 h4 {
   font-size: 18px;
-  line-height: 22px;
-  margin-bottom: 7px;
+  /* line-height: 22px; */
+  /* margin-bottom: 7px; */
+  margin-top: 40px;
 }
 h5 {
   font-size: 17px;
@@ -2208,9 +2209,10 @@ video::-webkit-media-controls {
 /*	19. FEATURES
 /*-----------------------------------------------------------------------------------*/
 .feature {
-  padding: 0 0 0 105px;
+  padding: 0px 0px 0px 105px;
   position: relative;
   margin-bottom: 30px;
+  /* margin-top: -6px; */
 }
 .timeline .feature {
   padding: 0 0 0 230px;
@@ -2222,6 +2224,7 @@ video::-webkit-media-controls {
 .feature figure {
   position: absolute;
   left: 0;
+  /* margin-bottom: 29px !important; */
 }
 .feature figure img {
   width: 200px;

@@ -84,7 +84,7 @@ figure.col-md-4 {
   -webkit-mask-image: linear-gradient(to left, black 90%, transparent 100%);
   mask-image: linear-gradient(to right, black 90%, transparent 100%);
   mask-image: linear-gradient(to left, black 90%, transparent 100%); */
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 *,
 *:before,
@@ -3643,6 +3643,12 @@ select {
 .bp50 {
   padding-bottom: 50px !important;
 }
+.tm30 {
+  margin-top: 35px !important;
+}
+.pl-0 {
+	padding-left: 0px !important;
+}
 /*-----------------------------------------------------------------------------------*/
 /*	34. BOX LAYOUT
 /*-----------------------------------------------------------------------------------*/
@@ -4290,4 +4296,8 @@ select {
 .checkboxes {
   border: none !important;
   background: none !important;
+}
+.sliderLogo {
+  width: 150px !important;
+  height: 150px !important;
 }

@@ -14,7 +14,7 @@ const Routes = props => {
 			<PublicRoute path='/login' component={LoginPage} />
 			<PublicRoute path='/register' component={RegisterPage} />
 			<PublicRoute path='/about' component={AboutPage} />
-			<PublicRoute path='/services' component={LabServicesPage} />
+			<PublicRoute path='/services/:id' component={LabServicesPage} />
 			<PrivateRoute path='/appointments' component={AppointmentsPage} />
 			<PasswordRecoverRoute path='/password/reset' component={RegisterPage} />
 		</Switch>

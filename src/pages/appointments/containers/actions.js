@@ -8,27 +8,6 @@ export const getTestsAction = () => {
     getTests()
       .then((response) => {
         let data = response.data.results;
-        // let data = res.map(item =>
-        //   item
-        //     ? {
-        //         label: item.name,
-        //         value: item.id,
-        //         children_categories: item.children_categories ? item.children_categories : [],
-        //         options: item.panel.map(sub_item => {
-        //           return sub_item
-        //           ? {
-        //             label: sub_item.panel_name,
-        //             value: sub_item.id,
-        //             price: sub_item.price,
-        //             parent_label: item.name,
-        //             parent_id: item.id,
-        //             panel_test: sub_item.tests
-        //           }
-        //           : sub_item
-        //         })
-        //       }
-        //     : item
-        // );
         Promise.resolve(
           dispatch({
             type: appointmentConstants.GET_TESTS_SUCCESS,
