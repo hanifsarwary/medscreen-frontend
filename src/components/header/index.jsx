@@ -117,7 +117,7 @@ class Header extends Component {
                     </Link>
                     <ul class="dropdown-menu">
                         {
-                          this.state.services.map((labService, i) => {
+                          this.state.services && this.state.services.map((labService, i) => {
                             return (
                               <li key={i}> <Link to={"/services/" + labService.id}>{labService.name}</Link>  </li>
                             )
