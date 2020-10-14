@@ -19,7 +19,7 @@ export const getTests = () => {
     let token = localStorage.getItem('access_token')
     const requestOptions = {
         method: 'GET',
-        headers: {"Authorization" : `Bearer ${token}`},
+        // headers: {"Authorization" : `Bearer ${token}`},
         url
       };
     return axios(requestOptions);

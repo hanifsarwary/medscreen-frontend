@@ -20,6 +20,12 @@ export const authReducer = (state = initialAuthState, action) => {
 				refresh_token: action.refresh_token,
 				user: action.user,
 			};
+		case authConstants.SERVICE:
+			return {
+				...state,
+				error: null,
+				service: action.service
+			};
 		case authConstants.LOGIN_FAILURE:
 			return {
 				...state,

@@ -14,4 +14,5 @@ export const rootReducer = combineReducers({
 	APPOINTMENTS: appointmentsReducer,
 	MEDIA: mediaReducer,
 	TEST: testReducer
+	
 });
