@@ -16,7 +16,7 @@ import {
 } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
-import { loginUserAction } from 'pages/login/containers';
+import { loginUserAction, callService } from 'pages/login/containers';
 import { Banner } from 'helpers';
 import { loaderOpenAction } from 'components/loaders/components';
 
@@ -151,6 +151,6 @@ const mapStateToProps = (state) => {
   return { error };
 };
 
-const mapDispatchToProps = { loaderOpenAction, loginUserAction };
+const mapDispatchToProps = { loaderOpenAction, loginUserAction, callService };
 
 export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(LoginPage));

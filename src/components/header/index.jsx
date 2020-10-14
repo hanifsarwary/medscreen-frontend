@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 
 import logo from 'assets/images/icons/animatedLogo.gif';
-import { logoutUserAction } from 'pages/login/containers';
+import { logoutUserAction, callService } from 'pages/login/containers';
 import Resources from 'components/resources';
 
 class Header extends Component {
@@ -12,8 +12,13 @@ class Header extends Component {
     super(props);
     this.state = { 
       visible: false,
-      services: JSON.parse(localStorage.getItem('services'))
+      services: []
      };
+     this.props.callService();
+  }
+
+  componentDidMount() {
+    this.setState({services : JSON.parse(localStorage.getItem('services'))})
   }
 
   handleOpenDialog = (index) => {
@@ -35,7 +40,7 @@ class Header extends Component {
   };
 
   render() {
-	const { access_token } = this.props;
+	const { access_token, service } = this.props;
   const { index, visible } = this.state;
     return (
       <Fragment>
@@ -112,29 +117,16 @@ class Header extends Component {
                     <Link to="/home">Home</Link>
                   </li>
                   <li>
-                    <Link>
-                      Lab Services <span class="caret"></span>
-                    </Link>
+                    <Link>  Lab Services <span class="caret"></span> </Link>
                     <ul class="dropdown-menu">
-                        {
-                          this.state.services && this.state.services.map((labService, i) => {
+                        { service !== undefined ?
+                          service.map((labService, i) => {
                             return (
                               <li key={i}> <Link to={"/services/" + labService.id}>{labService.name}</Link>  </li>
                             )
                           })
+                          : ''
                         }
-                      {/* <li>
-                        <HashLink smooth to='/services#drug-screening'>Drug Testing</HashLink>
-                      </li>
-                      <li>
-                        <Link to="/">Clinical Blood (Not available)</Link>
-                      </li>
-                      <li>
-                        <Link to="/">COVID-19 Testing (Not available)</Link>
-                      </li>
-                      <li>
-                        <Link to="/">Tele-screen Remote Testing (Not available)</Link>
-                      </li> */}
                     </ul>
                   </li>
                   <li>
@@ -189,10 +181,10 @@ class Header extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { access_token } = state.USER_AUTH;
-  return { access_token };
+  const { access_token, service } = state.USER_AUTH;
+  return { access_token, service };
 };
 
-const mapDispatchToProps = { logoutUserAction };
+const mapDispatchToProps = { logoutUserAction, callService };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

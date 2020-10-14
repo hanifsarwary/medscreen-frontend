@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { refreshLoginFromLocalStorageAction } from 'pages/login/containers';
+import { refreshLoginFromLocalStorageAction, callService } from 'pages/login/containers';
 import Routes from 'components/routes';
 import { Loader } from 'components/loaders';
 import 'owl.carousel';
@@ -10,6 +10,7 @@ import 'owl.carousel';
 class App extends Component {
   componentDidMount() {
     this.props.refreshLoginFromLocalStorageAction();
+    // this.props.callService();
   }
 
   render() {
@@ -22,6 +23,6 @@ const mapStateToProps = (state) => {
   const { is_loading } = state.LOADER;
   return { is_loading };
 };
-const mapDispatchToProps = { refreshLoginFromLocalStorageAction };
+const mapDispatchToProps = { refreshLoginFromLocalStorageAction, callService };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
