@@ -3595,6 +3595,9 @@ select {
 .tm20 {
   margin-top: 20px;
 }
+.tm25 {
+  margin-top: 25px !important;
+}
 .tm40 {
   margin-top: 40px;
 }
@@ -4045,11 +4048,6 @@ select {
 /*-----------------------------------------------------------------------------------*/
 /*	28. Table
 /*-----------------------------------------------------------------------------------*/
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 .checklist > .table {
   border: 1px solid #ccc;
   margin-bottom: 20px;
@@ -4152,73 +4150,6 @@ select {
   margin-top: 110px;
 }
 
-
-/* 
-.label-check {
-  position: relative;
-  height: 125px;
-  width: 125px;
-  display: inline-block;
-  border: 2px solid rgb(255,255,255,0.2);
-  border-radius: 50%;
-  border-left-color: #5cb85c;
-  animation: rotate 1.2s linear infinite;
-}
-
-@keyframes rotate {
-  50% {
-    border-left-color: #9b59b6;
-  }
-  75% {
-    border-left-color: #5cb85c;
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.label-check .check-icon {
-  display: none;
-}
-
-.label-check .check-icon:after {
-  position: absolute;
-  content: "";
-  top: 50%;
-  left: 28px;
-  height: 56px;
-  width: 28px;
-  transform: scaleX(-1) rotate(135deg);
-  border-top: 4px solid #5cb85c;
-  border-right: 4px solid #5cb85c;
-  transform-origin: left top;
-  animation: check-icon 0.8s ease;
-}
-
-@keyframes check-icon {
-  0% {
-    height: 0;
-    width: 0;
-    opacity: 1;
-  }
-  20% {
-    height: 0;
-    width: 28px;
-    opacity: 1;
-  }
-  40% {
-    height: 56px;
-    width: 28px;
-    opacity: 1;
-  }
-  100% {
-    height: 56px;
-    width: 28px;
-    opacity: 1;
-  }
-} */
-
-
 .checkmark {
   width: 56px;
   height: 56px;
@@ -4280,6 +4211,7 @@ select {
   border: 1px solid #ced4da;
   border-radius: 5px;
   margin: 15px;
+  text-align: left !important;
 }
 .history-card-header {
   border: 1px solid #ced4da;

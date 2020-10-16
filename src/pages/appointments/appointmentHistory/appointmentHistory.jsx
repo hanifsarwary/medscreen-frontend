@@ -1,4 +1,3 @@
-import { colors } from '@material-ui/core';
 import React, { Component } from 'react';
 import { Button, Accordion, Card } from 'react-bootstrap';
 
@@ -15,7 +14,7 @@ export default class AppointmentHistory extends Component {
                         </Accordion.Toggle>
                     </Card.Header>
                     <Accordion.Collapse eventKey={appointment.id}>
-                        <Card.Body className="checklist history-card-body">
+                        <Card.Body className="checklist history-card-body fade-apply">
                             <h3>Appointment History</h3>
                             {
                                 <table className="table">

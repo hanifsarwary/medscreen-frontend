@@ -1,0 +1,37 @@
+.career-heading {
+    border-bottom: 1px solid #d5d5d5 !important;
+}
+
+.card {
+    margin: 15px 0px;
+    border: 1px solid #d5d5d5;
+    border-radius: 5px;
+    text-align: right;
+}
+.card-header {
+    width: 100%;
+    text-align: center;
+    margin: 0px !important;
+    padding: 8px 0px !important;
+    color: #000000 !important;
+    background-color: white !important;
+}
+.job-info {
+    padding: 0px 80px;
+    text-align: left;
+}
+.job-description {
+    padding: 10px 30px;
+    text-align: justify;
+    border-top: 1px solid #d5d5d5;
+}
+.job-description p {
+    margin: 0 !important;
+    padding:  0 !important;
+}
+.text-danger {
+    color: red !important;
+}
+.btn-apply-now {
+    margin: 15px 20px !important;
+}

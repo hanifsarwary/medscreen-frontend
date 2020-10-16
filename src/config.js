@@ -14,9 +14,14 @@ const APPOINTMENTS_ENDPOINTS = {
 	GET_CATEGORY: 'api/v1/categories/',
 	APPOINTMENTS_UPDATE_STATUS: 'api/v1/appointments/update/status/'
 };
+const CAREERS_ENDPOINTS = {
+	CAREERS_LIST_GET: 'api/v1/careers/',
+	WHO_WE_ARE_GET: 'api/v1/who-we-are/',
+	APPLY_FOR_JOB: 'api/v1/job-applications/'
+};
 const MEDIA_ENDPOINTS = {
 	GET_MEDIA: 'api/v1/media/',
 	GET_EDITABLE_TEXTS: 'api/v1/editable_texts/',
 };
 
-export { DOMAIN, LOCAL_DOMAIN, USERS_ENDPOINTS, APPOINTMENTS_ENDPOINTS, MEDIA_ENDPOINTS };
+export { DOMAIN, LOCAL_DOMAIN, USERS_ENDPOINTS, APPOINTMENTS_ENDPOINTS, MEDIA_ENDPOINTS, CAREERS_ENDPOINTS };
