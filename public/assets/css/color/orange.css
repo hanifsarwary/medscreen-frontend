@@ -187,23 +187,17 @@ footer .meta a:hover {
 .lg-actions .lg-prev:hover {
 	color: #f26101;
 }
-@media (min-width: 992px) {
+@media (min-width: 992px) { 
 	.navbar .dropdown-menu li {
-		background: #FFFFFF;
-	}
-	.navbar .dropdown-menu li a {
-		color: #2e2e2e !important;
-	}
-	.navbar .dropdown-menu li a:hover {
-		color: #f26101 !important;
+	    background: #f26101;
 	}
 	.navbar .nav > li.current > a,
 	.navbar .nav > li > a:hover {
-		color: #f26101 !important;
+    	color: #f26101 !important
 	}
 }
-@media (max-width: 991px) {
+@media (max-width: 991px) { 
 	.navbar .navbar-collapse {
-		background: #f26101;
+	    background: #f26101
 	}
 }

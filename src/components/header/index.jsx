@@ -93,11 +93,11 @@ class Header extends Component {
             </div>
             <div class="container boxed">
               <div class="navbar-header">
-                {/* <div class="navbar-brand">
-                  <a href="index.html">
-                    <img alt="logo" src={logo} width={70} height={50} />
-                  </a>
-                </div> */}
+                <div class="navbar-brand">
+                    <Link to="/home">
+                      <img alt="logo" src={logo} width={70} height={50} />
+                    </Link>
+                </div>
                 <div class="nav-bars-wrapper">
                   <div class="nav-bars-inner">
                     <div class="nav-bars" data-toggle="collapse" data-target=".navbar-collapse">
@@ -108,11 +108,6 @@ class Header extends Component {
               </div>
               <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                  <li>
-                    <Link to="/home">
-                      <img alt="logo" src={logo} width={70} height={50} />
-                    </Link>
-                  </li>
                   <li>
                     <Link to="/home">Home</Link>
                   </li>
@@ -163,9 +158,11 @@ class Header extends Component {
                   <li>
                     <Link to="/">Contact Us</Link>
                   </li>
-
                   <li>
                     <a href="http://medscreenlabs.labnexus.net/">Portal Login</a>
+                  </li>
+                  <li>
+                    <Link to="/careers">Careers</Link>
                   </li>
                   <li>
                     {!access_token ? <Link to="/login">Log in</Link> : <Link onClick={this.handleLogout}>Log out</Link>}

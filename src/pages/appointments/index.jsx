@@ -45,8 +45,7 @@ class AppointmentsPage extends Component {
     return (
       <Fragment>
         {/* <Banner /> */}
-        <div class="light-wrapper">
-          <div class="container inner2 inner-appointment">
+          <div class="container inner-appointment">
             <div class="row">
               <ul id="tab1" class="nav nav-tabs">
                 <li className={(current_appointments.length ? '' : 'active')}>
@@ -160,7 +159,6 @@ class AppointmentsPage extends Component {
               </div>
             </div>
           </div>
-        </div>
       </Fragment>
     );
   }
