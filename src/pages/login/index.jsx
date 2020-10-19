@@ -67,7 +67,7 @@ class LoginPage extends Component {
   };
 
   render() {
-    const { username, password, remember_me } = this.state;
+    const { username, password } = this.state;
     const { classes, error } = this.props;
     return (
       <Fragment>

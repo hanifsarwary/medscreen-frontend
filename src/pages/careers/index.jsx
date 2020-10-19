@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getCareerListAction } from 'pages/careers/containers/actions';
 import { loaderOpenAction } from 'components/loaders/components';
@@ -14,6 +14,7 @@ class CareerPage extends Component {
     nextStep = () => {
         const { step } = this.state;
         this.setState({ step: step + 1 });
+        window.open(this.props.match.url + '?step=2', "_blank")
     }
 
     prevStep = () => {
@@ -22,6 +23,12 @@ class CareerPage extends Component {
     }
     componentDidMount() {
         this.props.getCareerListAction();
+        const step = this.props.location.search ? this.props.location.search.split('=')[1] : 0;
+        if (step) {
+            this.setState({
+                step: Number(step)
+            })
+        }
     }
 
 
@@ -32,14 +39,6 @@ class CareerPage extends Component {
                 return (
                     <div className="container inner-appointment">
                         <div className="career-heading"> <h1>Careers</h1></div>
-                        <Card className="tm25">
-                            <Card.Header className="row fade-apply ">
-                                <b className="col-sm-3">Title</b>
-                                <b className="col-sm-3">Salary</b>
-                                <b className="col-sm-3">Location</b>
-                                <b className="col-sm-3">Last Date</b>
-                            </Card.Header>
-                        </Card>
                         {
                             this.props.careersLits ? 
                                 <CareerJobList nextStep={this.nextStep} jobList={this.props.careersLits}/>
@@ -53,29 +52,6 @@ class CareerPage extends Component {
                 )
         }
     }
-
-    // render() {
-    //     return (
-    //         <Fragment>
-    //             <div className="container inner-appointment">
-    //                 <div className="career-heading"> <h1>Careers</h1></div>
-    //                 <Card className="tm25">
-    //                     <Card.Header className="row fade-apply ">
-    //                         <b className="col-sm-3">Title</b>
-    //                         <b className="col-sm-3">Salary</b>
-    //                         <b className="col-sm-3">Location</b>
-    //                         <b className="col-sm-3">Last Date</b>
-    //                     </Card.Header>
-    //                 </Card>
-    //                  {
-    //                     this.props.careersLits ? 
-    //                      <CareerJobList jobList={this.props.careersLits}/>
-    //                     : ''
-    //                  }
-    //             </div>
-    //         </Fragment>
-    //     )
-    // }
 }
 
 

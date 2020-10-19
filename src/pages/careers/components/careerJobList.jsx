@@ -1,35 +1,34 @@
-import React, { Component } from 'react'
-import { Button, Accordion, Card } from 'react-bootstrap';
+import React, { Component } from 'react';
 import '../careers.css';
 
 export default class CareerJobList extends Component {
     render() {
         return (
-            <Accordion> {
-                this.props.jobList.map((item, i) => {
-                    return (
-                        <Card key={i}>
-                            <Card.Header>
-                                <Accordion.Toggle as={Button} eventKey={item.id} className="card-header row fade-apply ">
-                                    <span className="col-sm-3">{item.title}</span>
-                                    <span className="col-sm-3">{item.salary}</span>
-                                    <span className="col-sm-3">{item.location}</span>
-                                    <span className="col-sm-3 text-danger">{item.last_date_for_application}</span>
-                                </Accordion.Toggle>
-                            </Card.Header>
-                            <Accordion.Collapse eventKey={item.id}>
-                                <Card.Body>
-                                    <div className="job-description fade-apply">
-                                        <b>Description :</b>
-                                        <p>{item.description}</p>
+            <div className="row">
+                {
+                    this.props.jobList.map((item, i) => {
+                        return (
+                            <div className="col-sm-4" key={i}>
+                                <div class="card tm-20 fade-apply">
+                                    <div className="card-header">
+                                        <div className="job-info row"> <b className="col-sm-5 lp-60">Job Title</b> <span className="col-sm-7">{item.title}</span> </div>
+                                        <div className="job-info row"> <b className="col-sm-5 lp-60">Salary</b> <span className="col-sm-7">{item.salary}</span> </div>
+                                        <div className="job-info row"> <b className="col-sm-5 lp-60">Location</b> <span className="col-sm-7">{item.location}</span> </div>
+                                        <div className="job-info row text-danger"> <b className="col-sm-5 lp-60">Last Date</b> <span className="col-sm-7">{item.last_date_for_application}</span> </div>
                                     </div>
-                                    <input class="btn btn-apply-now" onClick={this.props.nextStep} readOnly value="Apply"/>
-                                </Card.Body>
-                            </Accordion.Collapse>
-                        </Card>
-                    )
-                })
-            } </Accordion>
+                                    <div class="card-body">
+                                        <div className="job-description">
+                                            <b>Description :</b>
+                                            <p>{item.description}</p>
+                                        </div>
+                                        <input class="btn btn-apply-now" onClick={this.props.nextStep} readOnly value="Apply"/>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
+            </div>
         )
     }
 }

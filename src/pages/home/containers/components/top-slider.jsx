@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 // import logo from 'assets/videos/logo-video.mp4';
 import logo from 'assets/images/icons/animatedLogo.gif';
 import slide from 'assets/images/1.jpg';
+import HomeB from 'assets/images/hb.png';
 
 class TopSlider extends Component {
   componentDidMount() {
@@ -42,70 +43,61 @@ class TopSlider extends Component {
           <ul>
             <li data-transition="fade">
               {' '}
-              <img src={slide} alt=""></img>
-              <div
-                class="tp-caption large"
-                data-x="50"
-                data-y="bottom"
-                data-voffset="330"
+              <img src={HomeB} alt=""></img>
+              <div class="tp-caption large text-center" 
+                data-x="center" 
+                data-hoffset="" 
+                data-y="center"  data-voffset="-60" 
                 data-width="['auto','auto','auto','auto']"
                 data-height="['auto','auto','auto','auto']"
-                data-transform_idle="o:1;"
-                data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;"
-                data-transform_out="auto:auto;s:1000;"
-                data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
-                data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
-                data-start="1200"
-                data-splitin="none"
-                data-splitout="none"
-                data-responsive_offset="on"
-                style={{ zIndex: 9, whiteSpace: 'nowrap', fontSize: '50px', lineHeight: '50px', marginLeft: '-40px' }}
-              >
-                <img alt="logo" src={logo} width={70} height={50}/>
+                data-transform_idle="o:1;"				 
+                data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1300;e:Power2.easeOut;" 
+                data-transform_out="s:1300;e:Power3.easeInOut;s:1300;e:Power3.easeInOut;" 
+                data-start="1200" 
+                data-splitin="none" 
+                data-splitout="none" 
+                data-responsive_offset="on" 
+                style={{ zIndex: 9, whiteSpace: 'nowrap', fontSize: '25px', lineHeight: '25px' }}>
+                  <img alt="logo" src={logo} width={70} height={50}/>
+                </div>
+                <div class="tp-caption medium text-center" 
+                  data-x="center" 
+                  data-hoffset="" 
+                  data-y="center"  
+                  data-voffset="0" 
+                  data-width="['auto','auto','auto','auto']"
+                  data-height="['auto','auto','auto','auto']"
+                  data-transform_idle="o:1;"
+                  data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:1300;e:Power4.easeInOut;" 
+                  data-transform_out="s:1300;e:Power3.easeInOut;s:1300;e:Power3.easeInOut;" 
+                  // data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" 
+                  // data-transform_out="auto:auto;s:1000;" 
+                  data-start="1700" 
+                  data-splitin="none" 
+                  data-splitout="none" 
+                  data-responsive_offset="on" 
+                  style={{zIndex: 7, whiteSpace: 'nowrap', fontSize: '30px', lineHeight: '30px', marginTop: '65px', color: 'white'}}>
+                    The Nation's Leading Toxicology Laboratory 
               </div>
-              <div
-                class="tp-caption medium text-left"
-                data-x="50"
-                data-y="bottom"
-                data-voffset="310"
+
+              <div class="tp-caption medium text-center" 
+                data-x="center" 
+                data-hoffset="" 
+                data-y="center" 
+                data-voffset="['65','65','65','90']"
                 data-width="['auto','auto','auto','auto']"
                 data-height="['auto','auto','auto','auto']"
-                data-visibility="['on','on','on','off']"
-                data-transform_idle="o:1;"
-                data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;"
-                data-transform_out="auto:auto;s:1000;"
-                data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
-                data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
-                data-start="1700"
-                data-splitin="none"
-                data-splitout="none"
-                data-responsive_offset="on"
-                style={{ zIndex: 9, whiteSpace: 'nowrap', fontSize: '25px', lineHeight: '25px' }}
-              >
-                The Nation's Leading Toxicology Laboratory 
-              </div>
-              <div
-                class="tp-caption medium text-left"
-                data-x="50"
-                data-y="bottom"
-                data-voffset="250"
-                data-width="['auto','auto','auto','auto']"
-                data-height="['auto','auto','auto','auto']"
-                data-visibility="['on','on','on','off']"
-                data-transform_idle="o:1;"
-                data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;"
-                data-transform_out="auto:auto;s:1000;"
-                data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
-                data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
-                data-start="2100"
-                data-splitin="none"
-                data-splitout="none"
-                data-responsive_offset="on"
-                style={{ zIndex: 9, whiteSpace: 'nowrap', fontSize: '25px', lineHeight: '25px' }}
-              >
-                <Link to="/appointments" class="btn btn-white btn-large">
-                  Book an Appointment
-                </Link>
+                data-transform_idle="o:1;"				 
+                data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:1300;e:Power4.easeInOut;" 
+                data-transform_out="s:1300;e:Power3.easeInOut;s:1300;e:Power3.easeInOut;" 
+                data-start="2200" 
+                data-splitin="none" 
+                data-splitout="none" 
+                data-responsive_offset="on" 
+                style={{zIndex: 7, whiteSpace: 'nowrap', fontSize: '30px', lineHeight: '30px', marginTop: '65px'}}>
+                  <Link to="/appointments" class="btn btn-white btn-large">
+                      Book an Appointment
+                  </Link>
               </div>
             </li>
           </ul>

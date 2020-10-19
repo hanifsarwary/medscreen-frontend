@@ -112,7 +112,7 @@ class Header extends Component {
                     <Link to="/home">Home</Link>
                   </li>
                   <li>
-                    <Link>  Lab Services <span class="caret"></span> </Link>
+                    <a href="javaScript:;">  Lab Services <span class="caret"></span> </a>
                     <ul class="dropdown-menu">
                         { service !== undefined ?
                           service.map((labService, i) => {
@@ -125,12 +125,12 @@ class Header extends Component {
                     </ul>
                   </li>
                   <li>
-                    <Link to="/">Media</Link>
+                    <Link>Media</Link>
                   </li>
                   <li>
-                    <Link to="#">
+                    <a href="javaScript:;">
                       Resources <span class="caret"></span>
-                    </Link>
+                    </a>
                     <ul class="dropdown-menu">
                       <li>
                         <Link onClick={() => this.handleOpenDialog(0)}>Urine toxicology requisiition form</Link>
@@ -156,7 +156,7 @@ class Header extends Component {
                     </ul>
                   </li>
                   <li>
-                    <Link to="/">Contact Us</Link>
+                    <Link>Contact Us</Link>
                   </li>
                   <li>
                     <a href="http://medscreenlabs.labnexus.net/">Portal Login</a>

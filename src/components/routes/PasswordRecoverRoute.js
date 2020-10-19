@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
 import { PublicLayout } from 'components/layouts';
-import { validatePasswordResetToken } from 'services';
 
 const PasswordRecoverRoute = ({ component: Component, ...rest }) => (
 	<Route

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { DOMAIN, LOCAL_DOMAIN, USERS_ENDPOINTS } from 'config';
+import { LOCAL_DOMAIN, USERS_ENDPOINTS } from 'config';
 
 export const signUpUser = (data = {}) => {
 	let url = LOCAL_DOMAIN + USERS_ENDPOINTS.USERS_LIST_CREATE;
@@ -19,7 +19,7 @@ export const refreshToken = () => {
 	let data = {
 		refresh
 	}
-	return axios.post(url);
+	return axios.post(url, data);
 }
 
 export const validatePasswordResetToken = (data = {}) => {

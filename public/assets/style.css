@@ -2219,8 +2219,8 @@ video::-webkit-media-controls {
   height: auto;
 }
 .icon-m img {
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 80px;
 }
 .icon-s img {
   width: 70px;

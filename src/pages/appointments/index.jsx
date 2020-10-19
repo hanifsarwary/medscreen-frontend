@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Drawer from 'react-drag-drawer';
 import { css } from "emotion";
-import { CurrentDateString } from 'helpers';
 import BookAppointment from './bookAppointments/bookAppointment';
 import AppointmentHistory from './appointmentHistory/appointmentHistory';
 import PaymentPage from '../paymentMethod/PaymentPage';
@@ -16,7 +15,7 @@ import {
 } from 'pages/appointments/containers/actions';
 import { loaderOpenAction } from 'components/loaders/components';
 
-import { Banner } from 'helpers';
+// import { Banner } from 'helpers';
 
 class AppointmentsPage extends Component {
   constructor(props) {

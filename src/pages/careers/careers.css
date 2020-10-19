@@ -6,24 +6,26 @@
     margin: 15px 0px;
     border: 1px solid #d5d5d5;
     border-radius: 5px;
-    text-align: right;
+    text-align: center;
 }
 .card-header {
     width: 100%;
-    text-align: center;
     margin: 0px !important;
     padding: 8px 0px !important;
     color: #000000 !important;
     background-color: white !important;
 }
 .job-info {
-    padding: 0px 80px;
+    /* padding: 0px 80px; */
     text-align: left;
 }
 .job-description {
     padding: 10px 30px;
     text-align: justify;
     border-top: 1px solid #d5d5d5;
+    min-height: 270px;
+    max-height: 270px;
+    overflow-y: auto;
 }
 .job-description p {
     margin: 0 !important;
@@ -34,4 +36,10 @@
 }
 .btn-apply-now {
     margin: 15px 20px !important;
+}
+.lp-60 {
+    padding-left: 70px;
+}
+.tm-20 {
+    margin-top: 20px !important;
 }

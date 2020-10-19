@@ -11,6 +11,9 @@ export default function DrugConfirmationPanels(props) {
                 <div class="section-title text-center">
                   <h2>{category.name}</h2>
                   {/* <h3>We are here to serve you</h3> */}
+                  <p class="wow fadeIn" data-wow-duration="3s" data-wow-delay={0.5 + 's'} style={{fontSize: '16px'}}>
+                      {category.description}
+                  </p>
                 </div>
                 <div class="row" key={i}>
                   {
@@ -22,7 +25,16 @@ export default function DrugConfirmationPanels(props) {
                               <img src={beaker} alt="" />
                             </div>
                             <div class="col-sm-8 pl-0">
-                              <h4 className="tm30">{panel.panel_name}</h4>
+                              <h4 className="tm30 text-left">{panel.panel_name}</h4>
+                              <ul>
+                                {
+                                  panel.tests.map((test, i) => {
+                                    return (
+                                      <li key={i}>{test.title}</li>
+                                    )
+                                  })
+                                }
+                            </ul>
                             </div>
                           </div>
                         </div>

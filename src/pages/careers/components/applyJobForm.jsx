@@ -14,6 +14,7 @@ class ApplyJobForm extends Component {
             contact_no: '',
             cover_letter: '',
             resume: null,
+            selectedFile: null
         };
     }
 
@@ -22,15 +23,24 @@ class ApplyJobForm extends Component {
         this.setState({ [name]: value });
     };
 
+    onFileChange = event => { 
+        this.setState({ selectedFile: event.target.files[0] });
+    }; 
+
     handleSubmit = (event) => {
         event.preventDefault();
         const { first_name, last_name, email, contact_no, cover_letter } = this.state;
         console.log(first_name, last_name, email, contact_no, cover_letter);
-        const payload = {
-            first_name, last_name, email, contact_no, cover_letter
-        };
+
+        const formData = new FormData(); 
+        formData.append('resume', this.state.selectedFile); 
+        formData.append('first_name', first_name);
+        formData.append('last_name', last_name);
+        formData.append('email', email);
+        formData.append('contact_no', contact_no);
+        formData.append('cover_letter', cover_letter);
         this.props.loaderOpenAction();
-        this.props.applyForJobAction(payload, this.props.history);
+        this.props.applyForJobAction(formData, this.props.history);
     }
 
     render() {
@@ -38,7 +48,7 @@ class ApplyJobForm extends Component {
         return (
             <div className="container inner-appointment">
                 <div> <h3>Fill Application Form</h3></div>
-                <div className="container tm25">
+                <div className="container tm25 fade-apply">
                     <form onSubmit={this.handleSubmit}>
                         <div className="form-group">
                             <label htmlFor="first_name">First name</label>
@@ -60,7 +70,9 @@ class ApplyJobForm extends Component {
                             <label htmlFor="cover_letter">Cover letter</label>
                             <textarea name="cover_letter" value={cover_letter} id="cover_letter" cols="30" rows="5" onChange={this.handleChange}></textarea>
                         </div>
-
+                        <div className="form-group">
+                        <input type="file" className="form-control" onChange={this.onFileChange} /> 
+                        </div>
                         <button className="btn btn-primary pull-left" onClick={this.props.prevStep}>Previous</button>
                         <button type="submit" className="btn btn-primary pull-right mt-3 w-75">Apply</button>
                     </form>

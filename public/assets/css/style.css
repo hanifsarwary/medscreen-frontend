@@ -994,6 +994,12 @@ blockquote .small {
 .navbar .nav > li > .dropdown-menu:after {
   display: none;
 }
+/* .navbar .nav > li > .dropdown-menu:after {
+  display: block;
+} */
+.navbar .nav > li > a:hover + .dropdown-menu {
+  display: block !important; 
+}
 .navbar .dropdown-menu > li > a:hover,
 .navbar .dropdown-menu > li > a:focus,
 .navbar .dropdown-submenu:hover > a,
@@ -1322,12 +1328,13 @@ figure li a img {
 }
 figure a img {
   display: inline;
-  max-width: 65%;
+  max-width: 100%;
+  height: 220px;
 }
 figure a .overlay {
   opacity: 0;
   margin-top: 4px;
-  width: 65%;
+  width: 100%;
   height: 100%;
   position: absolute;
   text-decoration: none;
@@ -1375,6 +1382,7 @@ figure a .overlay .info span {
   display: table-cell;
   vertical-align: middle;
 }
+  
 figure a .overlay.icon .info span:before {
   font-family: 'fontello';
   content: '\f517';
@@ -2234,7 +2242,7 @@ video::-webkit-media-controls {
 }
 .icon-m img {
   width: 100px;
-  height: 100px;
+  height: 200px;
 }
 .icon-s img {
   width: 70px;
@@ -4232,4 +4240,7 @@ select {
 .sliderLogo {
   width: 150px !important;
   height: 150px !important;
+}
+.set-height {
+  height: 200px !important;
 }

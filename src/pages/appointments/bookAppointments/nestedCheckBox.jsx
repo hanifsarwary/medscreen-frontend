@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 
 export default class NestedCheckBox extends Component {
     render() {
-        const { categories, tests, selected_test } = this.props;
+        const { categories, selected_test } = this.props;
         return (   
             <div>   
                 {
@@ -46,28 +46,3 @@ export default class NestedCheckBox extends Component {
         )
     }
 }
-
-
-// {
-//     tests.map((item, i) => 
-//         <>
-//             <Accordion.Toggle eventKey={item.id}> 
-//                 <div className="checkboxes"> 
-                    // <input
-                    //     id={item.id}
-                    //     name={item.name}
-                    //     value={item.name}
-                    //     checked={categories.indexOf(item.name) > -1}
-                    //     onChange={this.handleCheckBox}
-                    //     type="checkbox"
-                    //     key={i}
-                    // />  {item.name}
-//                 </div>
-//             </Accordion.Toggle>
-//             <Accordion.Collapse eventKey={item.id}> 
-//                 <>Hi </>
-//             </Accordion.Collapse>
-//             <br/>
-//         </>
-//     )
-// }

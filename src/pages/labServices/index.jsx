@@ -28,7 +28,7 @@ class LabServicesPage extends Component {
         const { testsById } = this.props;
         return(
             <Fragment>
-                <Banner />
+                <Banner imgUrl={testsById.main_image}/>
                 <Description id={testsById.name} title={testsById.name} description={testsById.description ? testsById.description : ''} />
                 { <DrugScreeningPanels panel={testsById.panel ? testsById.panel : []}/> }
                 { testsById.children_categories ? <DrugConfirmationPanels chlidCategory={testsById.children_categories}/> : ''}
