@@ -11,6 +11,8 @@ class Media extends Component {
 
     render() {
         const { media } = this.props;
+        console.log('---------------');
+        console.log(media);
         return (
           <div class="dark-wrapper">
             <div class="container inner">
@@ -30,7 +32,7 @@ class Media extends Component {
                                 <span>View Media</span>
                               </div>
                             </div>
-                            <img src={value.media_image} alt="" />
+                            <img className="zoom" src={value.media_image} alt="" />
                           </a>
                         </figure>
                         <div class="post-content">

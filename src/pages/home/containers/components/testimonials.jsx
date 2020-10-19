@@ -12,86 +12,29 @@ export default function Testimonials(props) {
         </div>
         <div class="carousel-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.3s">
           <TestimonialsCarousel class="carousel">
-            <div class="item">
-              <div class="quote">
-                <blockquote>
-                  <p>
-                    Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam id dolor id nibh
-                    ultricies vehicula ut id elit. Cum sociis natoque penatibus et magnis.
-                  </p>
-                </blockquote>
-                <div class="author">
-                  <div class="icon">
-                    {' '}
-                    <img src="style/images/art/t1.jpg" alt="" />{' '}
+            {
+              props.reviews.length > 0 && props.reviews.map((item, i) => {
+                return (
+                  <div class="item" key={i}>
+                    <div class="quote">
+                      <blockquote>
+                          <p>{item.display_text}</p>
+                      </blockquote>
+                      <div class="author">
+                        <div class="icon">
+                          {' '}
+                          <img src="style/images/art/t1.jpg" alt="" />{' '}
+                        </div>
+                        <div class="info">
+                          <h5>{item.full_name}</h5>
+                          <span class="meta">{item.designation}</span>{' '}
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="info">
-                    <h5>Connor Gibson</h5>
-                    <span class="meta">Interface Designer</span>{' '}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="quote">
-                <blockquote>
-                  <p>
-                    Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean lacinia bibendum nulla
-                    sed consectetur. Nullam id dolor id nibh ultricies vehicula.
-                  </p>
-                </blockquote>
-                <div class="author">
-                  <div class="icon">
-                    {' '}
-                    <img src="style/images/art/t2.jpg" alt="" />{' '}
-                  </div>
-                  <div class="info">
-                    <h5>Barclay Widerski</h5>
-                    <span class="meta">Computer Engineer</span>{' '}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="quote">
-                <blockquote>
-                  <p>
-                    Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac consectetur ac,
-                    vestibulum at eros. Aenean lacinia bibendum nulla.{' '}
-                  </p>
-                </blockquote>
-                <div class="author">
-                  <div class="icon">
-                    {' '}
-                    <img src="style/images/art/t3.jpg" alt="" />{' '}
-                  </div>
-                  <div class="info">
-                    <h5>Nikolas Brooten</h5>
-                    <span class="meta">Sales Manager</span>{' '}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="quote">
-                <blockquote>
-                  <p>
-                    Maecenas sed diam eget risus varius blandit sit amet non magna. Vivamus sagittis lacus vel augue
-                    laoreet rutrum faucibus dolor auctor.{' '}
-                  </p>
-                </blockquote>
-                <div class="author">
-                  <div class="icon">
-                    {' '}
-                    <img src="style/images/art/t4.jpg" alt="" />{' '}
-                  </div>
-                  <div class="info">
-                    <h5>Coriss Ambady</h5>
-                    <span class="meta">Marketing Specialist</span>{' '}
-                  </div>
-                </div>
-              </div>
-            </div>
+                )
+              })
+            }
           </TestimonialsCarousel>
         </div>
       </div>

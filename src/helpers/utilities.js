@@ -22,8 +22,8 @@ export const CurrentDateString = () => {
 	return date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate();
 }
 
-export const Banner = () => (
+export const Banner = (props) => (
   <div>
-    <img style={{ width: '100%' }} src={banner} alt="" />
+    <img style={{ width: '100%'}} src={props.imgUrl ? props.imgUrl : banner } alt="" />
   </div>
 );

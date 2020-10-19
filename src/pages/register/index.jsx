@@ -61,7 +61,7 @@ class RegisterPage extends Component {
 	};
 
 	validateForm = () => {
-		const requiredFields = ['usermame', 'email', 'password', 'password_confirmation'];
+		// const requiredFields = ['usermame', 'email', 'password', 'password_confirmation'];
 	};
 
 	handleSubmit = () => {

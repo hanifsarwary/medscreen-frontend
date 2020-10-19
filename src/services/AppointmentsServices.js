@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { DOMAIN, LOCAL_DOMAIN, APPOINTMENTS_ENDPOINTS } from 'config';
+import { LOCAL_DOMAIN, APPOINTMENTS_ENDPOINTS } from 'config';
 
 export const getTimeSlots = (date) => {
 	let url = LOCAL_DOMAIN + APPOINTMENTS_ENDPOINTS.GET_TIME_SLOTS + '?date=' + date;
@@ -16,10 +16,8 @@ export const getTimeSlots = (date) => {
 
 export const getTests = () => {
 	let url = LOCAL_DOMAIN + APPOINTMENTS_ENDPOINTS.GET_CATEGORY;
-    let token = localStorage.getItem('access_token')
     const requestOptions = {
         method: 'GET',
-        // headers: {"Authorization" : `Bearer ${token}`},
         url
       };
     return axios(requestOptions);

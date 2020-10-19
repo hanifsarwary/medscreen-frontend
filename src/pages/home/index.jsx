@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
-import { whoWeAreDescriptionAction } from 'pages/careers/containers/actions';
+import { whoWeAreDescriptionAction,
+         userReviewAction,
+         callService } from 'pages/careers/containers/actions';
 import { loaderOpenAction } from 'components/loaders/components';
 
-import slide from 'assets/images/1.jpg';
 import Certifications from 'pages/home/containers/components/certifications';
 import ServicesList from 'pages/home/containers/components/services-list';
 import Testimonials from 'pages/home/containers/components/testimonials';
@@ -23,17 +24,18 @@ class HomePage extends Component {
 
 componentDidMount() {
     this.props.whoWeAreDescriptionAction();
+    this.props.userReviewAction();
+    this.props.callService();
 }
   render() {
-    
     return (
       <div class="content-wrapper">
         <TopSlider />
-        <Story />
-        <ServicesList />
+        <Story description={this.props.aboutUsDescription}/>
+        <ServicesList service={this.props.service}/>
         <Process />
-        <Testimonials />
-        <Media />
+        <Testimonials reviews={this.props.userReviews} />
+        <Media/>
         <Certifications />
       </div>
     );
@@ -42,13 +44,15 @@ componentDidMount() {
 
 
 const mapStateToProps = (state) => {
-  const { aboutUsDescription } = state.CAREERS;
-  return { aboutUsDescription };
+  const { aboutUsDescription, service, userReviews } = state.CAREERS;
+  return { aboutUsDescription, service, userReviews };
 };
 
 const mapDispatchToProps = {
   loaderOpenAction,
-  whoWeAreDescriptionAction
+  whoWeAreDescriptionAction,
+  userReviewAction,
+  callService
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

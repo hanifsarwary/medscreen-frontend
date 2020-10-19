@@ -124,8 +124,8 @@ class BookAppointment extends Component {
 
 
     render() {
-        const { time_slots, tests } = this.props;
-        const { step, open, appointment_date, categories, time_slot, selected_test } = this.state;
+        const { time_slots } = this.props;
+        const { step, open, appointment_date, categories, selected_test } = this.state;
         console.log(selected_test);
         switch(step) {
             case 1:

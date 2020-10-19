@@ -2,7 +2,8 @@ import { careersConstants } from 'pages/careers/constants';
 
 const initialState = {
   careersLits: [],
-  aboutUsDescription: []
+  aboutUsDescription: [],
+  userReviews: []
 };
 
 export const careersReducer = (state = initialState, action) => {
@@ -29,15 +30,32 @@ export const careersReducer = (state = initialState, action) => {
         ...state,
         error: action.error,
       };
-    case careersConstants.APPLY_FOR_JOB_SUCCESS:
+    case careersConstants.GET_APPLY_FOR_JOB_SUCCESS:
       return {
         ...state,
         error: null
       };
-    case careersConstants.APPLY_FOR_JOB_FAIURE:
+    case careersConstants.GET_APPLY_FOR_JOB_FAILURE:
       return {
         ...state,
         error: action.error,
+      };
+    case careersConstants.GET_REVIEW_SUCCESS:
+      return {
+        ...state,
+        error: null,
+        userReviews: action.data,
+      };
+    case careersConstants.GET_REVIEW_FAILURE:
+      return {
+        ...state,
+        error: action.error,
+      };
+    case careersConstants.SERVICE:
+      return {
+        ...state,
+        error: null,
+        service: action.service
       };
     default:
       return state;

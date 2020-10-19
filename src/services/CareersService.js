@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { DOMAIN, LOCAL_DOMAIN, CAREERS_ENDPOINTS } from 'config';
+import { LOCAL_DOMAIN, CAREERS_ENDPOINTS } from 'config';
 
 export const getCareersList = () => {
 	let url = LOCAL_DOMAIN + CAREERS_ENDPOINTS.CAREERS_LIST_GET;
@@ -26,6 +26,16 @@ export const applyForJob = (data = {}) => {
         method: 'POST',
         url,
         data
+      };
+
+      return axios(requestOptions);
+};
+
+export const getUserReview = () => {
+	let url = LOCAL_DOMAIN + CAREERS_ENDPOINTS.USER_REVIEW;
+    const requestOptions = {
+        method: 'GET',
+        url
       };
 
       return axios(requestOptions);

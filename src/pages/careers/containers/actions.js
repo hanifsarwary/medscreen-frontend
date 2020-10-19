@@ -1,6 +1,8 @@
 import { careersConstants } from 'pages/careers/constants';
 import { loaderConstants } from 'components/loaders/constants';
-import { getCareersList, getWhoWeAreDescription, applyForJob } from 'services';
+import { 
+    getCareersList, getWhoWeAreDescription,
+    applyForJob, getTests, getUserReview } from 'services';
 
 export const getCareerListAction = () => {
   return (dispatch) => {
@@ -30,7 +32,7 @@ export const whoWeAreDescriptionAction = () => {
   return (dispatch) => {
     getWhoWeAreDescription()
       .then((response) => {
-        let data = response.data.results;
+        let data = response.data.text;
         Promise.resolve(
           dispatch({
             type: careersConstants.GET_DESCRIPTION_SUCCESS,
@@ -56,7 +58,7 @@ export const applyForJobAction = (data, history) => {
       .then((response) => {
         Promise.resolve(
           dispatch({
-            type: careersConstants.APPLY_FOR_JOB_SUCCESS,
+            type: careersConstants.GET_APPLY_FOR_JOB_SUCCESS,
           })
         );
         dispatch({ type: loaderConstants.LOAD_END });
@@ -66,9 +68,49 @@ export const applyForJobAction = (data, history) => {
         dispatch({ type: loaderConstants.LOAD_END });
         debugger;
         dispatch({
-          type: careersConstants.APPLY_FOR_JOB_FAIURE,
+          type: careersConstants.GET_APPLY_FOR_JOB_FAILURE,
           error: error.message,
         });
       });
   };
 };
+
+export const callService = () => {
+	return dispatch => {
+		getTests().then(res => {
+			localStorage.setItem('services', JSON.stringify(res.data.results))
+			Promise.resolve(
+				dispatch({
+					type: careersConstants.SERVICE,
+					service: res.data.results
+				})
+			)
+		})
+	};
+}
+
+export const userReviewAction = () => {
+  return (dispatch) => {
+    getUserReview()
+      .then((response) => {
+        let data = response.data.results;
+
+        Promise.resolve(
+          dispatch({
+            type: careersConstants.GET_REVIEW_SUCCESS,
+            data,
+          })
+        );
+        dispatch({ type: loaderConstants.LOAD_END });
+      })
+      .catch((error) => {
+        dispatch({ type: loaderConstants.LOAD_END });
+        debugger;
+        dispatch({
+          type: careersConstants.GET_REVIEW_FAILURE,
+          error: error.message,
+        });
+      });
+  };
+}
+

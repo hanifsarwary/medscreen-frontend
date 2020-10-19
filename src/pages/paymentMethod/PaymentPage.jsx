@@ -13,13 +13,8 @@ import 'react-square-payment-form/lib/default.css'
 import './PaymentPage.css';
 
 import {
-  TextField
-} from '@material-ui/core';
-
-import {
   updateAppointmentPaymentStatus
 } from 'pages/appointments/containers/actions';
-import appointments from 'pages/appointments';
 
 const APPLICATION_ID = 'sandbox-sq0idb-aLZmsFDNMH8mnlhisjzeFA';
 const LOCATION_ID = 'LG93JSK02XFSK';

@@ -17,7 +17,9 @@ const APPOINTMENTS_ENDPOINTS = {
 const CAREERS_ENDPOINTS = {
 	CAREERS_LIST_GET: 'api/v1/careers/',
 	WHO_WE_ARE_GET: 'api/v1/who-we-are/',
-	APPLY_FOR_JOB: 'api/v1/job-applications/'
+	APPLY_FOR_JOB: 'api/v1/job-applications/',
+	USER_REVIEW: 'api/v1/user-reviews/'
+
 };
 const MEDIA_ENDPOINTS = {
 	GET_MEDIA: 'api/v1/media/',

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { DOMAIN, LOCAL_DOMAIN, MEDIA_ENDPOINTS } from 'config';
+import { LOCAL_DOMAIN, MEDIA_ENDPOINTS } from 'config';
 
 export const getMedia = () => {
 	let url = LOCAL_DOMAIN + MEDIA_ENDPOINTS.GET_MEDIA;

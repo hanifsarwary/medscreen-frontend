@@ -14,14 +14,17 @@ export default function Story(props) {
 
           <div class="row">
             <div class="col-sm-6 col-sm-offset-1 col-md-10 ">
-              {lines.map((value, index) => {
+              <p class="wow fadeIn" data-wow-duration="3s" data-wow-delay={0.4 + 's'} style={{fontSize: '16px'}}>
+                    {props.description}
+              </p>
+              {/* {lines.map((value, index) => {
                 delay += 0.4;
                 return (
                   <p class="wow fadeIn" data-wow-duration="3s" data-wow-delay={delay + 's'} style={{fontSize: '16px'}} key={index}>
                     {value}
                   </p>
                 );
-              })}
+              })} */}
             </div>
           </div>
         </div>

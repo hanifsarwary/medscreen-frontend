@@ -1,9 +1,7 @@
 import React from 'react';
-import dropper from 'assets/images/icons/icon1.svg';
-import beaker from 'assets/images/icons/icon2.svg';
-import testTube from 'assets/images/icons/icon3.svg';
 
 export default function ServicesList(props) {
+  console.log(props);
   return (
     <div class="light-wrapper" id="drug-testing">
       <div class="container inner">
@@ -12,20 +10,34 @@ export default function ServicesList(props) {
           <h3>We are here to serve you</h3>
         </div>
         <div class="row">
-          <div class="col-sm-6 col-md-6 wow fadeIn" data-wow-duration="1.5s" data-wow-delay="0.5s">
-            <div class="feature">
-              <div class="icon icon-m">
-                {' '}
-                <img src={dropper} alt="" />{' '}
+          {
+            props.service && props.service.map((item, i) => {
+              return (
+                <div key={i} class="col-sm-6 col-md-6 wow fadeIn" data-wow-duration="1.5s" data-wow-delay="0.5s">
+                  <div class="feature">
+                    <div class="icon icon-m">
+                      {' '}
+                      <img src={item.icon_image} alt="" />{' '}
+                    </div>
+                    <h4>{item.alias_name}</h4>
+                    <p>
+                      {item.secondary_description}
+                      {' '}
+                    </p>
+                  </div>
               </div>
-              <h4>Toxicology</h4>
-              <p>
-                Through the use of Enzyme-immunoassay (EIA) methodology, our instruments detect whether the target drug
-                is present in the patient sample. It is reported qualitatively as positive or negative.{' '}
-              </p>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-6 wow fadeIn" data-wow-duration="1.5s" data-wow-delay="1.0s">
+              )
+            })
+          }
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+
+{/* <div class="col-sm-6 col-md-6 wow fadeIn" data-wow-duration="1.5s" data-wow-delay="1.0s">
             <div class="feature">
               <div class="icon icon-m">
                 {' '}
@@ -65,9 +77,4 @@ export default function ServicesList(props) {
                 by our certified toxicologist.
               </p>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+          </div> */}
