@@ -30,13 +30,19 @@ componentDidMount() {
   render() {
     return (
       <div class="content-wrapper">
-        <TopSlider />
+        <section id="silder">
+          <TopSlider />
+        </section>
         <Story description={this.props.aboutUsDescription}/>
         <ServicesList service={this.props.service}/>
         <Process />
         <Testimonials reviews={this.props.userReviews} />
-        <Media/>
-        <Certifications />
+        <section id="media">
+          <Media />
+        </section>
+        <section id="contact">
+          <Certifications />
+        </section>
       </div>
     );
   }

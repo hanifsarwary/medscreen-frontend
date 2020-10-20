@@ -991,15 +991,16 @@ blockquote .small {
 .navbar .dropdown-menu li a.active {
   color: #fff !important;
 }
-.navbar .nav > li > .dropdown-menu:after {
+/* .navbar .nav > li > .dropdown-menu:after {
   display: none;
-}
+} */
 /* .navbar .nav > li > .dropdown-menu:after {
   display: block;
 } */
-.navbar .nav > li > a:hover + .dropdown-menu {
+.navbar .nav > li:hover > .dropdown-menu {
   display: block !important; 
 }
+
 .navbar .dropdown-menu > li > a:hover,
 .navbar .dropdown-menu > li > a:focus,
 .navbar .dropdown-submenu:hover > a,
@@ -2242,7 +2243,11 @@ video::-webkit-media-controls {
 }
 .icon-m img {
   width: 100px;
-  height: 200px;
+  height: 100px;
+}
+.icon-certificate img {
+  width: 75% !important;
+  height: 150px !important;
 }
 .icon-s img {
   width: 70px;

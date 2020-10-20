@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function ServicesList(props) {
-  console.log(props);
   return (
     <div class="light-wrapper" id="drug-testing">
       <div class="container inner">
