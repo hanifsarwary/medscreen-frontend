@@ -8,49 +8,26 @@ import ApplyJobForm from './components/applyJobForm';
 import './careers.css';
 
 class CareerPage extends Component {
-    state = {
-        step: 1,
-    }
-    nextStep = () => {
-        const { step } = this.state;
-        this.setState({ step: step + 1 });
-        window.open(this.props.match.url + '?step=2', "_blank")
+
+    applyJob = () => {
+        window.open('/apply-for-job', "_blank")
     }
 
-    prevStep = () => {
-        const { step } = this.state;
-        this.setState({ step: step - 1 });
-    }
     componentDidMount() {
         this.props.getCareerListAction();
-        const step = this.props.location.search ? this.props.location.search.split('=')[1] : 0;
-        if (step) {
-            this.setState({
-                step: Number(step)
-            })
-        }
     }
 
-
     render() {
-        const { step } = this.state;
-        switch(step) {
-            case 1:
-                return (
-                    <div className="container inner-appointment">
-                        <div className="career-heading"> <h1>Careers</h1></div>
-                        {
-                            this.props.careersLits ? 
-                                <CareerJobList nextStep={this.nextStep} jobList={this.props.careersLits}/>
-                            : ''
-                        }
-                    </div>
-                )
-            case 2:
-                return (
-                    <ApplyJobForm prevStep={this.prevStep}/>
-                )
-        }
+        return (
+            <div className="container inner-appointment">
+                <div className="career-heading"> <h1>Careers</h1></div>
+                {
+                    this.props.careersLits ? 
+                        <CareerJobList nextStep={this.applyJob} jobList={this.props.careersLits}/>
+                    : ''
+                }
+            </div>
+        )
     }
 }
 

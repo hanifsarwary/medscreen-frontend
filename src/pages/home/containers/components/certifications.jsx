@@ -20,37 +20,37 @@ export default function Certifications(props) {
         <div class="carousel-wrapper">
           <TestimonialsCarousel class="row">
             <div class="item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.0s">
-              <div class="icon icon-m bm10" >
+              <div class="icon icon-certificate bm10" >
                 {' '}
-                <img src={cert1} alt="" />{' '}
+                <img src={cert1} alt="" width=""/>{' '}
               </div>
             </div>
             <div class="item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
-              <div class="icon icon-m bm10">
+              <div class="icon icon-certificate  bm10">
                 {' '}
                 <img src={cert2} alt="" />{' '}
               </div>
             </div>
             <div class="item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">
-              <div class="icon icon-m bm10">
+              <div class="icon icon-certificate  bm10">
                 {' '}
                 <img src={cert3} alt="" />
               </div>
             </div>
             <div class="item">
-              <div class="icon icon-m bm10">
+              <div class="icon icon-certificate  bm10">
                 {' '}
                 <img src={cert4} alt="" />{' '}
               </div>
             </div>
             <div class="item">
-              <div class="icon icon-m bm10">
+              <div class="icon icon-certificate  bm10">
                 {' '}
                 <img src={cert5} alt="" />{' '}
               </div>
             </div>
             <div class="item">
-              <div class="icon icon-m bm10">
+              <div class="icon icon-certificate  bm10">
                 {' '}
                 <img src={cert6} alt="" />{' '}
               </div>

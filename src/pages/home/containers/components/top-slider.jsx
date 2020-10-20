@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import logo from 'assets/videos/logo-video.mp4';
 import logo from 'assets/images/icons/animatedLogo.gif';
-import slide from 'assets/images/1.jpg';
 import HomeB from 'assets/images/hb.png';
 
 class TopSlider extends Component {

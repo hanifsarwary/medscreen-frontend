@@ -30,7 +30,6 @@ class ApplyJobForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         const { first_name, last_name, email, contact_no, cover_letter } = this.state;
-        console.log(first_name, last_name, email, contact_no, cover_letter);
 
         const formData = new FormData(); 
         formData.append('resume', this.state.selectedFile); 
@@ -52,28 +51,27 @@ class ApplyJobForm extends Component {
                     <form onSubmit={this.handleSubmit}>
                         <div className="form-group">
                             <label htmlFor="first_name">First name</label>
-                            <input name="first_name" value={first_name} onChange={this.handleChange} className="form-control" type="text" placeholder="First name"/>
+                            <input name="first_name" required value={first_name} onChange={this.handleChange} className="form-control" type="text" placeholder="First name"/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="last_name">Last name</label>
-                            <input name="last_name" value={last_name} onChange={this.handleChange} className="form-control" type="text" placeholder="Last name"/>
+                            <input name="last_name" required value={last_name} onChange={this.handleChange} className="form-control" type="text" placeholder="Last name"/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
-                            <input name="email" value={email} onChange={this.handleChange} className="form-control" type="email" placeholder="Email"/>
+                            <input name="email" required value={email} onChange={this.handleChange} className="form-control" type="email" placeholder="Email"/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="contact_no">Contact no</label>
-                            <input name="contact_no" value={contact_no} onChange={this.handleChange} className="form-control" type="text" placeholder="Contact no"/>
+                            <input name="contact_no" required value={contact_no} onChange={this.handleChange} className="form-control" type="text" placeholder="Contact no"/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="cover_letter">Cover letter</label>
-                            <textarea name="cover_letter" value={cover_letter} id="cover_letter" cols="30" rows="5" onChange={this.handleChange}></textarea>
+                            <textarea name="cover_letter" required value={cover_letter} id="cover_letter" cols="30" rows="5" onChange={this.handleChange}></textarea>
                         </div>
                         <div className="form-group">
-                        <input type="file" className="form-control" onChange={this.onFileChange} /> 
+                            <input type="file" required className="form-control" onChange={this.onFileChange} /> 
                         </div>
-                        <button className="btn btn-primary pull-left" onClick={this.props.prevStep}>Previous</button>
                         <button type="submit" className="btn btn-primary pull-right mt-3 w-75">Apply</button>
                     </form>
                 </div>
