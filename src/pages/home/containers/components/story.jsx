@@ -14,9 +14,9 @@ export default function Story(props) {
 
           <div class="row">
             <div class="col-sm-6 col-sm-offset-1 col-md-10 ">
-              <p class="wow fadeIn" data-wow-duration="3s" data-wow-delay={0.4 + 's'} style={{fontSize: '16px'}}>
-                    {props.description}
-              </p>
+                <p class="wow fadeIn" data-wow-duration="3s" data-wow-delay={0.4 + 's'} style={{fontSize: '16px'}} dangerouslySetInnerHTML={{ __html: props.description }}>
+                  {/* {props.description} */}
+                </p>
               {/* {lines.map((value, index) => {
                 delay += 0.4;
                 return (

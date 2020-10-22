@@ -10,7 +10,7 @@ export default class SelectPanel extends Component {
                 { this.props.selected_options.map((item, i) => {
                     return (
                         <tr key={i}>
-                        <td class="text-capitalize font-weight-bold fade-apply">{item.label} <b class="pl-4">({item.parent_label})</b>
+                        <td class="text-capitalize font-weight-bold fade-apply">{item.label}
                             <ul>
                             {
                                 item.panel_test.map((test, i) => {
@@ -21,7 +21,7 @@ export default class SelectPanel extends Component {
                             }
                             </ul>
                         </td>
-                        <td class="text-capitalize">{item.price}</td>
+                        <td class="text-capitalize"><span onClick={() => this.props.handleremoveItem(item.value)}><i class="icon-cancel"></i></span></td>
                         </tr>
                     )
                     })
@@ -30,11 +30,41 @@ export default class SelectPanel extends Component {
                 <tfoot>
                     <tr>
                     <th>Total Bill</th>
-                    <th>{ this.props.selected_options.reduce( (sum, item) => sum + item.price, 0 ) }</th>
+                    <th>{countBillValue(this.props.selected_options)}</th>
                     </tr>
                 </tfoot>
                 </table>
             </div>
         )
+    }
+}
+
+
+const countBillValue = (obj) => {
+    return obj.reduce( (sum, item) => {
+        if(item.price_type === 'RANGE') {
+            const count = obj.filter((obj) => obj.price_type === 'RANGE').length;
+            return countBillForRangeTypeTest(count, item)
+        } else {
+           return  sum + item.price_handle.price
+        }
+    }, 0 )
+}
+
+const countBillForRangeTypeTest = (count, item) => {
+    
+    if (count >= 8 && count <= 14) { 
+        return item.price_handle.start_price + item.price_handle.interval_price; 
+    }
+    else if (count >= 15 && count <= 21) { 
+        return item.price_handle.start_price + (item.price_handle.interval_price * 2); 
+    }
+    else if (count >= 22 && count <= 28) { 
+        return item.price_handle.start_price + (item.price_handle.interval_price * 3); 
+    }
+    else if (count >= 29) { 
+        return item.price_handle.start_price + (item.price_handle.interval_price * 4); 
+    } else {
+        return item.price_handle.start_price; 
     }
 }

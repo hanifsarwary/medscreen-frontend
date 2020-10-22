@@ -22,7 +22,11 @@ class Header extends Component {
   }
 
   handleOpenDialog = (index) => {
-    window.open("/resources/" + index + '/' + true, "_blank")
+    // window.open("/resources/" + index + '/' + true, "_blank")
+    this.setState({
+      visible: true,
+      index: index,
+    });
   }
 
   handleCloseDialog = () => {
@@ -41,7 +45,7 @@ class Header extends Component {
   const { index, visible } = this.state;
     return (
       <Fragment>
-        
+        <Resources handleClose={this.handleCloseDialog} index={Number(this.state.index)} visible={this.state.visible} />
         <div class="content-wrapper">
           <div class="navbar navbar-default default header2" role="navigation">
             <div class="top-bar">
@@ -114,7 +118,11 @@ class Header extends Component {
                         { service !== undefined ?
                           service.map((labService, i) => {
                             return (
-                              <li key={i}> <Link to={"/services/" + labService.id}>{labService.name}</Link>  </li>
+                              <li key={i}> {
+                                labService.is_display ? 
+                                <Link to={"/services/" + labService.id}>{labService.name}</Link> : ''
+                              }
+                              </li>
                             )
                           })
                           : ''
@@ -122,15 +130,13 @@ class Header extends Component {
                     </ul>
                   </li>
                   <li>
-                    <HashLink to="/home#media">Media</HashLink>
-                  </li>
-                  <li>
                     <Link>
                       Resources <span class="caret"></span>
                     </Link>
                     <ul class="dropdown-menu">
                       <li>
-                        <Link to={"/resources/" + 0 + '/' + true} target="_blank">Urine toxicology requisiition form</Link>
+                      {/* to={"/resources/" + 0 + '/' + true} target="_blank" */}
+                        <Link onClick={() => this.handleOpenDialog(0)}>Urine toxicology requisiition form</Link>
                       </li>
                       <li>
                         <Link onClick={() => this.handleOpenDialog(1)}>Oral fluid toxicology requisiition form</Link>
@@ -153,11 +159,13 @@ class Header extends Component {
                     </ul>
                   </li>
                   <li>
-                    {/* <a href="#contact">Contact Us</a> */}
-                    <HashLink to="/home#contact">Contact Us</HashLink>
+                    <HashLink to="/home#media">Media</HashLink>
                   </li>
                   <li>
                     <Link to="/careers">Careers</Link>
+                  </li>
+                  <li>
+                    <HashLink to="/home#contact">Contact Us</HashLink>
                   </li>
                   <li>
                     <a href="http://medscreenlabs.labnexus.net/">Portal Login</a>

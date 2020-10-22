@@ -33,10 +33,18 @@ componentDidMount() {
         <section id="silder">
           <TopSlider />
         </section>
-        <Story description={this.props.aboutUsDescription}/>
-        <ServicesList service={this.props.service}/>
-        <Process />
-        <Testimonials reviews={this.props.userReviews} />
+        <section id="story">
+          <Story description={this.props.aboutUsDescription}/>
+        </section>
+        <section id="sevice">
+          <ServicesList service={this.props.service}/>
+        </section>
+        <section className="tm20" id="process">
+          <Process />
+        </section>
+        <section className="tm20" id="testimation">
+          <Testimonials reviews={this.props.userReviews} />
+        </section>
         <section id="media">
           <Media />
         </section>

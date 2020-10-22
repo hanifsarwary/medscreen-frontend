@@ -184,7 +184,7 @@ footer {
 body,
 li,
 address {
-  line-height: 24px;
+  /* line-height: 24px; */
 }
 input,
 button,
@@ -195,7 +195,7 @@ textarea {
   /* color: inherit !important; */
 }
 p {
-  margin: 0 0 20px;
+  /* margin: 0 0 20px; */
 }
 a {
   color: #25b7d3;
@@ -2222,7 +2222,6 @@ video::-webkit-media-controls {
 /*	19. FEATURES
 /*-----------------------------------------------------------------------------------*/
 .feature {
-  padding: 0 0 0 105px;
   position: relative;
   margin-bottom: 30px;
 }
@@ -2234,7 +2233,8 @@ video::-webkit-media-controls {
 }
 .feature .icon,
 .feature figure {
-  position: absolute;
+  padding: 0 0px;
+  /* position: absolute; */
   left: 0;
 }
 .feature figure img {
@@ -2242,8 +2242,9 @@ video::-webkit-media-controls {
   height: auto;
 }
 .icon-m img {
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: auto;
+  /* margin-bottom: 30px !important; */
 }
 .icon-certificate img {
   width: 75% !important;
@@ -2631,7 +2632,7 @@ video::-webkit-media-controls {
 .table > tfoot > tr > td {
   padding: 5px 0;
   line-height: 1;
-  vertical-align: top;
+  /* vertical-align: middle; */
 }
 .pricing .table > tbody > tr > td {
   border: 0;
@@ -3495,7 +3496,7 @@ select {
   margin-right: 50px;
 }
 .lm0 {
-  margin-left: 0px !important;
+  margin-left: 0px;
 }
 .lm1 {
   margin-left: 1px;
@@ -3576,7 +3577,7 @@ select {
   padding-top: 5px;
 }
 .tp10 {
-  padding-top: 10px !important;
+  padding-top: 10px;
 }
 .tp20 {
   padding-top: 20px;
@@ -3613,9 +3614,6 @@ select {
 }
 .tm40 {
   margin-top: 40px;
-}
-.tm60 {
-  margin-top: 60px !important;
 }
 .mbm1 {
   margin-bottom: -1px;
@@ -4072,10 +4070,10 @@ select {
 .checklist > .table > tbody > tr > td,
 .checklist > .table > tfoot > tr > th {
   border-bottom: 1px solid #ccc;
-  padding-top: 15px !important;
-  padding: 8px 13px;
+  padding-top: 20px !important;
+  padding: 15px 13px;
   font-size: 14px !important;
-  height: 38px;
+  /* height: 38px; */
 }
 /*-----------------------------------------------------------------------------------*/
 /*	29. Current Appointment
@@ -4219,7 +4217,6 @@ select {
 
 .appointment-form-margin {
   min-height: 110px;
-
 }
 .select-category {
   padding-left: 45px;

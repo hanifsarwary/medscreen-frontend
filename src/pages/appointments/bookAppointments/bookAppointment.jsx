@@ -10,6 +10,7 @@ import {
   } from 'pages/appointments/containers/actions';
 import { loaderOpenAction } from 'components/loaders/components';
 import NestedCheckBox from './nestedCheckBox';
+import { rangeTypeAction } from 'helpers';
 
 class BookAppointment extends Component {
 
@@ -22,7 +23,9 @@ class BookAppointment extends Component {
         selected_options: [],
         selected_test: [],
         categories: [],
-        open: true
+        open: true,
+        totat_bill: 0,
+        bill_array: []
     }
 
     nextStep = () => {
@@ -32,7 +35,10 @@ class BookAppointment extends Component {
 
     prevStep = () => {
         const { step } = this.state;
-        this.setState({ step: step - 1 });
+        this.setState({ 
+            step: step - 1,
+            totat_bill: 0
+         });
     }
 
     getTimeSlots = (event) => {
@@ -46,7 +52,7 @@ class BookAppointment extends Component {
     handleChange = (event) => {
         const { name, value } = event.target;
         this.setState({ [name]: value, open: false });
-      };
+    };
 
       
     handleCheckBox = (e) => {
@@ -81,8 +87,7 @@ class BookAppointment extends Component {
         } 
         else {
             newSelectionArray = [...this.state.categories, newSelection];
-            newSelectTest = [...this.state.selected_test, this.state.selected_test.map(test => 
-                test.children_categories !== null && test.children_categories.filter((match) =>  match.name === newSelection)[0])[0]]
+            newSelectTest = [...this.state.selected_test, getObjById(this.props.tests, newSelection)]
         }
         
         this.setState(prevState => ({
@@ -92,40 +97,56 @@ class BookAppointment extends Component {
         }));
     }
 
-    handleTestOption = (options) => {
-        if (options === null) {
+    handleTestOptionValue = (option) => {
+        if (option === null) {
           this.setState({
             selected_options: [],
             test: [],
             appointment_date: '',
           })
         } else {
-          this.setState({
-            selected_options: options,
-            test: options.map(item => {
-              return item.value
+            const selected_option = this.state.selected_options.concat(option);
+            this.setState({
+                selected_options: [...new Map(selected_option.map(item => [item['value'], item])).values()]
             })
-          })
         }
     };
+
+    removeItem = (id) => {
+        this.setState({
+        selected_options: this.state.selected_options.filter(item=>item.value !=id )
+        })
+    }
+
+    getTestBill = () => {
+        const { step } = this.state;
+        const selected_option = this.state.selected_options;
+        const withRange = selected_option.filter((obj) => obj.price_type === 'RANGE');
+        const withOutRange = selected_option.filter((obj) => obj.price_type === 'CONVENTIONAL');
+        this.setState({
+            totat_bill: rangeTypeAction(withRange) + withOutRange.reduce( (sum, item) => sum + item.price_handle.price , 0),
+            step: step + 1
+        })
+    }
 
     handleSubmit = () => {
         const { test, appointment_date, time_slot, comments, selected_options } = this.state;
         const payload = {
-          panels: test,
+          panels: selected_options.map(item => { return item.value  }),
           appointment_date,
           time_slot: parseInt(time_slot),
           comments,
-          total_price: selected_options.reduce((sum, item) => sum + item.price, 0)   
+          total_price: this.state.totat_bill  
         };
         this.props.loaderOpenAction();
         this.props.createAppointmentAction(payload, this.props.history);
-      };
+    };
 
 
     render() {
         const { time_slots } = this.props;
         const { step, open, appointment_date, categories, selected_test } = this.state;
+        // console.log('bill_array', this.state.bill_array);
         switch(step) {
             case 1:
                 return (
@@ -148,17 +169,50 @@ class BookAppointment extends Component {
                         <>
                         {
                             categories.length > 0 ?
-                                <SelecCategory selected_options={this.state.selected_options}  tests={selectorObj(selected_test)} handleTestOption={this.handleTestOption}/>
+                            <div>
+                                {
+                                    (seprateCategory(selected_test)).map((item, i) => {
+                                        return (
+                                            <div className="row" key={i}> {
+                                                item.panel_options.length > 0 ?
+                                                <SelecCategory handleRemoveItem={this.removeItem} selected_options={this.state.selected_options}  tests={item} handleTestOptionValue={this.handleTestOptionValue}/> : ''
+                                            }
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
                                 :
                                 <div className="user-message fade-apply set-margin-bottom">
                                     Please Select Category
                                 </div>
                             }
                             <button className="btn btn-primary pull-left" onClick={this.prevStep}>Previous</button>
-                            <button className="btn btn-primary pull-right" disabled={categories.length > 0 ? false : true} onClick={this.nextStep}>Next</button>
+                            <button className="btn btn-primary pull-right" disabled={categories.length > 0 ? false : true} onClick={this.getTestBill}>Next</button>
                         </>
                 )
             case 3:
+                return (
+                    <div>
+                            {
+                                this.state.selected_options.length > 0 ?
+                                    <div className="checklist forms-field fade-apply">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Grand Bill</th>
+                                                    <th>{this.state.totat_bill}</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div> 
+                                : ''
+                            }
+                            <button className="btn btn-primary pull-left" onClick={this.prevStep}>Previous</button>
+                            <button className="btn btn-primary pull-right" disabled={categories.length > 0 ? false : true} onClick={this.nextStep}>Next</button>
+                    </div>
+                )
+            case 4:
                 return ( 
                     <div class="appointment-form-margin">
                         {
@@ -236,27 +290,82 @@ const mapStateToProps = (state) => {
   export default connect(mapStateToProps, mapDispatchToProps)(BookAppointment);
 
 
-    const selectorObj = (obj) => {
+const selectorObj = (obj) => {
     
-        return obj.map(item =>
-          item
-            ? {
-                label: item.name,
-                value: item.id,
-                options: item.panel.map(sub_item => {
-                  return sub_item
-                  ? {
-                    label: sub_item.panel_name,
-                    value: sub_item.id,
-                    price: sub_item.price,
-                    parent_label: item.name,
-                    parent_id: item.id,
-                    panel_test: sub_item.tests
-                  }
-                  : sub_item
-                })
-              }
-            : item
-        );
+    return obj.map(item =>
+        item
+        ? {
+            label: item.name,
+            value: item.id,
+            options: item.panel.map(sub_item => {
+                return sub_item
+                ? {
+                label: sub_item.panel_name,
+                value: sub_item.id,
+                price: sub_item.price,
+                parent_label: item.name,
+                parent_id: item.id,
+                panel_test: sub_item.tests
+                }
+                : sub_item
+            })
+            }
+        : item
+    );
       
+  }
+
+  const seprateCategory = (obj) => {
+    return obj.map(item =>
+        item
+        ? {
+            panel_name : item.name,
+            panel_options: item.panel && item.panel.map(sub_item => {
+                        return sub_item
+                        ? {
+                        label: sub_item.panel_name,
+                        value: sub_item.id,
+                        panel_test: sub_item.tests,
+                        price_type : item.price_type,
+                        price_handle: item.price_type === 'RANGE' ? {
+                            interval_count: item.interval_count,
+                            interval_price: item.interval_price,
+                            start_price: item.start_price
+                        } : {
+                            price: sub_item.price,
+                        },
+                        }
+                        : sub_item
+                    })
+                
+            }
+        : item
+    );
+      
+  }
+
+  const getObjById = (categories, value) => {
+      for (const category of categories) {
+          if(category.children_categories !== null) {
+              for (const sub_category of category.children_categories) {
+                  if(sub_category.name === value) {
+                      return sub_category;
+                  }
+              }
+          }
+      }
+  }
+
+  const getBill = () => {
+
+    if(localStorage.getItem('range_type_bill') &&  localStorage.getItem('con_type_bill')) {
+        return  Number(localStorage.getItem('range_type_bill')) + Number(localStorage.getItem('con_type_bill'))
+    } else {
+        if(localStorage.getItem('range_type_bill')) {
+            return Number(localStorage.getItem('range_type_bill'))
+        } else {
+            return Number(localStorage.getItem('con_type_bill'))
+        }
+    }
+
   }

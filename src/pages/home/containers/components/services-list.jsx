@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function ServicesList(props) {
   return (
@@ -8,21 +9,21 @@ export default function ServicesList(props) {
           <h2>Our Services</h2>
           <h3>We are here to serve you</h3>
         </div>
-        <div class="row">
+        <div class="row lm0">
           {
             props.service && props.service.map((item, i) => {
               return (
-                <div key={i} class="col-sm-6 col-md-6 wow fadeIn" data-wow-duration="1.5s" data-wow-delay="0.5s">
-                  <div class="feature">
-                    <div class="icon icon-m">
-                      {' '}
-                      <img src={item.icon_image} alt="" />{' '}
+                <div key={i} className="col-sm-6 col-md-6 wow fadeIn" data-wow-duration="1.5s" data-wow-delay="0.5s">
+                  <div className="row lm0">
+                    <div className="col-sm-3">
+                       <div className="icon icon-m fit-img tm25">
+                          <img className="" src={item.icon_image} alt="" />
+                       </div>
                     </div>
-                    <h4>{item.alias_name}</h4>
-                    <p>
-                      {item.secondary_description}
-                      {' '}
-                    </p>
+                    <div className="col-sm-9">
+                      <Link to={"/services/" + item.id}><h4 className="tm30">{item.alias_name}</h4></Link>
+                      <p> {item.secondary_description} </p>
+                    </div>
                   </div>
               </div>
               )

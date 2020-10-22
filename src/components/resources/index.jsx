@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import Rodal from 'rodal';
 
 import urineForm from 'assets/pdfs/urineToxicologyRequisitionForm.pdf';
@@ -28,4 +29,4 @@ class Resources extends Component {
   }
 }
 
-export default Resources;
+export default withRouter(Resources);
