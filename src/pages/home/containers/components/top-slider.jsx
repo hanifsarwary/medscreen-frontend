@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import logo from 'assets/images/icons/animatedLogo.gif';
-import HomeB from 'assets/images/hb.png';
+import slider1 from 'assets/images/hb.png';
 
 class TopSlider extends Component {
   componentDidMount() {
@@ -41,7 +41,7 @@ class TopSlider extends Component {
           <ul>
             <li data-transition="fade">
               {' '}
-              <img src={HomeB} alt=""></img>
+              <img src={slider1} alt=""></img>
               <div class="tp-caption large text-center" 
                 data-x="center" 
                 data-hoffset="" 
@@ -74,7 +74,7 @@ class TopSlider extends Component {
                   data-splitin="none" 
                   data-splitout="none" 
                   data-responsive_offset="on" 
-                  style={{zIndex: 7, whiteSpace: 'nowrap', fontSize: '30px', lineHeight: '30px', marginTop: '65px', color: 'white'}}>
+                  style={{zIndex: 7, whiteSpace: 'nowrap', fontSize: '30px', lineHeight: '30px', marginTop: '155px', color: 'white'}}>
                     The Nation's Leading Toxicology Laboratory 
               </div>
 
@@ -92,7 +92,7 @@ class TopSlider extends Component {
                 data-splitin="none" 
                 data-splitout="none" 
                 data-responsive_offset="on" 
-                style={{zIndex: 7, whiteSpace: 'nowrap', fontSize: '30px', lineHeight: '30px', marginTop: '65px'}}>
+                style={{zIndex: 7, whiteSpace: 'nowrap', fontSize: '30px', lineHeight: '30px', marginTop: '150px'}}>
                   <Link to="/appointments" class="btn btn-white btn-large">
                       Book an Appointment
                   </Link>
