@@ -11,9 +11,11 @@ export default function DrugConfirmationPanels(props) {
                 <div class="section-title text-center">
                   <h2>{category.name}</h2>
                   {/* <h3>We are here to serve you</h3> */}
-                  <p class="wow fadeIn" data-wow-duration="3s" data-wow-delay={0.5 + 's'} style={{fontSize: '16px'}}>
-                      {category.description}
-                  </p>
+                  <div className="description container">
+                    <p class="wow fadeIn" data-wow-duration="3s" data-wow-delay={0.5 + 's'} style={{fontSize: '16px'}} dangerouslySetInnerHTML={{ __html: category.description }}>
+                        {/* {category.description} */}
+                    </p>
+                  </div>
                 </div>
                 <div class="row" key={i}>
                   {
