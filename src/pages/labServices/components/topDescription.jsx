@@ -17,8 +17,8 @@ export default function Description(props) {
               {lines.map((value, index) => {
                 delay += 0.4;
                 return (
-                  <p key={index} class="wow fadeIn" data-wow-duration="3s" data-wow-delay={delay + 's'} style={{fontSize: '16px'}}>
-                    {value}
+                  <p key={index} class="wow fadeIn" data-wow-duration="3s" data-wow-delay={delay + 's'} style={{fontSize: '16px'}} dangerouslySetInnerHTML={{ __html: value }}>
+                    {/* {value} */}
                   </p>
                 );
               })}

@@ -306,7 +306,7 @@ h2.post-title {
   color: #858585;
 }
 .section-title {
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 .section-title h2 {
   font-size: 14px;
@@ -3524,6 +3524,9 @@ select {
 .lm40 {
   margin-left: 40px;
 }
+.rp0 {
+  padding-right: 0px !important;
+}
 .rp5 {
   padding-right: 5px;
 }
@@ -4259,4 +4262,11 @@ select {
 
 .display-block {
   display: block !important;
+}
+
+.description {
+  padding: 20px 95px !important;
+}
+.col-sm-offset-1 {
+  margin-left: 6.5% !important;
 }

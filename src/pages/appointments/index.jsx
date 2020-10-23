@@ -85,7 +85,8 @@ class AppointmentsPage extends Component {
                       ? 
                         <div class="container">
                           <div class="checklist set-margin-top">
-                          <table class="table">
+                            <h4>Your Appointment:</h4>
+                          <table class="table tm15">
                               <tbody>
                               <tr> 
                                 <td>Time Solt</td> 
@@ -105,7 +106,7 @@ class AppointmentsPage extends Component {
                                           }
                                         </ul>
                                       </td>
-                                      <td class="text-capitalize">{item.price}</td>
+                                      <td></td>
                                     </tr>
                                   )
                                 })
@@ -115,9 +116,7 @@ class AppointmentsPage extends Component {
                                 <tr>
                                   <th>Total Bill</th>
                                   <th>
-                                    {
-                                      current_appointments[0].panels.reduce( (sum, item) => sum + item.price, 0 )                                        
-                                    }
+                                    {current_appointments[0].total_price}
                                   </th>
                                 </tr>
                               </tfoot>
@@ -125,7 +124,7 @@ class AppointmentsPage extends Component {
                           </div>
                           <input
                               onClick={this.toggle}
-                              class="btn set-margin-top"
+                              class="btn set-margin-top pull-right"
                               readOnly
                               value="Pay now"
                               data-error="Fix errors"

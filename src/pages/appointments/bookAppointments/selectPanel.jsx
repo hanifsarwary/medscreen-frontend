@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class SelectPanel extends Component {
     render() {
         return (
-            <div class="col-sm-12 checklist forms-field fade-apply appointment-form-margin">
+            <div class="col-sm-12 checklist forms-field fade-apply appointment-form-margin lp0 rp0">
                 <label> Selected Tests: </label>
                 <table class="table">
                 <tbody>

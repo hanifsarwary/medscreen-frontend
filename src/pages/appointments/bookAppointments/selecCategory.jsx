@@ -60,15 +60,10 @@ export default class SelecCategory extends Component {
     }
 
     render() {
-      // console.log(this.props.selected_options.filter((obj) => obj.price_type === 'RANGE').length);
-      // console.log('1st', this.state.bill_array);
-      console.log('----------------------');
-      console.log(this.state.selected_options);
-      console.log('----------------------');
         return (
             <div class="col-sm-12">
                 <div class="form-field forms-field appointment-form-margin">
-                    <label> {this.props.tests.panel_name}: </label>
+                    <label> <b> {this.props.tests.panel_name}: </b></label>
                     <Select isClearable={false} value={this.state.selected_options} isMulti onChange={this.handleTestOption} options={this.props.tests.panel_options} styles={customStyles}/>
                     {
                         this.state.selected_options.length > 0 ? 

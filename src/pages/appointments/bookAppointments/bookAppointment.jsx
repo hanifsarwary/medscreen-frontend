@@ -41,6 +41,13 @@ class BookAppointment extends Component {
          });
     }
 
+    clearObj = () => {
+        this.setState({
+            selected_options: []
+        })
+        this.prevStep();
+    }
+
     getTimeSlots = (event) => {
         var appointment_date = event.target.value;
         this.props.getTimeSlotsAction(appointment_date);
@@ -114,7 +121,7 @@ class BookAppointment extends Component {
 
     removeItem = (id) => {
         this.setState({
-        selected_options: this.state.selected_options.filter(item=>item.value !=id )
+            selected_options: this.state.selected_options.filter(item=>item.value !==id )
         })
     }
 
@@ -130,7 +137,7 @@ class BookAppointment extends Component {
     }
 
     handleSubmit = () => {
-        const { test, appointment_date, time_slot, comments, selected_options } = this.state;
+        const { appointment_date, time_slot, comments, selected_options } = this.state;
         const payload = {
           panels: selected_options.map(item => { return item.value  }),
           appointment_date,
@@ -146,7 +153,6 @@ class BookAppointment extends Component {
     render() {
         const { time_slots } = this.props;
         const { step, open, appointment_date, categories, selected_test } = this.state;
-        // console.log('bill_array', this.state.bill_array);
         switch(step) {
             case 1:
                 return (
@@ -187,7 +193,7 @@ class BookAppointment extends Component {
                                     Please Select Category
                                 </div>
                             }
-                            <button className="btn btn-primary pull-left" onClick={this.prevStep}>Previous</button>
+                            <button className="btn btn-primary pull-left" onClick={this.clearObj}>Previous</button>
                             <button className="btn btn-primary pull-right" disabled={categories.length > 0 ? false : true} onClick={this.getTestBill}>Next</button>
                         </>
                 )
@@ -197,18 +203,40 @@ class BookAppointment extends Component {
                             {
                                 this.state.selected_options.length > 0 ?
                                     <div className="checklist forms-field fade-apply">
+                                        <h4>Selected Test List:</h4>
                                         <table class="table">
-                                            <thead>
+                                            <tbody>
+                                                { this.state.selected_options.map((item, i) => {
+                                                    return (
+                                                        <tr key={i}>
+                                                            <td class="text-capitalize font-weight-bold fade-apply"> <b class="pl-4">({item.label})</b>
+                                                                <ul>
+                                                                {
+                                                                    item.panel_test.map((test, i) => {
+                                                                    return (
+                                                                        <li class="set-ul-margin" key={i}>{test.title}</li>
+                                                                    )
+                                                                    })
+                                                                }
+                                                                </ul>
+                                                            </td>
+                                                            <td ></td>
+                                                        </tr>
+                                                    )
+                                                    })
+                                                }
+                                            </tbody>
+                                            <tfoot>
                                                 <tr>
                                                     <th>Grand Bill</th>
                                                     <th>{this.state.totat_bill}</th>
                                                 </tr>
-                                            </thead>
+                                            </tfoot>
                                         </table>
                                     </div> 
                                 : ''
                             }
-                            <button className="btn btn-primary pull-left" onClick={this.prevStep}>Previous</button>
+                            <button className="btn btn-primary pull-left" onClick={this.clearObj}>Previous</button>
                             <button className="btn btn-primary pull-right" disabled={categories.length > 0 ? false : true} onClick={this.nextStep}>Next</button>
                     </div>
                 )
@@ -290,30 +318,30 @@ const mapStateToProps = (state) => {
   export default connect(mapStateToProps, mapDispatchToProps)(BookAppointment);
 
 
-const selectorObj = (obj) => {
+// const selectorObj = (obj) => {
     
-    return obj.map(item =>
-        item
-        ? {
-            label: item.name,
-            value: item.id,
-            options: item.panel.map(sub_item => {
-                return sub_item
-                ? {
-                label: sub_item.panel_name,
-                value: sub_item.id,
-                price: sub_item.price,
-                parent_label: item.name,
-                parent_id: item.id,
-                panel_test: sub_item.tests
-                }
-                : sub_item
-            })
-            }
-        : item
-    );
+//     return obj.map(item =>
+//         item
+//         ? {
+//             label: item.name,
+//             value: item.id,
+//             options: item.panel.map(sub_item => {
+//                 return sub_item
+//                 ? {
+//                 label: sub_item.panel_name,
+//                 value: sub_item.id,
+//                 price: sub_item.price,
+//                 parent_label: item.name,
+//                 parent_id: item.id,
+//                 panel_test: sub_item.tests
+//                 }
+//                 : sub_item
+//             })
+//             }
+//         : item
+//     );
       
-  }
+//   }
 
   const seprateCategory = (obj) => {
     return obj.map(item =>
@@ -354,18 +382,4 @@ const selectorObj = (obj) => {
               }
           }
       }
-  }
-
-  const getBill = () => {
-
-    if(localStorage.getItem('range_type_bill') &&  localStorage.getItem('con_type_bill')) {
-        return  Number(localStorage.getItem('range_type_bill')) + Number(localStorage.getItem('con_type_bill'))
-    } else {
-        if(localStorage.getItem('range_type_bill')) {
-            return Number(localStorage.getItem('range_type_bill'))
-        } else {
-            return Number(localStorage.getItem('con_type_bill'))
-        }
-    }
-
   }
