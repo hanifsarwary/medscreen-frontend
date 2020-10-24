@@ -35,9 +35,36 @@ const styles = (theme) => ({
     width: '100%',
     marginTop: theme.spacing(1),
   },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
+	submit: {
+    fontSize: '14px',
+    margin: theme.spacing(2, 0, 2),
+    padding: theme.spacing(2, 0)
   },
+  root: {
+    "& .MuiFormLabel-root": {
+      fontSize: '16px',
+      padding: theme.spacing(0, 0)
+    },
+    "& .MuiOutlinedInput-root": {
+      fontSize: '16px',
+    },
+    '& .MuiInputBase-root': {
+      '& input': {
+        height: '38px',
+        fontSize: '12px',
+        padding: '5px 15px',
+        border: 'none',
+        outline: 'none'
+      }
+    },
+    '& .MuiFormHelperText-root': {
+      fontSize: '10px',
+      marginTop: '10px'
+    },
+    '& .MuiFormHelperText-contained': {
+      marginLeft: '0px'
+    }
+  }
 });
 
 class LoginPage extends Component {
@@ -91,11 +118,12 @@ class LoginPage extends Component {
                 id="username"
                 name="username"
                 value={username}
+                className={classes.root}
                 onChange={this.handleChange}
                 required
                 placeholder="Username"
                 margin="normal"
-                helperText="Please enter a username without spaces"
+                // helperText="Please enter a username without spaces"
                 variant="outlined"
                 InputLabelProps={{ shrink: true }}
                 autoFocus
@@ -108,11 +136,12 @@ class LoginPage extends Component {
                 id="password"
                 name="password"
                 value={password}
+                className={classes.root}
                 onChange={this.handleChange}
                 required
                 placeholder="Password"
                 margin="normal"
-                helperText="Please enter a password of minimum 8 characters"
+                // helperText="Please enter a password of minimum 8 characters"
                 variant="outlined"
                 InputLabelProps={{ shrink: true }}
                 type="password"

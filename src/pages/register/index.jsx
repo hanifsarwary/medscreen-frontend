@@ -12,10 +12,10 @@ import { Banner } from 'helpers';
 
 const styles = theme => ({
 	paper: {
-	marginTop: theme.spacing(3),
+	  marginTop: theme.spacing(3),
 		display: 'flex',
 		flexDirection: 'column',
-		alignItems: 'center',
+    alignItems: 'center',
 	},
 	avatar: {
 		margin: theme.spacing(1),
@@ -24,10 +24,35 @@ const styles = theme => ({
 	form: {
 		width: '100%',
 		marginTop: theme.spacing(3),
-	},
+  },
 	submit: {
-		margin: theme.spacing(3, 0, 2),
-	},
+    fontSize: '14px',
+    margin: theme.spacing(3, 0, 2),
+    padding: theme.spacing(2, 0)
+  },
+  root: {
+    "& .MuiFormLabel-root": {
+      padding: theme.spacing(0, 0)
+    },
+    "& .MuiOutlinedInput-root": {
+      fontSize: '16px',
+    },
+    '& label.Mui-focused': {
+      fontSize: '16px',
+    },
+    '& .MuiInputBase-root': {
+      '& input': {
+        height: '38px',
+        paddingBottom: '10px',
+        border: 'none',
+        outline: 'none'
+      },
+      '& textarea': {
+        border: 'none',
+        outline: 'none'
+      }
+    }
+  }
 });
 
 class RegisterPage extends Component {
@@ -68,7 +93,7 @@ class RegisterPage extends Component {
 		this.validateForm();
 		const { user } = this.state;
 		this.props.loaderOpenAction();
-		this.props.loginUserAction(user, this.props.history);
+		this.props.registerUserAction(user, this.props.history);
 	};
 
 	render() {
@@ -77,7 +102,7 @@ class RegisterPage extends Component {
 		return (
       <Fragment>
         <Banner />
-        <Container component="main" maxWidth="xs">
+        <Container component="main" maxWidth="sm">
           <CssBaseline />
           {error && <h5>{error}</h5>}
           <div className={classes.paper}>
@@ -88,17 +113,19 @@ class RegisterPage extends Component {
               Sign up
             </Typography>
             <form className={classes.form} onSubmit={this.handleSubmit}>
-              <Grid container spacing={2}>
+              <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
                   <TextField
                     id="firstName"
                     name="firstName"
                     variant="outlined"
                     label="First Name"
+                    className={classes.root}
                     onChange={this.handleChange}
                     value={user.firstName}
                     fullWidth
                     autoFocus
+                    InputProps={{ className: classes.root }}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -107,6 +134,7 @@ class RegisterPage extends Component {
                     name="lastName"
                     variant="outlined"
                     label="Last Name"
+                    className={classes.root}
                     onChange={this.handleChange}
                     value={user.lastName}
                     fullWidth
@@ -118,6 +146,7 @@ class RegisterPage extends Component {
                     name="email"
                     variant="outlined"
                     label="Email Address"
+                    className={classes.root}
                     onChange={this.handleChange}
                     value={user.email}
                     error={errors}
@@ -133,6 +162,7 @@ class RegisterPage extends Component {
                     name="username"
                     variant="outlined"
                     label="Username"
+                    className={classes.root}
                     onChange={this.handleChange}
                     value={user.username}
                     required
@@ -145,6 +175,7 @@ class RegisterPage extends Component {
                     name="phone"
                     variant="outlined"
                     label="Phone"
+                    className={classes.root}
                     onChange={this.handleChange}
                     value={user.phone}
                     fullWidth
@@ -156,10 +187,11 @@ class RegisterPage extends Component {
                     name="address"
                     variant="outlined"
                     label="Address"
+                    className={classes.root}
                     onChange={this.handleChange}
                     value={user.address}
-					multiline
-					rowsMax={2}
+                    multiline
+                    rowsMax={2}
                     fullWidth
                   />
                 </Grid>
@@ -169,6 +201,7 @@ class RegisterPage extends Component {
                     name="password"
                     label="Password"
                     variant="outlined"
+                    className={classes.root}
                     onChange={this.handleChange}
                     value={user.password}
                     required
@@ -182,6 +215,7 @@ class RegisterPage extends Component {
                     name="password_confirmation"
                     label="Password Confirmation"
                     variant="outlined"
+                    className={classes.root}
                     onChange={this.handleChange}
                     value={user.password_confirmation}
                     required
@@ -196,9 +230,7 @@ class RegisterPage extends Component {
               </Button>
               <Grid container justify="flex-end">
                 <Grid item>
-                  <Link to="/login" variant="body2">
-                    Already have an account? Sign in
-                  </Link>
+                  <Link to="/login" variant="body2"> Already have an account? Sign in </Link>
                 </Grid>
               </Grid>
             </form>
