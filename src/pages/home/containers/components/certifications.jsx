@@ -11,7 +11,7 @@ import TestimonialsCarousel from 'components/carousels/testimonialsCarousel';
 
 export default function Certifications(props) {
 	return (
-    <div class="light-wrapper">
+    <div class="dark-wrapper">
       <div class="container inner">
         <div class="section-title text-center">
           <h3>Certifications</h3>

@@ -154,12 +154,12 @@ class LoginPage extends Component {
 
               <Grid container>
                 <Grid item xs>
-                  <Link to="/" variant="body2">
+                  <Link to="/" style={{fontSize: '12px'}}>
                     Forgot password?
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link to="/register" variant="body2">
+                  <Link to="/register" style={{fontSize: '12px'}}>
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>
