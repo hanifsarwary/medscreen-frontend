@@ -13,6 +13,7 @@ import Story from 'pages/home/containers/components/story';
 import TopSlider from 'pages/home/containers/components/top-slider';
 import Process from 'pages/home/containers/components/process';
 import Media from 'pages/home/containers/components/media';
+import Charts from 'pages/home/containers/components/charts';
 
 class HomePage extends Component {
   constructor(props) {
@@ -47,6 +48,9 @@ componentDidMount() {
         </section>
         <section id="media">
           <Media />
+        </section>
+        <section id="progress">
+          <Charts />
         </section>
         <section id="contact">
           <Certifications />

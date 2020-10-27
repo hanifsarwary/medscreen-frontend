@@ -37,13 +37,17 @@ const styles = theme => ({
     "& .MuiOutlinedInput-root": {
       fontSize: '16px',
     },
+    "& .MuiInputLabel-outlined.MuiInputLabel-shrink": {
+      fontSize: '16px',
+    },
     '& label.Mui-focused': {
       fontSize: '16px',
     },
     '& .MuiInputBase-root': {
       '& input': {
         height: '38px',
-        paddingBottom: '10px',
+        paddingTop: '5px',
+        paddingBottom: '5px',
         border: 'none',
         outline: 'none'
       },
@@ -230,7 +234,7 @@ class RegisterPage extends Component {
               </Button>
               <Grid container justify="flex-end">
                 <Grid item>
-                  <Link to="/login" variant="body2"> Already have an account? Sign in </Link>
+                  <Link to="/login" variant="body2" style={{fontSize: '12px'}}> Already have an account? Sign in </Link>
                 </Grid>
               </Grid>
             </form>

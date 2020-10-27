@@ -3522,7 +3522,10 @@ select {
   margin-left: 25px;
 }
 .lm40 {
-  margin-left: 40px;
+  margin-left: 40px !important;
+}
+.lm60 {
+  margin-left: 60px !important;
 }
 .rp0 {
   padding-right: 0px !important;
@@ -4269,4 +4272,8 @@ select {
 }
 .col-sm-offset-1 {
   margin-left: 6.5% !important;
+}
+
+.col-md-offset-4 {
+  margin-left: 30% !important;
 }

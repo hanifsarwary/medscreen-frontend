@@ -10,17 +10,21 @@ export default class NestedCheckBox extends Component {
                     tests.map((item, i) => {
                     return (
                         <div key={i}> 
-                        <label className="checkbox">                            
-                            <input
-                                id={item.id}
-                                name={item.name}
-                                value={item.name}
-                                checked={categories.indexOf(item.name) > -1}
-                                onChange={this.props.handleCheckBox}
-                                type="checkbox"
-                                key={i}
-                            />  {item.name} <br/>
-                        </label>
+                        {
+                            item.is_display ?
+                            <label className="checkbox">                            
+                                <input
+                                    id={item.id}
+                                    name={item.name}
+                                    value={item.name}
+                                    checked={categories.indexOf(item.name) > -1}
+                                    onChange={this.props.handleCheckBox}
+                                    type="checkbox"
+                                    key={i}
+                                />  {item.name} <br/>
+                            </label> : ''
+                        }
+
                                 {
                                     selected_test.length > 0 && item.children_categories && item.children_categories.map((sub_category, i) => {
                                         return (

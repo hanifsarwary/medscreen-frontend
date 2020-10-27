@@ -21,8 +21,8 @@ export default function ServicesList(props) {
                        </div>
                     </div>
                     <div className="col-sm-9">
-                      <Link to={"/services/" + item.id}><h4 className="tm30">{item.alias_name}</h4></Link>
-                      <p> {item.secondary_description} </p>
+                      <Link to={item.is_display ? "/services/" + item.id : '/home'}><h4 className="tm30">{item.alias_name}</h4></Link>
+                      <p dangerouslySetInnerHTML={{ __html: item.secondary_description }}></p>
                     </div>
                   </div>
               </div>
