@@ -1,6 +1,8 @@
 import { appointmentConstants } from 'pages/appointments/constants';
 import { loaderConstants } from 'components/loaders/constants';
-import { updatePaymentStatus, getTimeSlots, getTests, getCurrentAppointments, getPastAppointments, createAppointment } from 'services';
+import { updatePaymentStatus, getTimeSlots, getTests,
+         getCurrentAppointments, getPastAppointments, 
+         createAppointment, cancelCurrentAppointments } from 'services';
 
 export const getTestsAction = () => {
   return (dispatch) => {
@@ -139,6 +141,23 @@ export const updateAppointmentPaymentStatus = (data, history) => {
         debugger;
         dispatch({
           type: appointmentConstants.CREATE_APPOINTMENT_FAIURE,
+          error: error.message,
+        });
+      });
+  };
+};
+
+export const cancelCurrentAppointmentsAction = (id, history) => {
+  return (dispatch) => {
+    cancelCurrentAppointments(id)
+      .then((response) => {
+        dispatch({ type: loaderConstants.LOAD_END });
+        history.push('/appointments');
+      })
+      .catch((error) => {
+        dispatch({ type: loaderConstants.LOAD_END });
+        dispatch({
+          type: appointmentConstants.GET_PAST_APPOINTMENTS_FAILURE,
           error: error.message,
         });
       });

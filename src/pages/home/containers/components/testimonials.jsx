@@ -10,7 +10,7 @@ export default function Testimonials(props) {
           <h2>Testimonials</h2>
           <h3>what our customers say</h3>
         </div>
-        <div class="carousel-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.3s">
+        <div class="carousel-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
           <TestimonialsCarousel class="carousel">
             {
               props.reviews.length > 0 && props.reviews.map((item, i) => {

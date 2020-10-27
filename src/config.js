@@ -12,7 +12,8 @@ const APPOINTMENTS_ENDPOINTS = {
 	GET_TIME_SLOTS: 'api/v1/time-slots/',
 	GET_TESTS: 'api/v1/tests/',
 	GET_CATEGORY: 'api/v1/categories/',
-	APPOINTMENTS_UPDATE_STATUS: 'api/v1/appointments/update/status/'
+	APPOINTMENTS_UPDATE_STATUS: 'api/v1/appointments/update/status/',
+	APPOINTMENTS_CANCEL: 'api/v1/appointments/update/status/'
 };
 const CAREERS_ENDPOINTS = {
 	CAREERS_LIST_GET: 'api/v1/careers/',

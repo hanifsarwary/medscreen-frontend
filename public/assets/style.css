@@ -1310,6 +1310,7 @@ figure li a img {
 figure a img {
   display: inline;
   max-width: 65%;
+  height: 220px;
 }
 figure a .overlay {
   opacity: 0;

@@ -33,7 +33,7 @@ class Media extends Component {
                   <PortfolioCarousel navContainer='media-nav'>
                     {media.map((value, index) => (
                       <div class="item post" key={index}>
-                        <figure style={{ maxWidth: '440px', maxHeight: '340px' }}>
+                        <figure style={{ maxWidth: '440px', maxHeight: '540px' }}>
                           <a>
                             <div class="overlay">
                               <div class="info">
