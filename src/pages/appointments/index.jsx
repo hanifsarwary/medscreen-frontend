@@ -12,6 +12,7 @@ import {
   createAppointmentAction,
   getCurrentAppointmentsAction,
   getPastAppointmentsAction,
+  cancelCurrentAppointmentsAction
 } from 'pages/appointments/containers/actions';
 import { loaderOpenAction } from 'components/loaders/components';
 
@@ -37,6 +38,11 @@ class AppointmentsPage extends Component {
   toggle = () => {
     this.setState({ open: !this.state.open });
   };
+
+  cancelAppointment = () => {
+    this.props.loaderOpenAction();
+    this.props.cancelCurrentAppointmentsAction(this.props.current_appointments[0].id, this.props.history)
+  }
 
   render() {
     const { tests, current_appointments, past_appointments } = this.props;
@@ -131,6 +137,15 @@ class AppointmentsPage extends Component {
                               data-processing="Sending..."
                               data-success="Thank you!"
                           />
+                          <input
+                              onClick={this.cancelAppointment}
+                              class="btn set-margin-top pull-right"
+                              readOnly
+                              value="Cancel"
+                              data-error="Fix errors"
+                              data-processing="Sending..."
+                              data-success="Thank you!"
+                          />
                           <Drawer open={open}
                                 modalElementClass={modal}
                                 onRequestClose={this.toggle}>
@@ -174,6 +189,7 @@ const mapDispatchToProps = {
   createAppointmentAction,
   getCurrentAppointmentsAction,
   getPastAppointmentsAction,
+  cancelCurrentAppointmentsAction
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppointmentsPage);

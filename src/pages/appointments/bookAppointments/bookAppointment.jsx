@@ -344,10 +344,11 @@ const mapStateToProps = (state) => {
 //   }
 
   const seprateCategory = (obj) => {
-    return obj.map(item =>
+    const categoryObj = obj.map(item =>
         item
         ? {
             panel_name : item.name,
+            sorting_order: item.sorting_order,
             panel_options: item.panel && item.panel.map(sub_item => {
                         return sub_item
                         ? {
@@ -369,6 +370,13 @@ const mapStateToProps = (state) => {
             }
         : item
     );
+
+    console.log(categoryObj.sort(function (a, b) {
+        return parseInt(a.sorting_order) - parseInt(b.sorting_order)
+    }));
+    return categoryObj.sort(function (a, b) {
+        return parseInt(a.sorting_order) - parseInt(b.sorting_order)
+    });
       
   }
 

@@ -35,6 +35,18 @@ export const getCurrentAppointments = () => {
     return axios(requestOptions);
 };
 
+export const cancelCurrentAppointments = (id) => {
+  let user = JSON.parse(localStorage.getItem('user'));
+  let token = localStorage.getItem('access_token');
+  let url = LOCAL_DOMAIN + APPOINTMENTS_ENDPOINTS.APPOINTMENTS_CANCEL + id + '/';
+  const requestOptions = {
+      method: 'DELETE',
+      headers: {"Authorization" : `Bearer ${token}`},
+      url
+    };
+  return axios(requestOptions);
+};
+
 export const getPastAppointments = () => {
     let user = JSON.parse(localStorage.getItem('user'));
     let token = localStorage.getItem('access_token');

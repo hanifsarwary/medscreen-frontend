@@ -7,7 +7,7 @@ export default function ServicesList(props) {
       <div class="container inner">
         <div class="section-title text-center">
           <h2>Our Services</h2>
-          <h3>We are here to serve you</h3>
+          <h3>what we do</h3>
         </div>
         <div class="row lm0">
           {
