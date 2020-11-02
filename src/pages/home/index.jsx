@@ -49,9 +49,9 @@ componentDidMount() {
         <section id="media">
           <Media />
         </section>
-        <section id="progress">
+        {/* <section id="progress">
           <Charts />
-        </section>
+        </section> */}
         <section id="contact">
           <Certifications />
         </section>
