@@ -65,7 +65,7 @@ class Media extends Component {
                 modalElementClass={modal}
                 onRequestClose={()=> this.toggle(false, null)}>
                 <div>
-                    <img src={this.state.img} alt="" height="450px" width="550px" />
+                    <img src={this.state.img} alt="" height="550px" width="450px" />
                 </div>
               </Drawer>
           </div>

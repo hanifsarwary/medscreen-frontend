@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import logo from 'assets/images/icons/animatedLogo.gif';
-import slider1 from 'assets/images/hb.png';
+import slider1 from 'assets/images/bgg.jpeg';
 
 class TopSlider extends Component {
   componentDidMount() {
@@ -74,7 +74,7 @@ class TopSlider extends Component {
                   data-splitin="none" 
                   data-splitout="none" 
                   data-responsive_offset="on" 
-                  style={{zIndex: 7, whiteSpace: 'nowrap', fontSize: '30px', lineHeight: '30px', marginTop: '155px', color: 'white'}}>
+                  style={{zIndex: 7, whiteSpace: 'nowrap', fontSize: '30px', lineHeight: '30px', marginTop: '155px', color: 'black'}}>
                     The Nation's Leading Toxicology Laboratory 
               </div>
 

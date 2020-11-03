@@ -24,7 +24,7 @@ export const CurrentDateString = () => {
 
 export const Banner = (props) => (
   <div>
-    <img style={{ width: '100%', height: '450px'}} src={props.imgUrl ? props.imgUrl : banner } alt="" />
+    <img style={{ width: '100%', height: '650px'}} src={props.imgUrl ? props.imgUrl : banner } alt="" />
   </div>
 );
 
