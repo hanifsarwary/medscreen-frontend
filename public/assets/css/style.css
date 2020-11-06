@@ -3767,6 +3767,7 @@ select {
   }
   .navbar .dropdown-menu li a {
     padding: 15px;
+    width: 200px;
   }
   .navbar .dropdown-menu li a:hover,
   .navbar .dropdown-menu li a.active {
@@ -4271,6 +4272,7 @@ select {
   padding: 20px 95px !important;
 }
 .col-sm-offset-1 {
+  font-size: 18px !important;
   margin-left: 6.5% !important;
 }
 
