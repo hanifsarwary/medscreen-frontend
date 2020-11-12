@@ -33,14 +33,16 @@ class Media extends Component {
                   <PortfolioCarousel navContainer='media-nav'>
                     {media.map((value, index) => (
                       <div class="item post" key={index}>
-                        <figure style={{ maxWidth: '440px', maxHeight: '540px' }}>
+                        {/* style={{ maxWidth: '440px', maxHeight: '540px' }} */}
+                        <figure>
                           <a>
                             <div class="overlay">
                               <div class="info">
                                 <span> <button className="btn" onClick={() => this.toggle(true, value.media_image)}>View Media</button></span>
                               </div>
                             </div>
-                            <img src={value.media_image} alt="" />
+                            {/* <img src={value.media_image} alt="" /> */}
+                            <div style={{backgroundImage: "url("+value.media_image+")", width: '440px', height: '450px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}}></div>
                           </a>
                         </figure>
                         <div class="post-content">

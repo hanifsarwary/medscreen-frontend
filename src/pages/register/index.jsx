@@ -11,6 +11,12 @@ import { registerUserAction } from 'pages/register/containers';
 import { Banner } from 'helpers';
 
 const styles = theme => ({
+  "@global": {
+    body: {
+      fontFamily: "Source Sans Pro, sans-serif !important",
+      fontSize: "15px"
+    }
+  },
 	paper: {
 	  marginTop: theme.spacing(3),
 		display: 'flex',
