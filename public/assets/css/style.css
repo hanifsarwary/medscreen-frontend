@@ -158,7 +158,7 @@ iframe {
 /*-----------------------------------------------------------------------------------*/
 body {
   overflow-x: hidden;
-  font-size: 15px;
+  font-size: 15px !important;
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -4278,4 +4278,12 @@ select {
 
 .col-md-offset-4 {
   margin-left: 30% !important;
+}
+.w-25 {
+  width: 150px !important;
+  height: 150px !important;
+}
+.icon-img {
+  width: 50px;
+  height: 50px;
 }

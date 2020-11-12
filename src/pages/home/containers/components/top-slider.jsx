@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import logo from 'assets/images/icons/animatedLogo.gif';
+import logo from 'assets/images/icons/MSL_GIF.gif';
 import slider1 from 'assets/images/bgg.jpeg';
 
 class TopSlider extends Component {

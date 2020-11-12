@@ -40,6 +40,12 @@ const styles = (theme) => ({
     margin: theme.spacing(2, 0, 2),
     padding: theme.spacing(2, 0)
   },
+  "@global": {
+    body: {
+      fontFamily: "Source Sans Pro, sans-serif !important",
+      fontSize: "15px"
+    }
+  },
   root: {
     "& .MuiFormLabel-root": {
       fontSize: '16px',
