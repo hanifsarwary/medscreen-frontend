@@ -4,6 +4,7 @@ const LOCAL_DOMAIN = 'https://covid-plasmadonor.com/';
 const USERS_ENDPOINTS = {
 	USERS_LIST_CREATE: 'api/v1/users/',
 	USER_LOGIN: 'api/token/',
+	USER_LOGIN_VIA_EMAIL: 'api/v1/users/activate/',
 	PASSWORD_RESET_TOKEN_VALIDATE: 'api/password_reset/validate_token/',
 };
 const APPOINTMENTS_ENDPOINTS = {
