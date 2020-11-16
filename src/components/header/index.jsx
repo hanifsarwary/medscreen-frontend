@@ -113,7 +113,7 @@ class Header extends Component {
                     <HashLink to="/home#silder">Home</HashLink>
                   </li>
                   <li>
-                    <a href="javascript:;">  Lab Services <span class="caret"></span> </a>
+                    <Link to="#"> Lab Services <span class="caret"></span> </Link>
                     <ul class="dropdown-menu">
                         { service !== undefined ?
                           service.map((labService, i) => {
@@ -130,9 +130,7 @@ class Header extends Component {
                     </ul>
                   </li>
                   <li>
-                    <Link>
-                      Resources <span class="caret"></span>
-                    </Link>
+                    <Link to="#"> Resources <span class="caret"></span> </Link>
                     <ul class="dropdown-menu">
                       <li>
                       {/* to={"/resources/" + 0 + '/' + true} target="_blank" */}

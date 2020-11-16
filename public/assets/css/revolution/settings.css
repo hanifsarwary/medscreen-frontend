@@ -1272,9 +1272,9 @@ img.tp-slider-alternative-image {
 	background: transparent;
 	-ms-filter: 'progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF)';
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF);
-	zoom: 1;
+	/* zoom: 1;
 	width: 550px !important;
-	height: 310px !important;
+	height: 310px !important; */
 }
 
 /*  CAPTION SLIDELINK   **/

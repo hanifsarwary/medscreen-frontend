@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import logo from 'assets/images/icons/MSL_GIF.gif';
+import logo from 'assets/images/icons/silder_log.gif';
 import slider1 from 'assets/images/bgg.jpeg';
+import Image from 'react-bootstrap/Image'
 
 class TopSlider extends Component {
   componentDidMount() {
@@ -12,7 +13,7 @@ class TopSlider extends Component {
       delay: 9000,
       shadow: 0,
       gridwidth: 1170,
-      gridheight: 700,
+      gridheight: 640,
       responsiveLevels: [4096, 1024, 778, 480],
       navigation: {
         arrows: {
@@ -41,7 +42,8 @@ class TopSlider extends Component {
           <ul>
             <li data-transition="fade">
               {' '}
-              <img src={slider1} alt=""></img>
+              <img src={slider1} alt="" className="responsive"/>
+              {/* <div style={{backgroundImage: "url("+slider1+")", width: '100%', height: '100%', backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}}></div> */}
               <div class="tp-caption large text-center" 
                 data-x="center" 
                 data-hoffset="" 
@@ -55,8 +57,9 @@ class TopSlider extends Component {
                 data-splitin="none" 
                 data-splitout="none" 
                 data-responsive_offset="on" 
-                style={{ zIndex: 9, whiteSpace: 'nowrap', fontSize: '25px', lineHeight: '25px' }}>
-                  <img alt="logo" src={logo} width={70} height={50}/>
+                style={{ zIndex: 9, whiteSpace: 'nowrap', fontSize: '25px', lineHeight: '25px'}}>
+                  <img alt="logo" src={logo}  className="responsive" width={550} height={310}/>
+                  {/* <div style={{backgroundImage: "url("+logo+")", width: '440px', height: '400px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}}></div> */}
                 </div>
                 <div class="tp-caption medium text-center" 
                   data-x="center" 

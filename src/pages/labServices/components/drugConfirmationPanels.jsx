@@ -22,7 +22,7 @@ export default function DrugConfirmationPanels(props) {
                     category.panel.map((panel, i) => {
                       return (
                         <div class="col-sm-4 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.3s" key={i}>
-                          <div class="row">
+                          <div class="row" style={{display: 'flex'}}>
                             <div class="col-sm-4 icon icon-m">
                               <img src={beaker} alt="" />
                             </div>

@@ -27,7 +27,7 @@ componentDidMount() {
     this.props.whoWeAreDescriptionAction();
     this.props.userReviewAction();
     this.props.callService();
-}
+  }
   render() {
     return (
       <div class="content-wrapper">

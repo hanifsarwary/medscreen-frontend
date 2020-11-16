@@ -22,12 +22,14 @@ export const CurrentDateString = () => {
 	return date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate();
 }
 
-export const Banner = (props) => (
-  <div>
-    <img style={{ width: '100%', height: '650px'}} src={props.imgUrl ? props.imgUrl : banner } alt="" />
-  </div>
-);
-
+export const Banner = (props) => {
+    const imgLink = props.imgUrl ? props.imgUrl : banner;
+    return (
+        // <div style={{backgroundImage: "url("+imgLink+")", width: '100%', height: '100%', backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}}></div>
+        <img style={{ width: '100%'}} src={imgLink} alt="" /> 
+    )
+}
+  
 export const countBillValue = (obj) => {
     return obj.reduce( (sum, item) => {
 		if(item.price_type === 'RANGE') {
