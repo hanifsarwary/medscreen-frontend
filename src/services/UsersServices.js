@@ -8,6 +8,11 @@ export const signUpUser = (data = {}) => {
 	return axios.post(url, data);
 };
 
+export const loginUserViaEMail = (data) => {
+	let url = LOCAL_DOMAIN + USERS_ENDPOINTS.USER_LOGIN_VIA_EMAIL + data;
+	return axios.get(url);
+};
+
 export const loginUser = (data = {}) => {
 	let url = LOCAL_DOMAIN + USERS_ENDPOINTS.USER_LOGIN;
 	return axios.post(url, data);

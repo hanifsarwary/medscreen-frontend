@@ -1,6 +1,6 @@
 import { authConstants } from 'pages/login/constants';
 import { loaderConstants } from 'components/loaders/constants';
-import { loginUser, getTests } from 'services';
+import { loginUser, getTests, loginUserViaEMail } from 'services';
 
 export const loginUserAction = (data = {}, history) => {
 	return dispatch => {
@@ -16,6 +16,35 @@ export const loginUserAction = (data = {}, history) => {
 						refresh_token: data.refresh,
 						user: data.user,
 						remember_me,
+					})
+				);
+				dispatch({ type: loaderConstants.LOAD_END });
+				let next_url = history.location.pathname.split('=')[1];
+				if (next_url) history.push(next_url);
+				else history.push('/');
+			})
+			.catch(error => {
+				dispatch({ type: loaderConstants.LOAD_END });
+				dispatch({
+					type: authConstants.LOGIN_FAILURE,
+					error: error.message,
+				});
+			});
+	};
+};
+
+export const loginUserViaEmailAction = (data, history) => {
+	return dispatch => {
+		loginUserViaEMail(data)
+			.then(response => {
+				let data = response.data;
+				console.log(data , '=========================');
+				Promise.resolve(
+					dispatch({
+						type: authConstants.LOGIN_SUCCESS,
+						access_token: data.access,
+						refresh_token: data.refresh,
+						user: data.user,
 					})
 				);
 				dispatch({ type: loaderConstants.LOAD_END });

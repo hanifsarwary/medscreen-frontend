@@ -997,9 +997,9 @@ blockquote .small {
 .navbar .nav > li > .dropdown-menu:after {
   display: block;
 }
-/* .navbar .nav > li:hover > .dropdown-menu {
-  display: block !important; 
-} */
+.navbar .nav > li:hover > .dropdown-menu {
+  display: block;
+}
 
 .navbar .dropdown-menu > li > a:hover,
 .navbar .dropdown-menu > li > a:focus,
