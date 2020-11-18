@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { whoWeAreDescriptionAction,
          userReviewAction,
          callService } from 'pages/careers/containers/actions';
+import { loginUserViaEmailAction } from 'pages/login/containers/actions';
 import { loaderOpenAction } from 'components/loaders/components';
 
 import Certifications from 'pages/home/containers/components/certifications';
@@ -27,6 +28,13 @@ componentDidMount() {
     this.props.whoWeAreDescriptionAction();
     this.props.userReviewAction();
     this.props.callService();
+    if (this.props.location.search) {
+      console.log(this.props);
+      console.log(this.props.location.search);
+      this.props.loginUserViaEmailAction(this.props.location.search, this.props.history);
+    } else {
+      console.log('nothing');
+    }
   }
   render() {
     return (
@@ -69,6 +77,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   loaderOpenAction,
   whoWeAreDescriptionAction,
+  loginUserViaEmailAction,
   userReviewAction,
   callService
 };
