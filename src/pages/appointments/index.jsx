@@ -5,6 +5,7 @@ import { css } from "emotion";
 import BookAppointment from './bookAppointments/bookAppointment';
 import AppointmentHistory from './appointmentHistory/appointmentHistory';
 import PaymentPage from '../paymentMethod/PaymentPage';
+import { updateAppointmentPaymentStatus } from 'pages/appointments/containers/actions';
 
 import {
   getTestsAction,
@@ -37,6 +38,17 @@ class AppointmentsPage extends Component {
 
   toggle = () => {
     this.setState({ open: !this.state.open });
+  };
+
+  payAtFaciltity = () => {
+    const { current_appointments } = this.props;
+    const payload = {
+      status: "confirmed",
+      transaction_details: "",
+      appointment_id: current_appointments[0].id
+    }
+    this.props.updateAppointmentPaymentStatus(payload, this.props.history)
+    this.props.loaderOpenAction();
   };
 
   cancelAppointment = () => {
@@ -138,6 +150,15 @@ class AppointmentsPage extends Component {
                               data-success="Thank you!"
                           />
                           <input
+                              onClick={this.payAtFaciltity}
+                              class="btn set-margin-top pull-right"
+                              readOnly
+                              value="PAY AT FACILITY"
+                              data-error="Fix errors"
+                              data-processing="Sending..."
+                              data-success="Thank you!"
+                          />
+                          <input
                               onClick={this.cancelAppointment}
                               class="btn set-margin-top pull-right"
                               readOnly
@@ -189,7 +210,8 @@ const mapDispatchToProps = {
   createAppointmentAction,
   getCurrentAppointmentsAction,
   getPastAppointmentsAction,
-  cancelCurrentAppointmentsAction
+  cancelCurrentAppointmentsAction,
+  updateAppointmentPaymentStatus
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppointmentsPage);

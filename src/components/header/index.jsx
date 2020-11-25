@@ -166,10 +166,10 @@ class Header extends Component {
                     <HashLink to="/home#contact">Contact Us</HashLink>
                   </li>
                   <li>
-                    <a href="http://medscreenlabs.labnexus.net/">Portal Login</a>
+                    <a href="http://medscreenlabs.labnexus.net/">PHYSICIAN LOGIN</a>
                   </li>
                   <li>
-                    {!access_token ? <Link to="/login">Log in</Link> : <Link onClick={this.handleLogout}>Log out</Link>}
+                    {!access_token ? <Link to="/login">USER LOGIN</Link> : <Link onClick={this.handleLogout}>Log out</Link>}
                   </li>
                 </ul>
               </div>
