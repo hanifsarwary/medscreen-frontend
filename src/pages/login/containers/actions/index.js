@@ -1,6 +1,7 @@
 import { authConstants } from 'pages/login/constants';
 import { loaderConstants } from 'components/loaders/constants';
-import { loginUser, getTests, loginUserViaEMail } from 'services';
+import { appointmentConstants } from 'pages/appointments/constants';
+import { loginUser, getTests, loginUserViaEMail, createAppointment } from 'services';
 
 export const loginUserAction = (data = {}, history) => {
 	return dispatch => {
@@ -33,12 +34,56 @@ export const loginUserAction = (data = {}, history) => {
 	};
 };
 
+export const loginUserActionWithAppointment = (data = {}, history, appointment = {}) => {
+	return dispatch => {
+		let remember_me = data.remember_me;
+		delete data.remember_me;
+		loginUser(data)
+			.then(response => {
+				let data = response.data;
+				Promise.resolve(
+					dispatch({
+						type: authConstants.LOGIN_SUCCESS,
+						access_token: data.access,
+						refresh_token: data.refresh,
+						user: data.user,
+						remember_me,
+					})
+				);
+				createAppointment(appointment)
+				.then((response) => {
+				  Promise.resolve(
+					dispatch({
+					  type: appointmentConstants.CREATE_APPOINTMENT_SUCCESS,
+					})
+				  );
+				  dispatch({ type: loaderConstants.LOAD_END });
+				  history.push('/appointments');
+				})
+				.catch((error) => {
+				  dispatch({ type: loaderConstants.LOAD_END });
+				  debugger;
+				  dispatch({
+					type: appointmentConstants.CREATE_APPOINTMENT_FAIURE,
+					error: error.message,
+				  });
+				});
+			})
+			.catch(error => {
+				dispatch({ type: loaderConstants.LOAD_END });
+				dispatch({
+					type: authConstants.LOGIN_FAILURE,
+					error: error.message,
+				});
+			});
+	};
+};
+
 export const loginUserViaEmailAction = (data, history) => {
 	return dispatch => {
 		loginUserViaEMail(data)
 			.then(response => {
 				let data = response.data;
-				console.log(data , '=========================');
 				Promise.resolve(
 					dispatch({
 						type: authConstants.LOGIN_SUCCESS,

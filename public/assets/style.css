@@ -644,6 +644,7 @@ blockquote .small {
 /*-----------------------------------------------------------------------------------*/
 /*	02. BUTTON
 /*-----------------------------------------------------------------------------------*/
+
 .btn {
   color: #fff !important;
   background: #25b7d3;
@@ -683,7 +684,7 @@ blockquote .small {
 }
 .text-center .btn {
   margin-left: 4px;
-  margin-right: 4px;
+  /* margin-right: 4px; */
 }
 .btn-submit {
   margin: 0 !important;

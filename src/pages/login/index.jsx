@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { backGroundPictureAction } from 'pages/careers/containers/actions';
+import { storeAppointmentAction } from 'pages/appointments/containers/actions';
 
 import {
   Avatar,
@@ -16,7 +18,7 @@ import {
 } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
-import { loginUserAction, callService } from 'pages/login/containers';
+import { loginUserAction, loginUserActionWithAppointment, callService } from 'pages/login/containers';
 import { Banner } from 'helpers';
 import { loaderOpenAction } from 'components/loaders/components';
 
@@ -96,15 +98,23 @@ class LoginPage extends Component {
       remember_me,
     };
     this.props.loaderOpenAction();
-    this.props.loginUserAction(payload, this.props.history);
+    if (this.props.storeAppointmentAction) {
+      this.props.loginUserActionWithAppointment(payload, this.props.history, this.props.store_appointment);
+    } else {
+      this.props.loginUserAction(payload, this.props.history);
+    }
   };
+
+  componentDidMount() {
+    this.props.backGroundPictureAction('appointment_page');
+  }
 
   render() {
     const { username, password } = this.state;
-    const { classes, error } = this.props;
+    const { classes, error, backgroundImage } = this.props;
     return (
       <Fragment>
-		  <Banner />
+		  <Banner imgUrl={backgroundImage}/>
         <Container component="main" maxWidth="xs">
           <CssBaseline />
           {error && <h5>{error}</h5>}
@@ -183,9 +193,14 @@ class LoginPage extends Component {
 
 const mapStateToProps = (state) => {
   const { error } = state.USER_AUTH;
-  return { error };
+  const { backgroundImage } = state.CAREERS;
+  const { store_appointment } = state.APPOINTMENTS;
+  return { error, store_appointment, backgroundImage };
 };
 
-const mapDispatchToProps = { loaderOpenAction, loginUserAction, callService };
+const mapDispatchToProps = { loaderOpenAction, loginUserAction,
+  loginUserActionWithAppointment,
+  callService, backGroundPictureAction,
+  storeAppointmentAction };
 
 export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(LoginPage));

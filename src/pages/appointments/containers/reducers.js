@@ -5,6 +5,7 @@ const initialState = {
   time_slots: [],
   current_appointments: [],
   past_appointments: [],
+  store_appointment: [],
   error: null,
 };
 
@@ -48,6 +49,12 @@ export const appointmentsReducer = (state = initialState, action) => {
         ...state,
         error: null,
         past_appointments: action.data,
+      };
+    case appointmentConstants.STORE_APPOINTMENT:
+      return {
+        ...state,
+        error: null,
+        store_appointment: action.data,
       };
     case appointmentConstants.GET_PAST_APPOINTMENTS_FAILURE:
       return {

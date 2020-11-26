@@ -31,8 +31,10 @@ class AppointmentsPage extends Component {
   componentDidMount() {
     // this.props.loaderOpenAction();
     this.props.getTestsAction();
-    this.props.getPastAppointmentsAction();
-    this.props.getCurrentAppointmentsAction();
+    if (localStorage.getItem('access_token')) {
+      this.props.getPastAppointmentsAction();
+      this.props.getCurrentAppointmentsAction();
+    }
 
   }
 
@@ -151,7 +153,7 @@ class AppointmentsPage extends Component {
                           />
                           <input
                               onClick={this.payAtFaciltity}
-                              class="btn set-margin-top pull-right"
+                              class="btn set-margin-top pull-right rm5"
                               readOnly
                               value="PAY AT FACILITY"
                               data-error="Fix errors"
@@ -160,7 +162,7 @@ class AppointmentsPage extends Component {
                           />
                           <input
                               onClick={this.cancelAppointment}
-                              class="btn set-margin-top pull-right"
+                              class="btn set-margin-top pull-right rm5"
                               readOnly
                               value="Cancel"
                               data-error="Fix errors"

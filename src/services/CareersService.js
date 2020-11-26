@@ -40,3 +40,13 @@ export const getUserReview = () => {
 
       return axios(requestOptions);
 };
+
+export const getbackGroundImage = (param) => {
+  let url = LOCAL_DOMAIN + CAREERS_ENDPOINTS.BACKGROUND_IMAGE + `?key=${param}`;
+  const requestOptions = {
+      method: 'GET',
+      url
+    };
+
+  return axios(requestOptions);
+}

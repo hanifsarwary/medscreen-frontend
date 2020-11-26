@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import logo from 'assets/images/icons/silder_log.gif';
-import slider1 from 'assets/images/bgg.jpeg';
-import Image from 'react-bootstrap/Image'
+import { backGroundPictureAction } from 'pages/careers/containers/actions';
 
 class TopSlider extends Component {
   componentDidMount() {
@@ -34,6 +34,8 @@ class TopSlider extends Component {
         },
       },
     });
+
+    this.props.backGroundPictureAction('home_page');
   }
   render() {
     return (
@@ -42,8 +44,10 @@ class TopSlider extends Component {
           <ul>
             <li data-transition="fade">
               {' '}
-              <img src={slider1} alt="" className="responsive"/>
-              {/* <div style={{backgroundImage: "url("+slider1+")", width: '100%', height: '100%', backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}}></div> */}
+              <div>
+                <img src={this.props.backgroundImage} alt="" className="responsive"/>
+              </div>
+              {/* <div style={{backgroundImage: "url("+this.props.backgroundImage+")", width: '100%', height: '100%', backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}}></div> */}
               <div class="tp-caption large text-center" 
                 data-x="center" 
                 data-hoffset="" 
@@ -109,4 +113,12 @@ class TopSlider extends Component {
   }
 }
 
-export default TopSlider;
+
+const mapStateToProps = (state) => {
+  const { backgroundImage} = state.CAREERS;
+  return { backgroundImage };
+};
+
+const mapDispatchToProps = { backGroundPictureAction };
+
+export default connect(mapStateToProps, mapDispatchToProps)(TopSlider);

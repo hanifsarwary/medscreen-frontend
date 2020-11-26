@@ -2,6 +2,7 @@ import { careersConstants } from 'pages/careers/constants';
 import { loaderConstants } from 'components/loaders/constants';
 import { 
     getCareersList, getWhoWeAreDescription,
+    getbackGroundImage,
     applyForJob, getTests, getUserReview } from 'services';
 
 export const getCareerListAction = () => {
@@ -114,3 +115,26 @@ export const userReviewAction = () => {
   };
 }
 
+export const backGroundPictureAction = (param) => {
+  return (dispatch) => {
+    getbackGroundImage(param)
+      .then((response) => {
+        let data = response.data.results[0].image;
+        Promise.resolve(
+          dispatch({
+            type: careersConstants.GET_PICTURE_SUCCESS,
+            data,
+          })
+        );
+        dispatch({ type: loaderConstants.LOAD_END });
+      })
+      .catch((error) => {
+        dispatch({ type: loaderConstants.LOAD_END });
+        debugger;
+        dispatch({
+          type: careersConstants.GET_PICTURE_FAILURE,
+          error: error.message,
+        });
+      });
+  };
+}
