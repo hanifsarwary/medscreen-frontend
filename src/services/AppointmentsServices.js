@@ -8,7 +8,7 @@ export const getTimeSlots = (date) => {
 
     const requestOptions = {
         method: 'GET',
-        headers: {"Authorization" : `Bearer ${token}`},
+        // headers: {"Authorization" : `Bearer ${token}`},
         url
       };
     return axios(requestOptions);

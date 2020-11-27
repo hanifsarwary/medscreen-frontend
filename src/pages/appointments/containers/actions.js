@@ -163,3 +163,13 @@ export const cancelCurrentAppointmentsAction = (id, history) => {
       });
   };
 };
+
+export const storeAppointmentAction = (data) => {
+
+  return (dispatch) => {
+    dispatch({
+      type: appointmentConstants.STORE_APPOINTMENT,
+      data,
+    })
+  };
+}

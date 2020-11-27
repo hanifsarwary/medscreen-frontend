@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import SelecCategory from './selecCategory';
 import {
     getTestsAction,
     getTimeSlotsAction,
+    storeAppointmentAction,
     createAppointmentAction,
     getCurrentAppointmentsAction,
     getPastAppointmentsAction,
@@ -145,8 +147,13 @@ class BookAppointment extends Component {
           comments,
           total_price: this.state.totat_bill  
         };
-        this.props.loaderOpenAction();
-        this.props.createAppointmentAction(payload, this.props.history);
+        if (localStorage.getItem('access_token')) {
+            this.props.loaderOpenAction();
+            this.props.createAppointmentAction(payload, this.props.history);
+        } else {
+            this.props.storeAppointmentAction(payload);
+            this.props.history.push('login');
+        }
     };
 
 
@@ -228,8 +235,8 @@ class BookAppointment extends Component {
                                             </tbody>
                                             <tfoot>
                                                 <tr>
-                                                    <th>Grand Bill</th>
-                                                    <th>{this.state.totat_bill}</th>
+                                                    <th>Total Bill</th>
+                                                    <th class="text-align-end">{this.state.totat_bill}</th>
                                                 </tr>
                                             </tfoot>
                                         </table>
@@ -237,7 +244,7 @@ class BookAppointment extends Component {
                                 : ''
                             }
                             <button className="btn btn-primary pull-left" onClick={this.clearObj}>Previous</button>
-                            <button className="btn btn-primary pull-right" disabled={categories.length > 0 ? false : true} onClick={this.nextStep}>Next</button>
+                            <button className="btn btn-primary pull-right mr-0" disabled={categories.length > 0 ? false : true} onClick={this.nextStep}>Next</button>
                     </div>
                 )
             case 4:
@@ -302,20 +309,21 @@ class BookAppointment extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const { tests, time_slots, current_appointments, past_appointments } = state.APPOINTMENTS;
-    return { tests, time_slots, current_appointments, past_appointments };
+    const { tests, time_slots, current_appointments, past_appointments, store_appointment } = state.APPOINTMENTS;
+    return { tests, time_slots, current_appointments, past_appointments, store_appointment };
   };
   
   const mapDispatchToProps = {
     loaderOpenAction,
     getTestsAction,
     getTimeSlotsAction,
+    storeAppointmentAction,
     createAppointmentAction,
     getCurrentAppointmentsAction,
     getPastAppointmentsAction,
   };
   
-  export default connect(mapStateToProps, mapDispatchToProps)(BookAppointment);
+  export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BookAppointment));
 
 
 // const selectorObj = (obj) => {

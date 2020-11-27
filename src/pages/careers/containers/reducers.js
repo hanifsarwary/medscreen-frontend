@@ -3,7 +3,8 @@ import { careersConstants } from 'pages/careers/constants';
 const initialState = {
   careersLits: [],
   aboutUsDescription: [],
-  userReviews: []
+  userReviews: [],
+  backgroundImage: ''
 };
 
 export const careersReducer = (state = initialState, action) => {
@@ -47,6 +48,17 @@ export const careersReducer = (state = initialState, action) => {
         userReviews: action.data,
       };
     case careersConstants.GET_REVIEW_FAILURE:
+      return {
+        ...state,
+        error: action.error,
+      };
+    case careersConstants.GET_PICTURE_SUCCESS:
+      return {
+        ...state,
+        error: null,
+        backgroundImage: action.data,
+      };
+    case careersConstants.GET_PICTURE_FAILURE:
       return {
         ...state,
         error: action.error,

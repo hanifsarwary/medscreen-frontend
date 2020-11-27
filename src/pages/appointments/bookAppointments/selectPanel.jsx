@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 
 export default class SelectPanel extends Component {
     render() {
+        console.log('------------------');
+        console.log(this.props.selected_options);
+        console.log('------------------');
         return (
             <div class="col-sm-12 checklist forms-field fade-apply appointment-form-margin lp0 rp0">
                 <label> Selected Tests: </label>
@@ -10,18 +13,19 @@ export default class SelectPanel extends Component {
                 { this.props.selected_options.map((item, i) => {
                     return (
                         <tr key={i}>
-                        <td class="text-capitalize font-weight-bold fade-apply">{item.label}
+                        <td class="text-capitalize font-weight-bold fade-apply">{item.label} 
                             <ul>
                             {
                                 item.panel_test.map((test, i) => {
                                 return (
-                                    <li class="set-ul-margin" key={i}>{test.title}</li>
+                                    <li class="set-ul-margin" key={i}>{test.title} </li>
                                 )
                                 })
                             }
                             </ul>
                         </td>
-                        <td class="text-capitalize"><span onClick={() => this.props.handleremoveItem(item.value)}><i class="icon-cancel"></i></span></td>
+                        <td>{item.price_handle.price}</td>
+                        <td class="text-capitalize text-align-end"><span onClick={() => this.props.handleremoveItem(item.value)}><i class="icon-cancel"></i></span></td>
                         </tr>
                     )
                     })
@@ -29,8 +33,8 @@ export default class SelectPanel extends Component {
                 </tbody>
                 <tfoot>
                     <tr>
-                    <th>Total Bill</th>
-                    <th>{countBillValue(this.props.selected_options)}</th>
+                    <th>{this.props.panelName} Bill</th>
+                    <th colSpan="2" class="text-align-end">{countBillValue(this.props.selected_options)}</th>
                     </tr>
                 </tfoot>
                 </table>

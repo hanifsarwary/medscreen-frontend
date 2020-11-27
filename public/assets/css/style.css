@@ -662,7 +662,7 @@ blockquote .small {
   background: #25b7d3;
   border: 0;
   margin-bottom: 10px;
-  margin-right: 4px;
+  /* margin-right: 4px; */
   font-size: 12px;
   line-height: 1;
   padding: 12px 20px;
@@ -4291,4 +4291,12 @@ select {
 .responsive {
   width: 100%;
   height: auto;
+}
+
+.text-align-end {
+  text-align: end !important;
+}
+
+.mr-0 {
+  margin-right: 0px !important;
 }

@@ -21,7 +21,7 @@ const Routes = props => {
 			<PublicRoute path='/careers' component={CareerPage} />
 			<PublicRoute path='/apply-for-job' component={ApplyJobForm} />
 			<PublicRoute path='/services/:id' component={LabServicesPage} />
-			<PrivateRoute path='/appointments' component={AppointmentsPage} />
+			<PublicRoute path='/appointments' component={AppointmentsPage} />
 			<PasswordRecoverRoute path='/password/reset' component={RegisterPage} />
 		</Switch>
 	);

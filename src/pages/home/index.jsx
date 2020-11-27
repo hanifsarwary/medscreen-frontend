@@ -24,16 +24,12 @@ class HomePage extends Component {
     };
 }
 
-componentDidMount() {
+  componentDidMount() {
     this.props.whoWeAreDescriptionAction();
     this.props.userReviewAction();
     this.props.callService();
     if (this.props.location.search) {
-      console.log(this.props);
-      console.log(this.props.location.search);
       this.props.loginUserViaEmailAction(this.props.location.search, this.props.history);
-    } else {
-      console.log('nothing');
     }
   }
   render() {

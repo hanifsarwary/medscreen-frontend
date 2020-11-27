@@ -20,7 +20,8 @@ const CAREERS_ENDPOINTS = {
 	CAREERS_LIST_GET: 'api/v1/careers/',
 	WHO_WE_ARE_GET: 'api/v1/who-we-are/',
 	APPLY_FOR_JOB: 'api/v1/job-applications/',
-	USER_REVIEW: 'api/v1/user-reviews/'
+	USER_REVIEW: 'api/v1/user-reviews/',
+	BACKGROUND_IMAGE: 'api/v1/website-pictures/'
 
 };
 const MEDIA_ENDPOINTS = {

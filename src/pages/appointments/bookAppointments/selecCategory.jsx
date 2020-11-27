@@ -67,7 +67,7 @@ export default class SelecCategory extends Component {
                     <Select isClearable={false} value={this.state.selected_options} isMulti onChange={this.handleTestOption} options={this.props.tests.panel_options} styles={customStyles}/>
                     {
                         this.state.selected_options.length > 0 ? 
-                            <SelectPanel handleremoveItem={this.removeItem} selected_options={this.state.selected_options} />
+                            <SelectPanel panelName={this.props.tests.panel_name} handleremoveItem={this.removeItem} selected_options={this.state.selected_options} />
                         : ''
                     }
                 </div>
