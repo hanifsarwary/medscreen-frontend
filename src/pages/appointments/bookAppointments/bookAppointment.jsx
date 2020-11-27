@@ -357,6 +357,7 @@ const mapStateToProps = (state) => {
         ? {
             panel_name : item.name,
             sorting_order: item.sorting_order,
+            price_type: item.price_type,
             panel_options: item.panel && item.panel.map(sub_item => {
                         return sub_item
                         ? {

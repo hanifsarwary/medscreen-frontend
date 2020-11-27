@@ -21,7 +21,8 @@ export default class NestedCheckBox extends Component {
                                     onChange={this.props.handleCheckBox}
                                     type="checkbox"
                                     key={i}
-                                />  {item.name} <br/>
+                                />  {item.name}
+                                <br/>
                             </label> : ''
                         }
 
@@ -38,7 +39,8 @@ export default class NestedCheckBox extends Component {
                                                         checked={categories.indexOf(sub_category.name) > -1}
                                                         onChange={this.props.handleSubCheckBox}
                                                         type="checkbox" key={i}
-                                                        /> {sub_category.name} <br/> </label>
+                                                        /> {sub_category.name} 
+                                                        <br/> </label>
                                                 }
                                             </div>
                                         )

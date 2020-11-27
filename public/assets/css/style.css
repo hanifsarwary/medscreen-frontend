@@ -4300,3 +4300,35 @@ select {
 .mr-0 {
   margin-right: 0px !important;
 }
+
+.info-icon {
+  position: relative;
+  margin-left: 5px;
+}
+.info-icon > .ico-info {
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+}
+.info-icon > .popup-card {
+  width: 350px;
+  font-size: 14px;
+  color: #a6adb3;
+  border: 1px solid #dbdee1;
+  padding: 10px;
+  line-height: 2;
+  position: absolute;
+  background-color: #fff;
+  left: 25px;
+  top: -35px;
+  display: none;
+  z-index: 101;
+  text-shadow: none;
+}
+.info-icon > .popup-note {
+  margin-left: 45px;
+}
+
+.info-icon:hover .popup-card {
+  display: block;
+}
