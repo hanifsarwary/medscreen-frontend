@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 
 export default class SelectPanel extends Component {
     render() {
-        console.log('------------------');
-        console.log(this.props.selected_options);
-        console.log('------------------');
         return (
             <div class="col-sm-12 checklist forms-field fade-apply appointment-form-margin lp0 rp0">
                 <label> Selected Tests: </label>
@@ -34,7 +31,7 @@ export default class SelectPanel extends Component {
                 <tfoot>
                     <tr>
                     <th>{this.props.panelName} Bill</th>
-                    <th colSpan="2" class="text-align-end">{countBillValue(this.props.selected_options)}</th>
+                    <th colSpan="2">{countBillValue(this.props.selected_options)}</th>
                     </tr>
                 </tfoot>
                 </table>
