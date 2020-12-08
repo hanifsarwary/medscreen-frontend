@@ -4095,6 +4095,11 @@ select {
   padding: 7px 13px; 
 }
 
+.btn-appointments {
+  display: flex;
+  justify-content: center;
+}
+
 .set-ul-margin {
   margin-left: 10px ;
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import beaker from 'assets/images/icons/icon2.svg';
 
 
@@ -48,6 +49,11 @@ export default function DrugConfirmationPanels(props) {
               )
             })
            }
+           <div className="btn-appointments bp20">
+              <Link to="/appointments" class="btn btn-white btn-large">
+                          Book an Appointment
+              </Link>
+           </div>
       </div>
     );
 }
