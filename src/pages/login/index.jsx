@@ -98,7 +98,7 @@ class LoginPage extends Component {
       remember_me,
     };
     this.props.loaderOpenAction();
-    if (this.props.storeAppointmentAction) {
+    if (this.props.store_appointment.length) {
       this.props.loginUserActionWithAppointment(payload, this.props.history, this.props.store_appointment);
     } else {
       this.props.loginUserAction(payload, this.props.history);

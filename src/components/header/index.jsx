@@ -152,7 +152,7 @@ class Header extends Component {
                         <Link onClick={() => this.handleOpenDialog(5)}>Oral fluid cutoff</Link>
                       </li>
                       <li>
-                        <Link onClick={() => this.handleOpenDialog(6)}>MSL brochure</Link>
+                        {/* <Link onClick={() => this.handleOpenDialog(6)}>MSL brochure</Link> */}
                       </li>
                     </ul>
                   </li>
@@ -169,7 +169,7 @@ class Header extends Component {
                     <a href="http://medscreenlabs.labnexus.net/">PHYSICIAN LOGIN</a>
                   </li>
                   <li>
-                    {!access_token ? <Link to="/login">USER LOGIN</Link> : <Link onClick={this.handleLogout}>Log out</Link>}
+                    {!access_token ? <Link to="/login">PATIENT LOGIN</Link> : <Link onClick={this.handleLogout}>Log out</Link>}
                   </li>
                 </ul>
               </div>

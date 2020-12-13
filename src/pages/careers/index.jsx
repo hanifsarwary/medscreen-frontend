@@ -24,7 +24,7 @@ class CareerPage extends Component {
                 {
                     this.props.careersLits ? 
                         <CareerJobList nextStep={this.applyJob} jobList={this.props.careersLits}/>
-                    : ''
+                    : 'Currently No Position Available'
                 }
             </div>
         )
