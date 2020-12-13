@@ -20,9 +20,7 @@ export const loginUserAction = (data = {}, history) => {
 					})
 				);
 				dispatch({ type: loaderConstants.LOAD_END });
-				let next_url = history.location.pathname.split('=')[1];
-				if (next_url) history.push(next_url);
-				else history.push('/');
+				history.push('/home');
 			})
 			.catch(error => {
 				dispatch({ type: loaderConstants.LOAD_END });
