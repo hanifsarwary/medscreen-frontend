@@ -16,44 +16,23 @@ class Footer extends Component {
                   Med Screen Laboratories is a state of the art high complexity toxicology laboratory dedicated to the
                   monitoring and detection of addiction and substance misuse.{' '}
                 </p>
-                <ul class="social naked">
-                  <li>
-                    {' '}
-                    <a href="#">
-                      <i class="icon-s-rss"></i>
-                    </a>{' '}
-                  </li>
-                  <li>
-                    {' '}
-                    <a href="#">
-                      <i class="icon-s-twitter"></i>
-                    </a>{' '}
-                  </li>
-                  <li>
-                    {' '}
-                    <a href="#">
-                      <i class="icon-s-facebook"></i>
-                    </a>{' '}
-                  </li>
-                  <li>
-                    {' '}
-                    <a href="#">
-                      <i class="icon-s-pinterest"></i>
-                    </a>{' '}
-                  </li>
-                  <li>
-                    {' '}
-                    <a href="#">
-                      <i class="icon-s-linkedin"></i>
-                    </a>{' '}
-                  </li>
-                  <li>
-                    {' '}
-                    <a href="#">
-                      <i class="icon-s-forrst"></i>
-                    </a>{' '}
-                  </li>
-                </ul>
+                <ul class="social">
+                    <li>
+                      <a href="https://www.linkedin.com/in/med-screen-laboratories-413a6a199">
+                        <i class="icon-s-linkedin"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://www.facebook.com/Medscreen-Laboratories-303502543596874/">
+                        <i class="icon-s-facebook"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://instagram.com/medscreenlabs?igshid=1kw4y6604w4ex">
+                        <i class="icon-s-instagram"></i>
+                      </a>
+                    </li>
+                  </ul>
               </div>
             </div>
 

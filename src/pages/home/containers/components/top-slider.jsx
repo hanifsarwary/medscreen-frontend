@@ -82,7 +82,7 @@ class TopSlider extends Component {
                   data-splitout="none" 
                   data-responsive_offset="on" 
                   style={{zIndex: 7, whiteSpace: 'nowrap', fontSize: '30px', lineHeight: '30px', marginTop: '155px', color: 'black'}}>
-                    The Nation's Leading Toxicology Laboratory 
+                    WE DETECT, YOU DIAGNOSE
               </div>
 
               <div class="tp-caption medium text-center" 

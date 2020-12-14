@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import beaker from 'assets/images/icons/icon2.svg';
 
 
@@ -36,6 +37,11 @@ export default function DrugScreeningPanels(props) {
                   )
                 })
               }
+            </div>
+            <div className="btn-appointments tp20">
+                <Link to="/appointments" class="btn btn-large">
+                            Book an Appointment
+                </Link>
             </div>
           </div> : ''
         }
