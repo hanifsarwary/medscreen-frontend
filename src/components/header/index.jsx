@@ -58,34 +58,24 @@ class Header extends Component {
                     </a>
                   </li>
                   <li>
-                    <i class="icon-phone-1"></i>+00 (973) 320-3237
+                    <i class="icon-phone-1"></i>(973) 320-3237
                   </li>
                 </ul>
                 <div class="social-wrapper">
                   <ul class="social">
                     <li>
-                      <a href="#">
-                        <i class="icon-s-pinterest"></i>
+                      <a href="https://www.linkedin.com/in/med-screen-laboratories-413a6a199">
+                        <i class="icon-s-linkedin"></i>
                       </a>
                     </li>
                     <li>
-                      <a href="#">
+                      <a href="https://www.facebook.com/Medscreen-Laboratories-303502543596874/">
                         <i class="icon-s-facebook"></i>
                       </a>
                     </li>
                     <li>
-                      <a href="#">
-                        <i class="icon-s-twitter"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="icon-s-flickr"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="icon-s-dribbble"></i>
+                      <a href="https://instagram.com/medscreenlabs?igshid=1kw4y6604w4ex">
+                        <i class="icon-s-instagram"></i>
                       </a>
                     </li>
                   </ul>

@@ -45,15 +45,15 @@ export default function DrugConfirmationPanels(props) {
                     })
                   }
                 </div>
+                <div className="btn-appointments tp20">
+                  <Link to="/appointments" class="btn btn-large">
+                              Book an Appointment
+                  </Link>
+                </div>
               </div>
               )
             })
            }
-           <div className="btn-appointments bp20">
-              <Link to="/appointments" class="btn btn-white btn-large">
-                          Book an Appointment
-              </Link>
-           </div>
       </div>
     );
 }
