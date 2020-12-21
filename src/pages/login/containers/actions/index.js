@@ -20,7 +20,7 @@ export const loginUserAction = (data = {}, history) => {
 					})
 				);
 				dispatch({ type: loaderConstants.LOAD_END });
-				history.push('/home');
+				history.push('/appointments');
 			})
 			.catch(error => {
 				dispatch({ type: loaderConstants.LOAD_END });
@@ -59,12 +59,15 @@ export const loginUserActionWithAppointment = (data = {}, history, appointment =
 				  history.push('/appointments');
 				})
 				.catch((error) => {
-				  dispatch({ type: loaderConstants.LOAD_END });
-				  debugger;
-				  dispatch({
-					type: appointmentConstants.CREATE_APPOINTMENT_FAIURE,
-					error: error.message,
-				  });
+					dispatch({ type: loaderConstants.LOAD_END });
+					if (error.message) {
+						history.push('/appointments');
+					} else {
+						dispatch({
+						  type: appointmentConstants.CREATE_APPOINTMENT_FAIURE,
+						  error: error.message,
+						});
+					}
 				});
 			})
 			.catch(error => {
@@ -107,10 +110,11 @@ export const loginUserViaEmailAction = (data, history) => {
 
 export const logoutUserAction = history => {
 	return dispatch => {
+		dispatch({ type: loaderConstants.LOAD_END });
 		dispatch({
 			type: authConstants.LOGOUT,
 		});
-		history.push('/');
+		window.location.reload();
 	};
 };
 

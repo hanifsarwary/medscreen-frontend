@@ -130,7 +130,8 @@ export const updateAppointmentPaymentStatus = (data, history) => {
       .then((response) => {
         Promise.resolve(
           dispatch({
-            type: appointmentConstants.CREATE_APPOINTMENT_SUCCESS,
+            type: appointmentConstants.UPDATE_APPOINTMENT_SUCCESS,
+            appointment_status : true
           })
         );
         dispatch({ type: loaderConstants.LOAD_END });
@@ -140,7 +141,7 @@ export const updateAppointmentPaymentStatus = (data, history) => {
         dispatch({ type: loaderConstants.LOAD_END });
         debugger;
         dispatch({
-          type: appointmentConstants.CREATE_APPOINTMENT_FAIURE,
+          type: appointmentConstants.UPDATE_APPOINTMENT_FAIURE,
           error: error.message,
         });
       });
