@@ -11,6 +11,7 @@ import {
   } from 'react-square-payment-form'
 import 'react-square-payment-form/lib/default.css'
 import './PaymentPage.css';
+import { Grid} from '@material-ui/core';
 
 import {
   updateAppointmentPaymentStatus
@@ -120,17 +121,15 @@ class PaymentPage extends React.Component {
               )}
             </div>
           </div> :
-            <div className="sucess-card row">
-              <div className="col-sm-12 success-mark">
-                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+          <Grid container direction="column" style={{textAlign: 'center'}} justify="flex-center">
+              <div className="row">
+                <div className="col-sm-12 success-mark" style={{marginLeft: '8px'}}>
+                  <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+                </div>
               </div>
-              <div className="col-sm-12">
-                <h3>Successful</h3>
-              </div>
-              <div className="col-sm-12">
-                <button class="btn success-btn" onClick={() => window.location.reload(false)}>Your appointment is booked.</button>
-              </div>
-            </div>
+              <h3 style={{marginTop: '60px'}}>Successful</h3>
+              <button style={{marginTop: '25px'}} class="btn success-btn" onClick={() => window.location.reload(false)}>Your appointment is booked.</button>
+          </Grid>
           }
         </>
       )

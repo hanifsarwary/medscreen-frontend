@@ -6,6 +6,7 @@ import BookAppointment from './bookAppointments/bookAppointment';
 import AppointmentHistory from './appointmentHistory/appointmentHistory';
 import PaymentPage from '../paymentMethod/PaymentPage';
 import { updateAppointmentPaymentStatus } from 'pages/appointments/containers/actions';
+import { Grid} from '@material-ui/core';
 
 import {
   getTestsAction,
@@ -50,7 +51,7 @@ class AppointmentsPage extends Component {
       appointment_id: current_appointments[0].id
     }
     this.props.updateAppointmentPaymentStatus(payload, this.props.history)
-    this.props.loaderOpenAction();
+    // this.props.loaderOpenAction();
   };
 
   cancelAppointment = () => {
@@ -59,7 +60,7 @@ class AppointmentsPage extends Component {
   }
 
   render() {
-    const { tests, current_appointments, past_appointments } = this.props;
+    const { tests, appointment_status, current_appointments, past_appointments } = this.props;
     const { open } = this.state;
     return (
       <Fragment>
@@ -175,7 +176,20 @@ class AppointmentsPage extends Component {
                             <div>
                                 <PaymentPage appointment_id={current_appointments[0].id} amount={current_appointments[0].panels.reduce( (sum, item) => sum + item.price, 0 )}/>
                             </div>
-                        </Drawer>
+                          </Drawer>
+                          <Drawer open={appointment_status}
+                                modalElementClass={modal}
+                                onRequestClose={this.toggle}>
+                              <Grid container direction="column" style={{textAlign: 'center'}} justify="flex-center">
+                                  <div className="row">
+                                    <div className="col-sm-12 success-mark" style={{marginLeft: '8px'}}>
+                                      <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/></svg>
+                                    </div>
+                                  </div>
+                                  <h3 style={{marginTop: '60px'}}>Successful</h3>
+                                  <button style={{marginTop: '25px'}} class="btn success-btn" onClick={() => window.location.reload(false)}>Your appointment is booked.</button>
+                              </Grid>
+                          </Drawer>
                         </div>
                       : 'No Current Appointments'}
                 </div>
@@ -201,8 +215,11 @@ class AppointmentsPage extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { tests, time_slots, current_appointments, past_appointments } = state.APPOINTMENTS;
-  return { tests, time_slots, current_appointments, past_appointments };
+  const { tests, time_slots, 
+    appointment_status,
+    current_appointments,
+    past_appointments } = state.APPOINTMENTS;
+  return { tests, time_slots, current_appointments, appointment_status, past_appointments };
 };
 
 const mapDispatchToProps = {

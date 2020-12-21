@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
-
+import { loaderOpenAction } from 'components/loaders/components';
 import logo from 'assets/images/icons/animatedLogo.gif';
 import { logoutUserAction, callService } from 'pages/login/containers';
 import Resources from 'components/resources';
@@ -37,6 +37,7 @@ class Header extends Component {
   }
 
   handleLogout = () => {
+    this.props.loaderOpenAction();
     this.props.logoutUserAction(this.props.history);
   };
 
@@ -176,6 +177,6 @@ const mapStateToProps = (state) => {
   return { access_token, service };
 };
 
-const mapDispatchToProps = { logoutUserAction, callService };
+const mapDispatchToProps = { logoutUserAction, callService, loaderOpenAction };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));
