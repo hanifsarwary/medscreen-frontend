@@ -9,16 +9,14 @@ export const registerUserAction = (data = {}, history) => {
 				Promise.resolve(
 					dispatch({
 						type: registerUserConstants.REGISTER_SUCCESS,
+						success: true
 					})
 				);
-				dispatch({ type: loaderConstants.LOAD_END });
-				history.push('/home');
 			})
-			.catch(error => {
-				dispatch({ type: loaderConstants.LOAD_END });
+			.catch((error) => {
 				dispatch({
 					type: registerUserConstants.REGISTER_FAILURE,
-					error: error.message,
+					error: error.response.data,
 				});
 			});
 	};

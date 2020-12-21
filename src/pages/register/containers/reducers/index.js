@@ -1,6 +1,7 @@
 import { registerUserConstants } from 'pages/register/constants';
 
 const initialRegisterUserState = {
+	successMsg: false,
 	error: null,
 };
 
@@ -9,6 +10,7 @@ export const registerReducer = (state = initialRegisterUserState, action) => {
 		case registerUserConstants.REGISTER_SUCCESS:
 			return {
 				...state,
+				successMsg: action.success,
 				error: null,
 			};
 		case registerUserConstants.REGISTER_FAILURE:

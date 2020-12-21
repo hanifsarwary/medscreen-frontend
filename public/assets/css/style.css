@@ -4176,7 +4176,7 @@ select {
   vertical-align: middle;
 }
 .success-btn {
-  background-color: green;
+  background-color: green !important;
   margin-top: 110px;
 }
 
