@@ -128,7 +128,7 @@ class PaymentPage extends React.Component {
                 <h3>Successful</h3>
               </div>
               <div className="col-sm-12">
-                <button class="btn success-btn" onClick={() => window.location.reload(false)}>Done</button>
+                <button class="btn success-btn" onClick={() => window.location.reload(false)}>Your appointment is booked.</button>
               </div>
             </div>
           }

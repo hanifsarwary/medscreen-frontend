@@ -17,7 +17,9 @@ export default function ServicesList(props) {
                   <div className="row lm0">
                     <div className="col-sm-3">
                        <div className="icon icon-m fit-img tm25">
+                        <Link to={item.is_display ? "/services/" + item.id : '/home'}>
                           <img src={item.icon_image} alt="" />
+                        </Link>
                        </div>
                     </div>
                     <div className="col-sm-9">

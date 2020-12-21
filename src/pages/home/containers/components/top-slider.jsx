@@ -81,7 +81,7 @@ class TopSlider extends Component {
                   data-splitin="none" 
                   data-splitout="none" 
                   data-responsive_offset="on" 
-                  style={{zIndex: 7, whiteSpace: 'nowrap', fontSize: '30px', lineHeight: '30px', marginTop: '155px', color: 'black'}}>
+                  style={{zIndex: 7, whiteSpace: 'nowrap', fontSize: '30px', lineHeight: '30px', marginTop: '155px', color: 'white'}}>
                     WE DETECT, YOU DIAGNOSE
               </div>
 

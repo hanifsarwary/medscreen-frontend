@@ -235,7 +235,7 @@ class BookAppointment extends Component {
                                             </tbody>
                                             <tfoot>
                                                 <tr>
-                                                    <th>Total Bill</th>
+                                                    <th>Grand Total</th>
                                                     <th class="text-align-end">{this.state.totat_bill}</th>
                                                 </tr>
                                             </tfoot>

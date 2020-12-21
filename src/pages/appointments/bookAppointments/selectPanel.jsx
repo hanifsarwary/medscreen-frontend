@@ -30,7 +30,7 @@ export default class SelectPanel extends Component {
                 </tbody>
                 <tfoot>
                     <tr>
-                    <th>{this.props.panelName} Bill</th>
+                    <th>{this.props.panelName} Total</th>
                     <th colSpan="2">{countBillValue(this.props.selected_options)}</th>
                     </tr>
                 </tfoot>
