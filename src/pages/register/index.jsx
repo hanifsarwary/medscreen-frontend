@@ -232,6 +232,7 @@ class RegisterPage extends Component {
                     onChange={this.handleChange}
                     value={user.address_line_one}
                     fullWidth
+                    required
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -256,6 +257,7 @@ class RegisterPage extends Component {
                     onChange={this.handleChange}
                     value={user.city}
                     fullWidth
+                    required
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -268,6 +270,7 @@ class RegisterPage extends Component {
                     onChange={this.handleChange}
                     value={user.state}
                     fullWidth
+                    required
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -280,6 +283,7 @@ class RegisterPage extends Component {
                     onChange={this.handleChange}
                     value={user.zip_code}
                     fullWidth
+                    required
                   />
                 </Grid>
                 <Grid item xs={12}>
