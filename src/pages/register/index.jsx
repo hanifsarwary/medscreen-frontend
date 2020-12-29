@@ -1,14 +1,15 @@
+/* eslint-disable no-unused-vars */
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { css } from "emotion";
+import { css } from 'emotion';
 import { Avatar, Button, Container, CssBaseline, Grid, TextField, Typography } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import {Alert} from '@material-ui/lab';
-import { rgbToHex, withStyles } from '@material-ui/core/styles';
+import { Alert } from '@material-ui/lab';
+import { withStyles } from '@material-ui/core/styles';
 import Drawer from 'react-drag-drawer';
 import { loaderOpenAction } from 'components/loaders/components';
-import { registerUserAction } from 'pages/register/containers';
+import { registerUserAction, registerUserChangeStatus } from 'pages/register/containers';
 import { backGroundPictureAction } from 'pages/careers/containers/actions';
 import { Banner } from 'helpers';
 
@@ -21,40 +22,40 @@ const modal = css`
   border-top-right-radius: 4px;
 `;
 
-const styles = theme => ({
-  "@global": {
+const styles = (theme) => ({
+  '@global': {
     body: {
-      fontFamily: "Source Sans Pro, sans-serif !important",
-      fontSize: "15px"
-    }
+      fontFamily: 'Source Sans Pro, sans-serif !important',
+      fontSize: '15px',
+    },
   },
-	paper: {
-	  marginTop: theme.spacing(3),
-		display: 'flex',
-		flexDirection: 'column',
+  paper: {
+    marginTop: theme.spacing(3),
+    display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
-	},
-	avatar: {
-		margin: theme.spacing(1),
-		backgroundColor: theme.palette.secondary.main,
-	},
-	form: {
-		width: '100%',
-		marginTop: theme.spacing(3),
   },
-	submit: {
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%',
+    marginTop: theme.spacing(3),
+  },
+  submit: {
     fontSize: '14px',
     margin: theme.spacing(3, 0, 2),
-    padding: theme.spacing(2, 0)
+    padding: theme.spacing(2, 0),
   },
   root: {
-    "& .MuiFormLabel-root": {
-      padding: theme.spacing(0, 0)
+    '& .MuiFormLabel-root': {
+      padding: theme.spacing(0, 0),
     },
-    "& .MuiOutlinedInput-root": {
+    '& .MuiOutlinedInput-root': {
       fontSize: '16px',
     },
-    "& .MuiInputLabel-outlined.MuiInputLabel-shrink": {
+    '& .MuiInputLabel-outlined.MuiInputLabel-shrink': {
       fontSize: '16px',
     },
     '& label.Mui-focused': {
@@ -66,65 +67,71 @@ const styles = theme => ({
         paddingTop: '5px',
         paddingBottom: '5px',
         border: 'none',
-        outline: 'none'
+        outline: 'none',
       },
       '& textarea': {
         border: 'none',
-        outline: 'none'
-      }
-    }
-  }
+        outline: 'none',
+      },
+    },
+  },
 });
 
+const passwordRegax = new RegExp(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z!#$%&? "])[a-zA-Z0-9!#$%&?]{8,20}$/);
 class RegisterPage extends Component {
-	constructor(props) {
-		super(props);
+  constructor(props) {
+    super(props);
 
-		this.state = {
-			user: {
-				firstName: '',
-				lastName: '',
-				username: '',
-				email: '',
-				phone: '',
+    this.state = {
+      user: {
+        firstName: '',
+        lastName: '',
+        username: '',
+        email: '',
+        phone: '',
         address: '',
-				password: '',
-				password_confirmation: '',
+        password: '',
+        password_confirmation: '',
         address_line_one: '',
         address_line_two: '',
         city: '',
         state: '',
-        zip_code: ''
-			},
-			errors: null,
-		};
-	}
+        zip_code: '',
+      },
+      errors: null,
+    };
+  }
 
-	handleChange = event => {
-		const { name, value } = event.target;
-		const { user } = this.state;
-		this.setState({
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    const { user } = this.state;
+    this.setState({
       open: false,
-			user: {
-				...user,
-				[name]: value,
-			},
-		});
-	};
+      user: {
+        ...user,
+        [name]: value,
+      },
+    });
+  };
 
-	validateForm = () => {
-		// const requiredFields = ['usermame', 'email', 'password', 'password_confirmation'];
-	};
+  validateForm = () => {
+    // const requiredFields = ['usermame', 'email', 'password', 'password_confirmation'];
+  };
 
-	handleSubmit = (event) => {
+  loaderAction = () => {
+    this.props.loaderOpenAction();
+    this.props.registerUserChangeStatus(false, this.props.history);
+  };
+
+  handleSubmit = (event) => {
     event.preventDefault();
     const { user } = this.state;
-    const address =  user.address_line_one + ' ' + user.address_line_two + ' ' + user.city + ' ' + user.state + ' ' + user.zip_code;
+    const address =
+      user.address_line_one + ' ' + user.address_line_two + ' ' + user.city + ' ' + user.state + ' ' + user.zip_code;
     user.address = address;
-		// this.props.loaderOpenAction();
-		this.props.registerUserAction(user, this.props.history);
+    this.props.registerUserAction(user, this.props.history);
   };
-  
+
   toggle = () => {
     this.setState({ open: !this.state.open });
   };
@@ -133,12 +140,12 @@ class RegisterPage extends Component {
     this.props.backGroundPictureAction('appointment_page');
   }
 
-	render() {
-		const { user, errors } = this.state;
-    const { classes, error, successMsg, backgroundImage } = this.props;
-		return (
+  render() {
+    const { user, errors } = this.state;
+    const { classes, error, successMsg, passwordReg, backgroundImage } = this.props;
+    return (
       <Fragment>
-        <Banner imgUrl={backgroundImage}/>
+        <Banner imgUrl={backgroundImage} />
         <Container component="main" maxWidth="sm">
           <CssBaseline />
           <div className={classes.paper}>
@@ -193,7 +200,7 @@ class RegisterPage extends Component {
                     fullWidth
                     type="email"
                   />
-                  {error && <small style={{color: 'red'}}>{error.email}</small>}
+                  {error && <small style={{ color: 'red' }}>{error.email}</small>}
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
@@ -207,7 +214,7 @@ class RegisterPage extends Component {
                     required
                     fullWidth
                   />
-                  {error && <small style={{color: 'red'}}>{error.username}</small>}
+                  {error && <small style={{ color: 'red' }}>{error.username}</small>}
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
@@ -232,6 +239,7 @@ class RegisterPage extends Component {
                     onChange={this.handleChange}
                     value={user.address_line_one}
                     fullWidth
+                    required
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -256,6 +264,7 @@ class RegisterPage extends Component {
                     onChange={this.handleChange}
                     value={user.city}
                     fullWidth
+                    required
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -268,6 +277,7 @@ class RegisterPage extends Component {
                     onChange={this.handleChange}
                     value={user.state}
                     fullWidth
+                    required
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -276,10 +286,12 @@ class RegisterPage extends Component {
                     name="zip_code"
                     variant="outlined"
                     label="Zip Code"
+                    type="number"
                     className={classes.root}
                     onChange={this.handleChange}
                     value={user.zip_code}
                     fullWidth
+                    required
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -295,6 +307,13 @@ class RegisterPage extends Component {
                     fullWidth
                     type="password"
                   />
+                  {passwordReg.test(user.password) ? (
+                    ''
+                  ) : (
+                    <small style={{ color: 'red' }}>
+                      Passwords must contain at least eight characters, including one uppercase and one numbers.
+                    </small>
+                  )}
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
@@ -309,15 +328,26 @@ class RegisterPage extends Component {
                     fullWidth
                     type="password"
                   />
+                  {error && <small style={{ color: 'red' }}>{error.error}</small>}
                 </Grid>
               </Grid>
 
-              <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
+              <Button
+                disabled={!passwordReg.test(user.password)}
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
                 Sign Up
               </Button>
               <Grid container justify="flex-end">
                 <Grid item>
-                  <Link to="/login" variant="body2" style={{fontSize: '12px'}}> Already have an account? Sign in </Link>
+                  <Link to="/login" variant="body2" style={{ fontSize: '12px' }}>
+                    {' '}
+                    Already have an account? Sign in{' '}
+                  </Link>
                 </Grid>
               </Grid>
             </form>
@@ -326,28 +356,32 @@ class RegisterPage extends Component {
           <br />
           <br />
         </Container>
-        <Drawer open={successMsg}
-                modalElementClass={modal}
-                onRequestClose={this.toggle}>
-            <Grid container direction="column" style={{textAlign: 'center'}} justify="flex-center">
-              <Alert style={{fontSize: '16px', }} severity="success">Congratulations, your account has been successfully created</Alert>
-              <Grid item style={{marginTop: '25px'}}>
-                <p variant="success" style={{fontSize: '16px', color: 'rgb(30, 70, 32)'}}>Plese check your email.</p>
-              </Grid>
-              <Link to="/home" style={{marginTop: '12px'}}class="btn success-btn">Continue</Link>
+        <Drawer open={successMsg} modalElementClass={modal} onRequestClose={this.toggle}>
+          <Grid container direction="column" style={{ textAlign: 'center' }} justify="center">
+            <Alert style={{ fontSize: '16px' }} severity="success">
+              Congratulations, your account has been successfully created
+            </Alert>
+            <Grid item style={{ marginTop: '25px' }}>
+              <p variant="success" style={{ fontSize: '16px', color: 'rgb(30, 70, 32)' }}>
+                Plese check your email.
+              </p>
             </Grid>
+            <Link onClick={() => this.loaderAction()} style={{ marginTop: '12px' }} class="btn success-btn">
+              Continue
+            </Link>
+          </Grid>
         </Drawer>
       </Fragment>
     );
-	}
+  }
 }
 
-const mapStateToProps = state => {
-  const { error, successMsg } = state.USER_REGISTER;
+const mapStateToProps = (state) => {
+  const { error, successMsg, passwordReg } = state.USER_REGISTER;
   const { backgroundImage } = state.CAREERS;
-	return { error, backgroundImage, successMsg };
+  return { error, backgroundImage, successMsg, passwordReg };
 };
 
-const mapDispatchToProps = { loaderOpenAction, backGroundPictureAction, registerUserAction };
+const mapDispatchToProps = { loaderOpenAction, registerUserChangeStatus, backGroundPictureAction, registerUserAction };
 
 export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(RegisterPage));

@@ -37,23 +37,23 @@ const styles = (theme) => ({
     width: '100%',
     marginTop: theme.spacing(1),
   },
-	submit: {
+  submit: {
     fontSize: '14px',
     margin: theme.spacing(2, 0, 2),
-    padding: theme.spacing(2, 0)
+    padding: theme.spacing(2, 0),
   },
-  "@global": {
+  '@global': {
     body: {
-      fontFamily: "Source Sans Pro, sans-serif !important",
-      fontSize: "15px"
-    }
+      fontFamily: 'Source Sans Pro, sans-serif !important',
+      fontSize: '15px',
+    },
   },
   root: {
-    "& .MuiFormLabel-root": {
+    '& .MuiFormLabel-root': {
       fontSize: '16px',
-      padding: theme.spacing(0, 0)
+      padding: theme.spacing(0, 0),
     },
-    "& .MuiOutlinedInput-root": {
+    '& .MuiOutlinedInput-root': {
       fontSize: '16px',
     },
     '& .MuiInputBase-root': {
@@ -62,17 +62,17 @@ const styles = (theme) => ({
         fontSize: '12px',
         padding: '5px 15px',
         border: 'none',
-        outline: 'none'
-      }
+        outline: 'none',
+      },
     },
     '& .MuiFormHelperText-root': {
       fontSize: '10px',
-      marginTop: '10px'
+      marginTop: '10px',
     },
     '& .MuiFormHelperText-contained': {
-      marginLeft: '0px'
-    }
-  }
+      marginLeft: '0px',
+    },
+  },
 });
 
 class LoginPage extends Component {
@@ -90,14 +90,15 @@ class LoginPage extends Component {
     this.setState({ [name]: value });
   };
 
-  handleSubmit = () => {
+  handleSubmit = (event) => {
+    event.preventDefault();
     const { username, password, remember_me } = this.state;
     const payload = {
       username,
       password,
       remember_me,
     };
-    this.props.loaderOpenAction();
+    // this.props.loaderOpenAction();
     if (this.props.store_appointment.length === 0) {
       this.props.loginUserAction(payload, this.props.history);
     } else {
@@ -114,10 +115,9 @@ class LoginPage extends Component {
     const { classes, error, backgroundImage } = this.props;
     return (
       <Fragment>
-		  <Banner imgUrl={backgroundImage}/>
+        <Banner imgUrl={backgroundImage} />
         <Container component="main" maxWidth="xs">
           <CssBaseline />
-          {error && <h5>{error}</h5>}
           <div className={classes.paper}>
             <Avatar className={classes.avatar}>
               <LockOutlinedIcon />
@@ -128,7 +128,7 @@ class LoginPage extends Component {
             </Typography>
             <form className={classes.form} onSubmit={this.handleSubmit}>
               <TextField
-                error={error}
+                // error={error}
                 fullWidth
                 label="Username"
                 id="username"
@@ -146,7 +146,7 @@ class LoginPage extends Component {
               />
 
               <TextField
-                error={error}
+                // error={error}
                 fullWidth
                 label="Password"
                 id="password"
@@ -164,18 +164,23 @@ class LoginPage extends Component {
               />
 
               <FormControlLabel control={<Checkbox value="remember" color="primary" />} label="Remember me" />
+
+              <Grid style={{ textAlign: 'center' }}>
+                {error && <small style={{ color: 'red' }}>{error.detail}</small>}
+              </Grid>
+
               <Button variant="contained" color="primary" type="submit" className={classes.submit} fullWidth>
                 Login
               </Button>
 
               <Grid container>
                 <Grid item xs>
-                  <Link to="/" style={{fontSize: '12px'}}>
+                  <Link to="/reset-password" style={{ fontSize: '12px' }}>
                     Forgot password?
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link to="/register" style={{fontSize: '12px'}}>
+                  <Link to="/register" style={{ fontSize: '12px' }}>
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>
@@ -198,9 +203,13 @@ const mapStateToProps = (state) => {
   return { error, store_appointment, backgroundImage };
 };
 
-const mapDispatchToProps = { loaderOpenAction, loginUserAction,
+const mapDispatchToProps = {
+  loaderOpenAction,
+  loginUserAction,
   loginUserActionWithAppointment,
-  callService, backGroundPictureAction,
-  storeAppointmentAction };
+  callService,
+  backGroundPictureAction,
+  storeAppointmentAction,
+};
 
 export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(LoginPage));

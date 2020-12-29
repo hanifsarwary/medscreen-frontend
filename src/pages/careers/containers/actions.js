@@ -1,9 +1,13 @@
 import { careersConstants } from 'pages/careers/constants';
 import { loaderConstants } from 'components/loaders/constants';
-import { 
-    getCareersList, getWhoWeAreDescription,
-    getbackGroundImage,
-    applyForJob, getTests, getUserReview } from 'services';
+import {
+  getCareersList,
+  getWhoWeAreDescription,
+  getbackGroundImage,
+  applyForJob,
+  getTests,
+  getUserReview,
+} from 'services';
 
 export const getCareerListAction = () => {
   return (dispatch) => {
@@ -77,18 +81,18 @@ export const applyForJobAction = (data, history) => {
 };
 
 export const callService = () => {
-	return dispatch => {
-		getTests().then(res => {
-			localStorage.setItem('services', JSON.stringify(res.data.results))
-			Promise.resolve(
-				dispatch({
-					type: careersConstants.SERVICE,
-					service: res.data.results
-				})
-			)
-		})
-	};
-}
+  return (dispatch) => {
+    getTests().then((res) => {
+      localStorage.setItem('services', JSON.stringify(res.data.results));
+      Promise.resolve(
+        dispatch({
+          type: careersConstants.SERVICE,
+          service: res.data.results,
+        })
+      );
+    });
+  };
+};
 
 export const userReviewAction = () => {
   return (dispatch) => {
@@ -113,7 +117,7 @@ export const userReviewAction = () => {
         });
       });
   };
-}
+};
 
 export const backGroundPictureAction = (param) => {
   return (dispatch) => {
@@ -137,4 +141,4 @@ export const backGroundPictureAction = (param) => {
         });
       });
   };
-}
+};

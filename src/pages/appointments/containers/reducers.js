@@ -44,7 +44,7 @@ export const appointmentsReducer = (state = initialState, action) => {
       return {
         ...state,
         error: null,
-        appointment_status: action.appointment_status
+        appointment_status: action.appointment_status,
       };
     case appointmentConstants.GET_CURRENT_APPOINTMENTS_FAILURE:
       return {
