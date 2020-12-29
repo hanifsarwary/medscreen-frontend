@@ -45,64 +45,77 @@ class TopSlider extends Component {
             <li data-transition="fade">
               {' '}
               <div>
-                <img src={this.props.backgroundImage} alt="" className="responsive"/>
+                <img src={this.props.backgroundImage} alt="" className="responsive" />
               </div>
               {/* <div style={{backgroundImage: "url("+this.props.backgroundImage+")", width: '100%', height: '100%', backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}}></div> */}
-              <div class="tp-caption large text-center" 
-                data-x="center" 
-                data-hoffset="" 
-                data-y="center"  data-voffset="-60" 
+              <div
+                class="tp-caption large text-center"
+                data-x="center"
+                data-hoffset=""
+                data-y="center"
+                data-voffset="-60"
                 data-width="['auto','auto','auto','auto']"
                 data-height="['auto','auto','auto','auto']"
-                data-transform_idle="o:1;"				 
-                data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1300;e:Power2.easeOut;" 
-                data-transform_out="s:1300;e:Power3.easeInOut;s:1300;e:Power3.easeInOut;" 
-                data-start="1200" 
-                data-splitin="none" 
-                data-splitout="none" 
-                data-responsive_offset="on" 
-                style={{ zIndex: 9, whiteSpace: 'nowrap', fontSize: '25px', lineHeight: '25px'}}>
-                  <img alt="logo" src={logo}  className="responsive" width={550} height={310}/>
-                  {/* <div style={{backgroundImage: "url("+logo+")", width: '440px', height: '400px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}}></div> */}
-                </div>
-                <div class="tp-caption medium text-center" 
-                  data-x="center" 
-                  data-hoffset="" 
-                  data-y="center"  
-                  data-voffset="0" 
-                  data-width="['auto','auto','auto','auto']"
-                  data-height="['auto','auto','auto','auto']"
-                  data-transform_idle="o:1;"
-                  data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:1300;e:Power4.easeInOut;" 
-                  data-transform_out="s:1300;e:Power3.easeInOut;s:1300;e:Power3.easeInOut;" 
-                  // data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" 
-                  // data-transform_out="auto:auto;s:1000;" 
-                  data-start="1700" 
-                  data-splitin="none" 
-                  data-splitout="none" 
-                  data-responsive_offset="on" 
-                  style={{zIndex: 7, whiteSpace: 'nowrap', fontSize: '30px', lineHeight: '30px', marginTop: '155px', color: 'white'}}>
-                    WE DETECT, YOU DIAGNOSE
+                data-transform_idle="o:1;"
+                data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1300;e:Power2.easeOut;"
+                data-transform_out="s:1300;e:Power3.easeInOut;s:1300;e:Power3.easeInOut;"
+                data-start="1200"
+                data-splitin="none"
+                data-splitout="none"
+                data-responsive_offset="on"
+                style={{ zIndex: 9, whiteSpace: 'nowrap', fontSize: '25px', lineHeight: '25px' }}
+              >
+                <img alt="logo" src={logo} className="responsive" width={550} height={310} />
+                {/* <div style={{backgroundImage: "url("+logo+")", width: '440px', height: '400px', backgroundSize: 'contain', backgroundRepeat: 'no-repeat'}}></div> */}
               </div>
-
-              <div class="tp-caption medium text-center" 
-                data-x="center" 
-                data-hoffset="" 
-                data-y="center" 
+              <div
+                class="tp-caption medium text-center"
+                data-x="center"
+                data-hoffset=""
+                data-y="center"
+                data-voffset="0"
+                data-width="['auto','auto','auto','auto']"
+                data-height="['auto','auto','auto','auto']"
+                data-transform_idle="o:1;"
+                data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:1300;e:Power4.easeInOut;"
+                data-transform_out="s:1300;e:Power3.easeInOut;s:1300;e:Power3.easeInOut;"
+                // data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;"
+                // data-transform_out="auto:auto;s:1000;"
+                data-start="1700"
+                data-splitin="none"
+                data-splitout="none"
+                data-responsive_offset="on"
+                style={{
+                  zIndex: 7,
+                  whiteSpace: 'nowrap',
+                  fontSize: '30px',
+                  lineHeight: '30px',
+                  marginTop: '155px',
+                  color: 'white',
+                }}
+              >
+                WE DETECT, YOU DIAGNOSE
+              </div>
+              <div
+                class="tp-caption medium text-center"
+                data-x="center"
+                data-hoffset=""
+                data-y="center"
                 data-voffset="['65','65','65','90']"
                 data-width="['auto','auto','auto','auto']"
                 data-height="['auto','auto','auto','auto']"
-                data-transform_idle="o:1;"				 
-                data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:1300;e:Power4.easeInOut;" 
-                data-transform_out="s:1300;e:Power3.easeInOut;s:1300;e:Power3.easeInOut;" 
-                data-start="2200" 
-                data-splitin="none" 
-                data-splitout="none" 
-                data-responsive_offset="on" 
-                style={{zIndex: 7, whiteSpace: 'nowrap', fontSize: '30px', lineHeight: '30px', marginTop: '150px'}}>
-                  <Link to="/appointments" class="btn btn-white btn-large">
-                      Book an Appointment
-                  </Link>
+                data-transform_idle="o:1;"
+                data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:1300;e:Power4.easeInOut;"
+                data-transform_out="s:1300;e:Power3.easeInOut;s:1300;e:Power3.easeInOut;"
+                data-start="2200"
+                data-splitin="none"
+                data-splitout="none"
+                data-responsive_offset="on"
+                style={{ zIndex: 7, whiteSpace: 'nowrap', fontSize: '30px', lineHeight: '30px', marginTop: '150px' }}
+              >
+                <Link to="/appointments" class="btn btn-white btn-large">
+                  Book an Appointment
+                </Link>
               </div>
             </li>
           </ul>
@@ -113,9 +126,8 @@ class TopSlider extends Component {
   }
 }
 
-
 const mapStateToProps = (state) => {
-  const { backgroundImage} = state.CAREERS;
+  const { backgroundImage } = state.CAREERS;
   return { backgroundImage };
 };
 

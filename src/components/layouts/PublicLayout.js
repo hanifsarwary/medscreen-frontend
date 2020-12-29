@@ -4,9 +4,9 @@ import Footer from 'components/footer';
 import Header from 'components/header';
 
 export const PublicLayout = ({ children }) => (
-	<Fragment>
-		<Header />
-			{children}
-		<Footer />
-	</Fragment>
+  <Fragment>
+    <Header />
+    {children}
+    <Footer />
+  </Fragment>
 );
