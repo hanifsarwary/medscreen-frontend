@@ -87,7 +87,7 @@ class PaymentPage extends React.Component {
         {this.state.payment === false ? (
           <div>
             <SquarePaymentForm
-              sandbox={true}
+              sandbox={false}
               applicationId={APPLICATION_ID}
               locationId={LOCATION_ID}
               cardNonceResponseReceived={this.cardNonceResponseReceived}
@@ -97,7 +97,7 @@ class PaymentPage extends React.Component {
                 <h4 className="sq-form-text-center">Enter Card Info Below </h4>
                 <CreditCardNumberInput />
                 <div className="card-holder-name">
-                  <label htmlFor="card-holder">Card Name</label>
+                  <label htmlFor="card-holder">CARD NAME</label>
                   <input
                     required
                     type="text"
