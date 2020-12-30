@@ -82,7 +82,7 @@ class Process extends Component {
               </div>
               <div class="item post">
                 <figure class="col-md-4">
-                  <span class="process-number" style={{ backgroundColor: '#EF3F66' }}>
+                  <span class="process-number" style={{ backgroundColor: '#30b8b5' }}>
                     3
                   </span>
                   <img src={sample_inspection} alt="" class="test-img" />
