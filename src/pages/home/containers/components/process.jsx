@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import sample_collection from 'assets/images/icons/icons-06.png';
 import sample_pickup from 'assets/images/icons/icons-07.png';
-import sample_inspection from 'assets/images/icons/icons-07.png';
+import sample_inspection from 'assets/images/icons/icon--inspection.png';
 import testing_phase from 'assets/images/icons/icons-11.png';
 import sample_storage from 'assets/images/icons/icons-10.png';
 import results_review from 'assets/images/icons/icons-09.png';
