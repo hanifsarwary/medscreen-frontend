@@ -4,8 +4,13 @@ import React, { Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Card, Grid, CardHeader, CardActions, CardContent, TextField, Button } from '@material-ui/core';
 import { Link, withRouter } from 'react-router-dom';
-import { sendEmailForResetPasswordAction } from 'pages/resetPassword/container/action';
+import { loaderOpenAction } from 'components/loaders/components';
+import { sendEmailForResetPasswordAction, changeEmailStatus } from 'pages/resetPassword/container/action';
+import Drawer from 'react-drag-drawer';
 import { connect } from 'react-redux';
+import { CustomPopup } from 'helpers';
+import { css } from 'emotion';
+
 const styles = (theme) => ({
   '@global': {
     body: {
@@ -44,17 +49,25 @@ class EmailSendScreen extends React.Component {
     super(props);
     this.state = {
       email: '',
+      open: true,
     };
   }
 
   sendEmail = () => {
-    console.log(this.state.email);
     this.props.sendEmailForResetPasswordAction({ email: this.state.email }, this.props.history);
+  };
+
+  resetStatus = () => {
+    this.props.loaderOpenAction();
+    this.props.changeEmailStatus(null, this.props.history);
+  };
+
+  toggle = () => {
+    this.setState({ open: !this.state.open });
   };
 
   render() {
     const { classes, status } = this.props;
-    console.log(status);
 
     return (
       <Fragment>
@@ -101,11 +114,21 @@ class EmailSendScreen extends React.Component {
 
             <CardActions style={{ backgroundColor: '#3f51b5', padding: '16px' }}>
               <Link to="/login" style={{ color: 'white' }}>
-                Back to login
+                Back To Login
               </Link>
             </CardActions>
           </Card>
         </Grid>
+        {status === 200 ? (
+          <Drawer open={true} modalElementClass={modal} onRequestClose={this.toggle}>
+            <CustomPopup
+              resetStatus={this.resetStatus}
+              title="An email message has been sent containing a link to reset the password."
+            />
+          </Drawer>
+        ) : (
+          ''
+        )}
       </Fragment>
     );
   }
@@ -118,7 +141,18 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
+  loaderOpenAction,
+  changeEmailStatus,
   sendEmailForResetPasswordAction,
 };
 
 export default withStyles(styles)(withRouter(connect(mapStateToProps, mapDispatchToProps)(EmailSendScreen)));
+
+const modal = css`
+  position: absolute;
+  width: 40rem;
+  background-color: white;
+  padding: 20px 20px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+`;
