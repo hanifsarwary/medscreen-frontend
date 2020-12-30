@@ -1,5 +1,6 @@
 import { resetPasswordConstants } from 'pages/resetPassword/constants';
 import { sendEmailForResetPassword, resetPassword } from 'services';
+import { loaderConstants } from 'components/loaders/constants';
 
 export const sendEmailForResetPasswordAction = (data, history) => {
   return (dispatch) => {
@@ -11,12 +12,11 @@ export const sendEmailForResetPasswordAction = (data, history) => {
             status: response.status,
           })
         );
-        history.push('/login');
       })
       .catch((error) => {
         dispatch({
           type: resetPasswordConstants.REST_Password_EMAIL_FAILURE,
-          error: error.response.status,
+          error: error.message,
         });
       });
   };
@@ -32,13 +32,34 @@ export const resetPasswordAction = (data, history) => {
             status: response.status,
           })
         );
-        history.push('/login');
       })
       .catch((error) => {
         dispatch({
           type: resetPasswordConstants.REST_Password_FAILURE,
-          error: error.response.status,
+          error: error.response.data,
         });
       });
+  };
+};
+
+export const changeEmailStatus = (data, history) => {
+  return (dispatch) => {
+    dispatch({
+      type: resetPasswordConstants.REST_Password_SUCCESS,
+      status: data,
+    });
+    history.push('/login');
+    dispatch({ type: loaderConstants.LOAD_END });
+  };
+};
+
+export const changePasswordStatus = (data, history) => {
+  return (dispatch) => {
+    dispatch({
+      type: resetPasswordConstants.REST_Password_SUCCESS,
+      status: data,
+    });
+    history.push('/login');
+    dispatch({ type: loaderConstants.LOAD_END });
   };
 };
