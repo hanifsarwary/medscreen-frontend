@@ -82,7 +82,7 @@ export const updatePaymentStatus = (data = {}) => {
   data.user = user.id;
   delete data.appointment_id;
   const requestOptions = {
-    method: 'PATCH',
+    method: 'POST',
     headers: { Authorization: `Bearer ${token}` },
     url,
     data,
