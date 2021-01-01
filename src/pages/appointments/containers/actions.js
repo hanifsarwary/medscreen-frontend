@@ -1,8 +1,15 @@
 import { appointmentConstants } from 'pages/appointments/constants';
 import { loaderConstants } from 'components/loaders/constants';
-import { updatePaymentStatus, getTimeSlots, getTests,
-         getCurrentAppointments, getPastAppointments, 
-         createAppointment, cancelCurrentAppointments } from 'services';
+import {
+  updatePaymentStatus,
+  getTimeSlots,
+  getTests,
+  getCurrentAppointments,
+  getPastAppointments,
+  createAppointment,
+  createAppointmentPayment,
+  cancelCurrentAppointments,
+} from 'services';
 
 export const getTestsAction = () => {
   return (dispatch) => {
@@ -131,7 +138,7 @@ export const updateAppointmentPaymentStatus = (data, history) => {
         Promise.resolve(
           dispatch({
             type: appointmentConstants.UPDATE_APPOINTMENT_SUCCESS,
-            appointment_status : true
+            appointment_status: true,
           })
         );
         dispatch({ type: loaderConstants.LOAD_END });
@@ -166,11 +173,32 @@ export const cancelCurrentAppointmentsAction = (id, history) => {
 };
 
 export const storeAppointmentAction = (data) => {
-
   return (dispatch) => {
     dispatch({
       type: appointmentConstants.STORE_APPOINTMENT,
       data,
-    })
+    });
   };
-}
+};
+
+export const createPaymentAction = (data, history) => {
+  return (dispatch) => {
+    createAppointmentPayment(data)
+      .then((response) => {
+        Promise.resolve(
+          dispatch({
+            type: appointmentConstants.CREATE_APPOINTMENT_SUCCESS,
+          })
+        );
+        // dispatch({ type: loaderConstants.LOAD_END });
+        // history.push('/appointments');
+      })
+      .catch((error) => {
+        // dispatch({ type: loaderConstants.LOAD_END });
+        dispatch({
+          type: appointmentConstants.CREATE_APPOINTMENT_FAIURE,
+          error: error.message,
+        });
+      });
+  };
+};
