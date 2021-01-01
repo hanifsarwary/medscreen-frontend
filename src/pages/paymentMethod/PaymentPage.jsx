@@ -14,13 +14,13 @@ import 'react-square-payment-form/lib/default.css';
 import './PaymentPage.css';
 import { Grid } from '@material-ui/core';
 
-import { updateAppointmentPaymentStatus } from 'pages/appointments/containers/actions';
+import { createPaymentAction, updateAppointmentPaymentStatus } from 'pages/appointments/containers/actions';
 
-// const APPLICATION_ID = 'sandbox-sq0idb-aLZmsFDNMH8mnlhisjzeFA';
-// const LOCATION_ID = 'LG93JSK02XFSK';
+const APPLICATION_ID = 'sandbox-sq0idb-aLZmsFDNMH8mnlhisjzeFA';
+const LOCATION_ID = 'LG93JSK02XFSK';
 
-const APPLICATION_ID = 'sq0idp-AkYNakDfFkDTsQaTEm5i1Q';
-const LOCATION_ID = 'HVWH1VGAYF82G';
+// const APPLICATION_ID = 'sq0idp-AkYNakDfFkDTsQaTEm5i1Q';
+// const LOCATION_ID = 'HVWH1VGAYF82G';
 
 class PaymentPage extends React.Component {
   constructor(props) {
@@ -56,7 +56,16 @@ class PaymentPage extends React.Component {
       transaction_details: JSON.stringify(this.createVerificationDetails()),
       appointment_id: this.props.appointment_id,
     };
-    this.props.updateAppointmentPaymentStatus(payload, this.props.history);
+    const paymentPayload = {
+      source_id: nonce,
+      location_id: LOCATION_ID,
+      autocomplete: true,
+      verification_token: buyerVerificationToken,
+      amount_money: this.createVerificationDetails(),
+      appointment_id: this.props.appointment_id,
+    };
+    // this.props.createPaymentAction(JSON.stringify(paymentPayload), this.props.history);
+    this.props.updateAppointmentPaymentStatus(paymentPayload, this.props.history);
   };
 
   getAmount() {
@@ -87,7 +96,7 @@ class PaymentPage extends React.Component {
         {this.state.payment === false ? (
           <div>
             <SquarePaymentForm
-              sandbox={false}
+              sandbox={true}
               applicationId={APPLICATION_ID}
               locationId={LOCATION_ID}
               cardNonceResponseReceived={this.cardNonceResponseReceived}
@@ -150,6 +159,7 @@ class PaymentPage extends React.Component {
 }
 
 const mapDispatchToProps = {
+  createPaymentAction,
   updateAppointmentPaymentStatus,
 };
 

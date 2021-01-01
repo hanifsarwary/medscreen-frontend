@@ -26,6 +26,7 @@ class AppointmentsPage extends Component {
     this.state = {
       test: null,
       open: false,
+      // loaded: false,
     };
   }
 
@@ -37,6 +38,20 @@ class AppointmentsPage extends Component {
       this.props.getCurrentAppointmentsAction();
     }
   }
+
+  // componentWillMount() {
+  //   const that = this;
+  //   let sqPaymentScript = document.createElement('script');
+  //   sqPaymentScript.src = 'https://js.squareup.com/v2/paymentform';
+  //   sqPaymentScript.type = 'text/javascript';
+  //   sqPaymentScript.async = false;
+  //   sqPaymentScript.onload = () => {
+  //     that.setState({
+  //       open: true,
+  //     });
+  //   };
+  //   document.getElementsByTagName('head')[0].appendChild(sqPaymentScript);
+  // }
 
   toggle = () => {
     this.setState({ open: !this.state.open });
@@ -169,8 +184,10 @@ class AppointmentsPage extends Component {
                           appointment_id={current_appointments[0].id}
                           amount={current_appointments[0].panels.reduce((sum, item) => sum + item.price, 0)}
                         />
+                        {/* {open && <PaymentForm paymentForm={window.SqPaymentForm} />} */}
                       </div>
                     </Drawer>
+
                     <Drawer open={appointment_status} modalElementClass={modal} onRequestClose={this.toggle}>
                       <Grid container direction="column" style={{ textAlign: 'center' }} justify="center">
                         <div className="row">
