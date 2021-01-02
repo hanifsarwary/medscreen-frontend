@@ -8,6 +8,7 @@ const initialState = {
   store_appointment: [],
   appointment_status: false,
   error: null,
+  loader: true,
 };
 
 export const appointmentsReducer = (state = initialState, action) => {
@@ -22,6 +23,16 @@ export const appointmentsReducer = (state = initialState, action) => {
       return {
         ...state,
         error: action.error,
+      };
+    case appointmentConstants.LOAD_START:
+      return {
+        ...state,
+        loader: action.loader,
+      };
+    case appointmentConstants.LOAD_END:
+      return {
+        ...state,
+        loader: action.loader,
       };
     case appointmentConstants.GET_TIMESLOTS_SUCCESS:
       return {
@@ -44,7 +55,14 @@ export const appointmentsReducer = (state = initialState, action) => {
       return {
         ...state,
         error: null,
+        // loader: action.loader,
         appointment_status: action.appointment_status,
+      };
+    case appointmentConstants.UPDATE_APPOINTMENT_FAIURE:
+      return {
+        ...state,
+        error: action.error,
+        // loader: action.loader,
       };
     case appointmentConstants.GET_CURRENT_APPOINTMENTS_FAILURE:
       return {

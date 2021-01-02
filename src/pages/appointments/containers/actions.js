@@ -141,16 +141,15 @@ export const updateAppointmentPaymentStatus = (data, history) => {
             appointment_status: true,
           })
         );
-        dispatch({ type: loaderConstants.LOAD_END });
         history.push('/appointments');
       })
       .catch((error) => {
-        dispatch({ type: loaderConstants.LOAD_END });
-        debugger;
-        dispatch({
-          type: appointmentConstants.UPDATE_APPOINTMENT_FAIURE,
-          error: error.message,
-        });
+        Promise.resolve(
+          dispatch({
+            type: appointmentConstants.UPDATE_APPOINTMENT_FAIURE,
+            error: error.response.data.error[0],
+          })
+        );
       });
   };
 };
@@ -183,6 +182,7 @@ export const storeAppointmentAction = (data) => {
 
 export const createPaymentAction = (data, history) => {
   return (dispatch) => {
+    dispatch({ type: loaderConstants.LOAD_START });
     createAppointmentPayment(data)
       .then((response) => {
         Promise.resolve(
@@ -190,15 +190,15 @@ export const createPaymentAction = (data, history) => {
             type: appointmentConstants.CREATE_APPOINTMENT_SUCCESS,
           })
         );
-        // dispatch({ type: loaderConstants.LOAD_END });
+        dispatch({ type: loaderConstants.LOAD_END });
         // history.push('/appointments');
       })
       .catch((error) => {
-        // dispatch({ type: loaderConstants.LOAD_END });
         dispatch({
           type: appointmentConstants.CREATE_APPOINTMENT_FAIURE,
           error: error.message,
         });
+        dispatch({ type: loaderConstants.LOAD_END });
       });
   };
 };
