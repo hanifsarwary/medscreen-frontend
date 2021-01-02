@@ -1,5 +1,12 @@
 const DOMAIN = 'https://medscreenlabs-backend.herokuapp.com/';
 
+const PAYMENT_CREDENTIALS = {
+  SAND_BOX_APPLICATION_ID: 'sandbox-sq0idb-aLZmsFDNMH8mnlhisjzeFA',
+  SAND_BOX_LOCATION_ID: 'LG93JSK02XFSK',
+  PRODUCTION_APPLICATION_ID: 'sq0idp-AkYNakDfFkDTsQaTEm5i1Q',
+  PRODUCTION_LOCATION_ID: 'HVWH1VGAYF82G',
+};
+
 const LOCAL_DOMAIN = 'https://covid-plasmadonor.com/';
 const USERS_ENDPOINTS = {
   USERS_LIST_CREATE: 'api/v1/users/',
@@ -41,4 +48,5 @@ export {
   MEDIA_ENDPOINTS,
   CAREERS_ENDPOINTS,
   RESET_PASSWORD,
+  PAYMENT_CREDENTIALS,
 };
