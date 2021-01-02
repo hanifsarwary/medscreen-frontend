@@ -13,14 +13,11 @@ import {
 import 'react-square-payment-form/lib/default.css';
 import './PaymentPage.css';
 import { Grid } from '@material-ui/core';
-
+import { PAYMENT_CREDENTIALS } from 'config';
 import { createPaymentAction, updateAppointmentPaymentStatus } from 'pages/appointments/containers/actions';
 
-const APPLICATION_ID = 'sandbox-sq0idb-aLZmsFDNMH8mnlhisjzeFA';
-const LOCATION_ID = 'LG93JSK02XFSK';
-
-// const APPLICATION_ID = 'sq0idp-AkYNakDfFkDTsQaTEm5i1Q';
-// const LOCATION_ID = 'HVWH1VGAYF82G';
+const APPLICATION_ID = PAYMENT_CREDENTIALS.PRODUCTION_APPLICATION_ID;
+const LOCATION_ID = PAYMENT_CREDENTIALS.PRODUCTION_LOCATION_ID;
 
 class PaymentPage extends React.Component {
   constructor(props) {
@@ -96,7 +93,7 @@ class PaymentPage extends React.Component {
         {this.state.payment === false ? (
           <div>
             <SquarePaymentForm
-              sandbox={true}
+              // sandbox={true}
               applicationId={APPLICATION_ID}
               locationId={LOCATION_ID}
               cardNonceResponseReceived={this.cardNonceResponseReceived}
