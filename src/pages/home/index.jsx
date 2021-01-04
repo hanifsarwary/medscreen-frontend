@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
-import { whoWeAreDescriptionAction,
-         userReviewAction,
-         callService } from 'pages/careers/containers/actions';
+import { whoWeAreDescriptionAction, userReviewAction, callService } from 'pages/careers/containers/actions';
 import { loginUserViaEmailAction } from 'pages/login/containers/actions';
 import { loaderOpenAction } from 'components/loaders/components';
 
@@ -20,9 +18,9 @@ class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      careerJobList: null
+      careerJobList: null,
     };
-}
+  }
 
   componentDidMount() {
     this.props.whoWeAreDescriptionAction();
@@ -39,10 +37,10 @@ class HomePage extends Component {
           <TopSlider />
         </section>
         <section id="story">
-          <Story description={this.props.aboutUsDescription}/>
+          <Story description={this.props.aboutUsDescription} />
         </section>
         <section id="sevice">
-          <ServicesList service={this.props.service}/>
+          <ServicesList service={this.props.service} />
         </section>
         <section className="tm20" id="process">
           <Process />
@@ -64,7 +62,6 @@ class HomePage extends Component {
   }
 }
 
-
 const mapStateToProps = (state) => {
   const { aboutUsDescription, service, userReviews } = state.CAREERS;
   return { aboutUsDescription, service, userReviews };
@@ -75,7 +72,7 @@ const mapDispatchToProps = {
   whoWeAreDescriptionAction,
   loginUserViaEmailAction,
   userReviewAction,
-  callService
+  callService,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
