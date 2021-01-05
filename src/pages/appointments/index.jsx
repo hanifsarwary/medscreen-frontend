@@ -5,7 +5,7 @@ import { css } from 'emotion';
 import BookAppointment from './bookAppointments/bookAppointment';
 import AppointmentHistory from './appointmentHistory/appointmentHistory';
 import PaymentPage from '../paymentMethod/PaymentPage';
-import { updateAppointmentPaymentStatus } from 'pages/appointments/containers/actions';
+import { updateAppointmentPaymentStatus, closeAppointmentDrawer } from 'pages/appointments/containers/actions';
 import { Grid } from '@material-ui/core';
 
 import {
@@ -66,6 +66,10 @@ class AppointmentsPage extends Component {
     };
     this.props.updateAppointmentPaymentStatus(payload, this.props.history);
     // this.props.loaderOpenAction();
+  };
+
+  closeAppointmentDrawer = () => {
+    this.props.closeAppointmentDrawer();
   };
 
   cancelAppointment = () => {
@@ -188,7 +192,11 @@ class AppointmentsPage extends Component {
                       </div>
                     </Drawer>
 
-                    <Drawer open={appointment_status} modalElementClass={modal} onRequestClose={this.toggle}>
+                    <Drawer
+                      open={appointment_status}
+                      modalElementClass={modal}
+                      onRequestClose={this.closeAppointmentDrawer}
+                    >
                       <Grid container direction="column" style={{ textAlign: 'center' }} justify="center">
                         <div className="row">
                           <div className="col-sm-12 success-mark" style={{ marginLeft: '8px' }}>
@@ -241,9 +249,10 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  loaderOpenAction,
   getTestsAction,
+  loaderOpenAction,
   getTimeSlotsAction,
+  closeAppointmentDrawer,
   createAppointmentAction,
   getCurrentAppointmentsAction,
   getPastAppointmentsAction,
