@@ -8,15 +8,15 @@ export const sendEmailForResetPasswordAction = (data, history) => {
       .then((response) => {
         Promise.resolve(
           dispatch({
-            type: resetPasswordConstants.REST_Password_EMAIL_SUCCESS,
+            type: resetPasswordConstants.RESET_PASSWORD_EMAIL_SUCCESS,
             status: response.status,
           })
         );
       })
       .catch((error) => {
         dispatch({
-          type: resetPasswordConstants.REST_Password_EMAIL_FAILURE,
-          error: error.message,
+          type: resetPasswordConstants.RESET_PASSWORD_EMAIL_FAILURE,
+          error: error.response.data,
         });
       });
   };

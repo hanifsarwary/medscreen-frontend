@@ -67,8 +67,7 @@ class EmailSendScreen extends React.Component {
   };
 
   render() {
-    const { classes, status } = this.props;
-
+    const { classes, status, emailError } = this.props;
     return (
       <Fragment>
         <Grid container direction="row" justify="center" alignContent="center" style={{ height: '100vh' }}>
@@ -82,8 +81,8 @@ class EmailSendScreen extends React.Component {
               title="FORGOT YOUR PASSWORD?"
             />
             <CardContent>
-              <Grid style={{ height: '15rem' }} container direction="column" justify="center">
-                <Grid item>
+              <Grid container direction="column" justify="center">
+                <Grid item style={{ marginTop: '15px' }}>
                   <TextField
                     id="email"
                     name="email"
@@ -97,6 +96,7 @@ class EmailSendScreen extends React.Component {
                     type="email"
                   />
                 </Grid>
+                {emailError && <small style={{ color: 'red' }}>{emailError.email}</small>}
                 <Grid item container direction="column" alignItems="flex-end" style={{ marginTop: '10px' }}>
                   <Button
                     disabled={!this.state.email}
@@ -135,9 +135,8 @@ class EmailSendScreen extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  const { status } = state.RESET_PASSWORD;
-  const { error } = state.USER_AUTH;
-  return { error, status };
+  const { emailError, status } = state.RESET_PASSWORD;
+  return { emailError, status };
 };
 
 const mapDispatchToProps = {

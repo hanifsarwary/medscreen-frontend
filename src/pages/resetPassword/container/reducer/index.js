@@ -5,20 +5,21 @@ const initialRegisterUserState = {
   status: null,
   success: false,
   error: null,
+  emailError: null,
 };
 
 export const passwordResetReducer = (state = initialRegisterUserState, action) => {
   switch (action.type) {
-    case resetPasswordConstants.REST_Password_EMAIL_SUCCESS:
+    case resetPasswordConstants.RESET_PASSWORD_EMAIL_SUCCESS:
       return {
         ...state,
         status: action.status,
-        error: null,
+        emailError: null,
       };
-    case resetPasswordConstants.Reset_Password_EMAIL_FAILURE:
+    case resetPasswordConstants.RESET_PASSWORD_EMAIL_FAILURE:
       return {
         ...state,
-        error: action.error,
+        emailError: action.error,
       };
     case resetPasswordConstants.REST_Password_SUCCESS:
       return {

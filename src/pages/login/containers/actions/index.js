@@ -120,13 +120,15 @@ export const refreshLoginFromLocalStorageAction = () => {
 export const callService = () => {
   return (dispatch) => {
     getTests().then((res) => {
-      localStorage.setItem('services', JSON.stringify(res.data.results));
-      Promise.resolve(
-        dispatch({
-          type: authConstants.SERVICE,
-          service: res.data.results,
-        })
-      );
+      if (res) {
+        localStorage.setItem('services', JSON.stringify(res.data.results));
+        Promise.resolve(
+          dispatch({
+            type: authConstants.SERVICE,
+            service: res.data.results,
+          })
+        );
+      }
     });
   };
 };

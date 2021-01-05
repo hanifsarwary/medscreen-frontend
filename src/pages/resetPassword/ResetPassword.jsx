@@ -4,13 +4,6 @@ import ResetPasswordScreen from './resetPasswordScreen';
 import EmailSendScreen from './emailSend';
 
 class ResetPasswordPage extends React.Component {
-  componentDidMount() {
-    if (this.props.location.search) {
-      const token = this.props.location.search.split('=');
-      console.log(token);
-    }
-  }
-
   render() {
     return (
       <Fragment>
