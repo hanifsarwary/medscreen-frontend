@@ -182,7 +182,7 @@ class AppointmentsPage extends Component {
                       <div>
                         <PaymentPage
                           appointment_id={current_appointments[0].id}
-                          amount={current_appointments[0].panels.reduce((sum, item) => sum + item.price, 0)}
+                          amount={current_appointments[0].total_price}
                         />
                         {/* {open && <PaymentForm paymentForm={window.SqPaymentForm} />} */}
                       </div>
