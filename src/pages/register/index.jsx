@@ -84,8 +84,8 @@ class RegisterPage extends Component {
 
     this.state = {
       user: {
-        firstName: '',
-        lastName: '',
+        first_name: '',
+        last_name: '',
         username: '',
         email: '',
         phone: '',
@@ -159,13 +159,13 @@ class RegisterPage extends Component {
               <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
                   <TextField
-                    id="firstName"
-                    name="firstName"
+                    id="first_name"
+                    name="first_name"
                     variant="outlined"
                     label="First Name"
                     className={classes.root}
                     onChange={this.handleChange}
-                    value={user.firstName}
+                    value={user.first_name}
                     fullWidth
                     autoFocus
                     required
@@ -174,13 +174,13 @@ class RegisterPage extends Component {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField
-                    id="lastName"
-                    name="lastName"
+                    id="last_name"
+                    name="last_name"
                     variant="outlined"
                     label="Last Name"
                     className={classes.root}
                     onChange={this.handleChange}
-                    value={user.lastName}
+                    value={user.last_name}
                     required
                     fullWidth
                   />

@@ -154,6 +154,15 @@ export const updateAppointmentPaymentStatus = (data, history) => {
   };
 };
 
+export const closeAppointmentDrawer = (data, history) => {
+  return (dispatch) => {
+    dispatch({
+      type: appointmentConstants.UPDATE_APPOINTMENT_SUCCESS,
+      appointment_status: false,
+    });
+  };
+};
+
 export const cancelCurrentAppointmentsAction = (id, history) => {
   return (dispatch) => {
     cancelCurrentAppointments(id)
