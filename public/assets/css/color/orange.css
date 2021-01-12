@@ -187,7 +187,7 @@ footer .meta a:hover {
 .lg-actions .lg-prev:hover {
 	color: #f26101;
 }
-@media (min-width: 992px) { 
+@media (min-width: 1200px) { 
 	.navbar .dropdown-menu li {
 	    background: #f26101;
 	}
@@ -196,7 +196,7 @@ footer .meta a:hover {
     	color: #f26101 !important
 	}
 }
-@media (max-width: 991px) { 
+@media (max-width: 1199px) { 
 	.navbar .navbar-collapse {
 	    background: #f26101
 	}
