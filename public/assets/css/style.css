@@ -637,7 +637,7 @@ blockquote .small {
     vertical-align: middle;
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   .col-md-height {
     display: table-cell;
     float: none !important;
@@ -1096,7 +1096,7 @@ blockquote .small {
 .navbar.header3 .navbar-header {
   height: 80px;
 }
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   .navbar.header1 .navbar-nav,
   .navbar.header3 .navbar-nav {
     height: 80px;
@@ -1110,7 +1110,7 @@ blockquote .small {
 .navbar.header2 .navbar-header {
   height: 65px;
 }
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   .navbar.header2 .navbar-nav {
     height: 65px;
   }
@@ -1119,7 +1119,7 @@ blockquote .small {
   }
 }
 /* header4 & header5 */
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   .navbar.centered .navbar-nav,
   .navbar.centered.fixed .navbar-nav {
     height: 54px;
@@ -1133,7 +1133,7 @@ blockquote .small {
 .navbar.fixed .navbar-header {
   height: 65px;
 }
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   .navbar.fixed .navbar-nav {
     height: 65px;
   }
@@ -3701,13 +3701,13 @@ select {
 /*-----------------------------------------------------------------------------------*/
 /*	35. RESPONSIVE
 /*-----------------------------------------------------------------------------------*/
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 1200px) and (max-width: 1199px) {
   .circle-progress-wrapper {
     padding-left: 15px;
     padding-right: 15px;
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   .feature.text-right {
     padding: 0 105px 0 0;
     text-align: right;
@@ -3842,8 +3842,11 @@ select {
   .navbar.header2 .container.boxed {
     padding: 0 30px;
   }
+  .inner-appointment {
+    margin-top: 15%;
+  }
 }
-@media (max-width: 991px) {
+@media (max-width: 1199px) {
   .circle-progress-wrapper {
     padding-left: 15px;
     padding-right: 15px;
@@ -3951,7 +3954,7 @@ select {
     width: 100%;
   }
 }
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 768px) and (max-width: 1199px) {
   .container {
     padding-right: 15px;
     padding-left: 15px;

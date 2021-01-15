@@ -10,36 +10,36 @@ export default function ServicesList(props) {
           <h3>what we do</h3>
         </div>
         <div class="row lm0">
-          {
-            props.service && props.service.map((item, i) => {
+          {props.service &&
+            props.service.map((item, i) => {
               return (
                 <div key={i} className="col-sm-6 col-md-6 wow fadeIn" data-wow-duration="1.5s" data-wow-delay="0.5s">
                   <div className="row lm0">
                     <div className="col-sm-3">
-                       <div className="icon icon-m fit-img tm25">
-                        <Link to={item.is_display ? "/services/" + item.id : '/home'}>
-                          <img src={item.icon_image} alt="" />
+                      <div className="icon fit-img tm25">
+                        <Link to={item.is_display ? '/services/' + item.id : '/home'}>
+                          <img src={item.icon_image} alt="" className="responsive" />
                         </Link>
-                       </div>
+                      </div>
                     </div>
                     <div className="col-sm-9">
-                      <Link to={item.is_display ? "/services/" + item.id : '/home'}><h4 className="tm30">{item.alias_name}</h4></Link>
+                      <Link to={item.is_display ? '/services/' + item.id : '/home'}>
+                        <h4 className="tm30">{item.alias_name}</h4>
+                      </Link>
                       <p dangerouslySetInnerHTML={{ __html: item.secondary_description }}></p>
                     </div>
                   </div>
-              </div>
-              )
-            })
-          }
+                </div>
+              );
+            })}
         </div>
       </div>
     </div>
   );
 }
 
-
-
-{/* <div class="col-sm-6 col-md-6 wow fadeIn" data-wow-duration="1.5s" data-wow-delay="1.0s">
+{
+  /* <div class="col-sm-6 col-md-6 wow fadeIn" data-wow-duration="1.5s" data-wow-delay="1.0s">
             <div class="feature">
               <div class="icon icon-m">
                 {' '}
@@ -79,4 +79,5 @@ export default function ServicesList(props) {
                 by our certified toxicologist.
               </p>
             </div>
-          </div> */}
+          </div> */
+}
