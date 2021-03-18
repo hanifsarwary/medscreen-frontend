@@ -220,7 +220,7 @@ class Footer extends Component {
         <div class="sub-footer">
           <div class="container inner3">
             <p class="text-center">
-              © 2016 Ryla. All rights reserved. Theme by <a href="http://elemisfreebies.com">elemis</a>.
+              © 2020. All rights reserved by Med Screen Laboratories Inc.
             </p>
           </div>
         </div>

@@ -71,7 +71,7 @@ class Process extends Component {
                         Couriers transport lab samples for testing in secure containers with professionalism and
                         courtesy.
                         <br />
-                        Couriers are trained in specimen handling, compliance adn best practice standards.
+                        Couriers are trained in specimen handling, compliance and best practice standards.
                         <br />
                         Courier also drops off the necessary supplies to our clients locations.
                       </p>
