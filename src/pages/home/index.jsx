@@ -98,7 +98,7 @@ class HomePage extends Component {
               },
               content: {
                 position: 'absolute',
-                height: '50%',
+                height: '70%',
                 width: '60%',
                 left: '50%',
                 top: '50%',
