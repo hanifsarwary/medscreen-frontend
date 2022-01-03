@@ -55,7 +55,7 @@ class Header extends Component {
                   <li>
                     <i class="icon-mail"></i>{' '}
                     <a href="mailto:hello@email.com" class="email-link">
-                      info@medscreenlabs.com
+                      reports@medscreenlabs.org
                     </a>
                   </li>
                   <li>
