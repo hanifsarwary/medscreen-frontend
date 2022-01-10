@@ -12,8 +12,8 @@ import Story from 'pages/home/containers/components/story';
 import TopSlider from 'pages/home/containers/components/top-slider';
 import Process from 'pages/home/containers/components/process';
 import Media from 'pages/home/containers/components/media';
-import ReactModal from 'react-modal';
-import MediaQuery from 'react-responsive'
+// import ReactModal from 'react-modal';
+// import MediaQuery from 'react-responsive'
 import Charts from 'pages/home/containers/components/charts';
 
 class HomePage extends Component {
@@ -21,12 +21,12 @@ class HomePage extends Component {
     super(props);
     this.state = {
       careerJobList: null,
-      isModalOpen: true,
+      // isModalOpen: true,
     };
   }
-  closeModal = () => {
-    this.setState({ isModalOpen: false });
-  }
+  // closeModal = () => {
+  //   this.setState({ isModalOpen: false });
+  // }
 
   componentDidMount() {
     this.props.whoWeAreDescriptionAction();
@@ -41,7 +41,7 @@ class HomePage extends Component {
       <div class="content-wrapper">
         
         
-        <MediaQuery minWidth={768}>
+        {/* <MediaQuery minWidth={768}>
           <ReactModal 
             style={{
               overlay: {
@@ -123,7 +123,7 @@ class HomePage extends Component {
             <p style={{color: '#000000', textAlign: 'justify', fontSize: 'large', marginTop: '70px'}}>Due to a recent surge in COVID-19 testing demand, we are experiencing longer than usual turnaround times for test results. The results are taking approximately 2-4 days from when your sample is collected. You will receive an email when your results are available.</p>
           </ReactModal>
         </MediaQuery>
-
+ */}
 
 
         <section id="silder">
