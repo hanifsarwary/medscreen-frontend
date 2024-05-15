@@ -9,6 +9,7 @@ import oralCutoff from 'assets/pdfs/oralCutoff.pdf';
 import toxicologyReport from 'assets/pdfs/toxicology-report.pdf';
 import bloodRequisition from 'assets/pdfs/Blood-Req.pdf';
 import brochure from 'assets/pdfs/MedScreenBrochure.pdf';
+import convid19TestPrices  from 'assets/pdfs/covid19-test-prices.pdf'
 
 import PDFRenderer from 'components/pdfrenderer';
 
@@ -18,7 +19,7 @@ import 'rodal/lib/rodal.css';
 class Resources extends Component {
   render() {
     const { visible, handleClose, index } = this.props;
-    const pdfs = [urineForm, oralForm, bloodRequisition, toxicologyReport, urineCutoff, oralCutoff, brochure]
+    const pdfs = [urineForm, oralForm, bloodRequisition, toxicologyReport, urineCutoff, oralCutoff, brochure,convid19TestPrices]
     return (
       <div>
         <Rodal visible={visible} onClose={handleClose} width={655} height={655} animation={'fade'}>

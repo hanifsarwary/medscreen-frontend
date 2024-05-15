@@ -118,6 +118,11 @@ class Header extends Component {
                           })
                           : ''
                         }
+                       <li>
+                        <Link 
+                        onClick={() => this.handleOpenDialog(7)}
+                        >Price</Link>
+                      </li>
                     </ul>
                   </li>
                   <li>
