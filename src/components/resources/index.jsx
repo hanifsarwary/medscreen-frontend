@@ -12,6 +12,7 @@ import brochure from 'assets/pdfs/MedScreenBrochure.pdf';
 import convid19TestPrices  from 'assets/pdfs/covid19-test-prices.pdf'
 
 import PDFRenderer from 'components/pdfrenderer';
+import CovidTestingPrices from 'components/Modalbody'
 
 // include styles
 import 'rodal/lib/rodal.css';
@@ -22,9 +23,17 @@ class Resources extends Component {
     const pdfs = [urineForm, oralForm, bloodRequisition, toxicologyReport, urineCutoff, oralCutoff, brochure,convid19TestPrices]
     return (
       <div>
+        {
+        index<7?
         <Rodal visible={visible} onClose={handleClose} width={655} height={655} animation={'fade'}>
           <PDFRenderer file={pdfs[index]} />
         </Rodal>
+        :
+        <Rodal visible={visible} onClose={handleClose} width={855} height={355} animation={'fade'}>
+         <CovidTestingPrices />
+        </Rodal>
+        }
+
       </div>
     );
   }
