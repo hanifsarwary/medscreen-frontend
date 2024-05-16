@@ -18,6 +18,30 @@ import CovidTestingPrices from 'components/Modalbody'
 import 'rodal/lib/rodal.css';
 
 class Resources extends Component {
+
+  constructor(props) {
+   super(props)
+    this.state = {
+      modalWidth: window.innerWidth < 855 ? window.innerWidth - 50 : 855,
+    };
+    this.updateModalDimensions = this.updateModalDimensions.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.updateModalDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateModalDimensions);
+  }
+
+  updateModalDimensions() {
+    const newWidth = window.innerWidth < 855 ? window.innerWidth - 50 : 855;
+    this.setState({
+      modalWidth: newWidth,
+    });
+  }
+
   render() {
     const { visible, handleClose, index } = this.props;
     const pdfs = [urineForm, oralForm, bloodRequisition, toxicologyReport, urineCutoff, oralCutoff, brochure,convid19TestPrices]
@@ -29,7 +53,7 @@ class Resources extends Component {
           <PDFRenderer file={pdfs[index]} />
         </Rodal>
         :
-        <Rodal visible={visible} onClose={handleClose} width={855} height={355} animation={'fade'}>
+        <Rodal visible={visible} onClose={handleClose} width={this.state.modalWidth} height={455} animation={'fade'}>
          <CovidTestingPrices />
         </Rodal>
         }
