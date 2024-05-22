@@ -7,7 +7,7 @@ const PAYMENT_CREDENTIALS = {
   PRODUCTION_LOCATION_ID: 'HVWH1VGAYF82G',
 };
 
-const LOCAL_DOMAIN = 'https://covid-plasmadonor.com/';
+const LOCAL_DOMAIN = 'https://admin.medscreenlabs.com/';
 const USERS_ENDPOINTS = {
   USERS_LIST_CREATE: 'api/v1/users/',
   USER_LOGIN: 'api/token/',
